@@ -1,0 +1,196 @@
+// -*- mode: json -*-
+
+{
+	"layer": "top",
+	"position": "top",
+    "margin": "10, 10, 0, 10",
+
+	"modules-left": [
+		"custom/arch-icon",
+		"hyprland/workspaces",
+		"custom/right-arrow-dark",
+		"hyprland/window"
+	],
+
+	"modules-center": [
+	],
+
+	"modules-right": [
+		"privacy",
+		"custom/left-arrow-dark",
+		"tray",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"network",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"pulseaudio",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"clock",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"battery",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"custom/powerbutton"
+	],
+
+	/* powerline arrors */
+
+	"custom/left-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+
+	/* Left */
+
+	"custom/arch-icon": {
+		"format": "󰣇",
+		"on-click": "firefox https://wiki.archlinux.org/",
+		"on-click-right": "firefox https://archlinux.org/packages/",
+		"on-click-middle": "firefox https://aur.archlinux.org/",
+		"tooltip-format": "archwiki"
+	},
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "warp-on-scroll": false,
+        "format": "{name}: {icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": "",
+            "10": "",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
+
+	/* Left */
+
+	"privacy": {
+		"icon-spacing": 4,
+		"icon-size": 18,
+		"transition-duration": 250,
+		"modules": [
+			{
+				"type": "screenshare",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			},
+			{
+				"type": "audio-out",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			},
+			{
+				"type": "audio-in",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			}
+		]
+	},
+
+	"tray": {
+		"icon-size": 20
+	},
+
+	"custom/wallpaper-changer": {
+		"format": "Change Wallpaper",
+		"on-click": "~/.config/hypr/scripts/wallpaperChanger"
+	},
+
+	"network": {
+		"interface": "wlan0",
+		"format-wifi": "{essid} ({signalStrength}%) ",
+		"format-ethernet": "{ipaddr}/{cidr} 󰊗",
+		"format-disconnected": "󰌙", //An empty format will hide the module.
+		"tooltip-format-wifi": " {bandwidthDownOctets}   {bandwidthUpOctets}",
+		"tooltip-format-ethernet": " {bandwidthDownOctets}   {bandwidthUpOctets}",
+		"tooltip-format-disconnected": "Disconnected",
+		"on-click-right": "networkmanager_dmenu",
+		"max-length": 50
+	},
+
+	"pulseaudio": {
+		"format": "{icon} {volume:2}%",
+		"format-bluetooth": "{icon}  {volume}%",
+		"format-muted": "",
+		"format-icons": {
+			"headphones": "",
+			"default": [
+				"",
+				""
+			]
+		},
+		"scroll-step": 5,
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"on-click-right": "pavucontrol --tab=3"
+	},
+
+    "clock": {
+        "format": "{:%D %a %R} ",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+			"mode"          : "year",
+			"mode-mon-col"  : 3,
+			"weeks-pos"     : "right",
+			"on-scroll"     : 1,
+			"format": {
+				"months":     "<span color='#ffead3'><b>{}</b></span>",
+				"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+				"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+				"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
+		},
+        "actions":  {
+			"on-click-right": "mode",
+			"on-click-forward": "tz_up",
+			"on-click-backward": "tz_down",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		}
+    },
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	"custom/powerbutton": {
+		"format": "󰐥",
+		"on-click": "rofi -show power-menu -modi power-menu:rofi-power-menu",
+		"tooltip": false
+	}
+}

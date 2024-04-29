@@ -1,0 +1,89 @@
+@define-color backgroundColor	#282828;
+@define-color moduleColor		#1a1a1a;
+* {
+	font-size: 15px;
+	font-family: RobotoMono Nerd Font;
+}
+
+window#waybar {
+	background: @backgroundColor;
+	color: #fdf6e3;
+}
+
+/* Powerline arrows */
+
+#custom-right-arrow-dark {
+	color: @moduleColor;
+    font-size: 23px;
+}
+#custom-left-arrow-dark {
+	color: @moduleColor;
+    font-size: 23px;
+}
+#custom-right-arrow-light {
+	color: @backgroundColor;
+	background: @moduleColor;
+    font-size: 23px;
+}
+#custom-left-arrow-light {
+	color: #292b2e;
+	background: @moduleColor;
+    font-size: 23px;
+}
+
+/* Left */
+/* Workspaces */
+
+#workspaces {
+    background: @moduleColor;
+}
+#workspaces button {
+	padding: 0 10px;
+	color: #fdf6e3;
+}
+#workspaces button.active {
+	color: #1bce74;
+}
+#workspaces button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+#workspaces button:hover {
+	background: @moduleColor;
+	border: @moduleColor;
+	padding: 0 11px
+}
+
+/* Center*/
+
+#window {
+	background: @backgroundColor;
+}
+
+/* Right */
+
+#tray {
+	background: @moduleColor;
+	padding: 0 5px;
+}
+#pulseaudio {
+	color: #E9B57D;
+	background: @moduleColor;
+	padding: 0 5px;
+}
+#clock {
+	color: #38afc4;
+	background: @moduleColor;
+	padding-right: 10px;
+	padding-left: 5px;
+}
+#battery {
+	color: #859900;
+	background: @moduleColor;
+	padding: 0 5px;
+}
+#custom-powerbutton {
+	background: @moduleColor;
+	padding-right: 15px;
+	font-size: 20;
+}
