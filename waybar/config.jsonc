@@ -87,7 +87,7 @@
         }
     },
 
-	/* Left */
+	/* Right */
 
 	"privacy": {
 		"icon-spacing": 4,
@@ -122,10 +122,9 @@
 	},
 
 	"network": {
-		"interface": "wlan0",
 		"format-wifi": "{essid} ({signalStrength}%) ",
 		"format-ethernet": "{ipaddr}/{cidr} 󰊗",
-		"format-disconnected": "󰌙", //An empty format will hide the module.
+		"format-disconnected": "󰌙", 
 		"tooltip-format-wifi": " {bandwidthDownOctets}   {bandwidthUpOctets}",
 		"tooltip-format-ethernet": " {bandwidthDownOctets}   {bandwidthUpOctets}",
 		"tooltip-format-disconnected": "Disconnected",

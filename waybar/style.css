@@ -120,7 +120,7 @@ window#waybar {
 	color: #E9B57D;
 	background: @moduleColor;
 	padding-left: 10px;
-	padding-right: 15px;
+	padding-right: 10px;
 	border-radius: 0px;
 }
 
