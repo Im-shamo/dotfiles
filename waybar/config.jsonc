@@ -17,9 +17,7 @@
 
 	"modules-right": [
 		"privacy",
-		"custom/left-arrow-dark",
 		"tray",
-		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"network",
 		"custom/left-arrow-light",
@@ -90,7 +88,7 @@
 	/* Right */
 
 	"privacy": {
-		"icon-spacing": 4,
+		"icon-spacing": 8,
 		"icon-size": 18,
 		"transition-duration": 250,
 		"modules": [
@@ -113,7 +111,8 @@
 	},
 
 	"tray": {
-		"icon-size": 20
+		"icon-size": 20,
+		"spacing": 8
 	},
 
 	"custom/wallpaper-changer": {
