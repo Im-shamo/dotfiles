@@ -4,7 +4,7 @@
 
 * {
 	font-family: RobotoMono Nerd Font;
-	font-size: 13px;
+	font-size: 14px;
 	border-radius: 20px;
 }
 
@@ -19,27 +19,27 @@ window#waybar {
 
 #custom-right-arrow-dark {
 	color: @moduleColor;
-	font-size: 25px;
+	font-size: 21px;
 	border-radius: 0px;
 }
 
 #custom-left-arrow-dark {
 	color: @moduleColor;
-	font-size: 25px;
+	font-size: 21px;
 	border-radius: 0px;
 }
 
 #custom-right-arrow-light {
 	color: @backgroundColor;
 	background: @moduleColor;
-	font-size: 25px;
+	font-size: 21px;
 	border-radius: 0px;
 }
 
 #custom-left-arrow-light {
 	color: @backgroundColor;
 	background: @moduleColor;
-	font-size: 25px;
+	font-size: 21px;
 	border-radius: 0px;
 }
 
@@ -50,7 +50,7 @@ window#waybar {
 #custom-arch-icon {
 	color: #38afc4;
 	background: @moduleColor;
-	font-size:  25px;
+	font-size:  20px;
 	padding-left: 15px;
 	padding-right: 5px;
 	border-radius: 20px 0px 0px 20px;
@@ -155,6 +155,6 @@ window#waybar {
 	background: @moduleColor;
 	padding-left: 10px;
 	padding-right: 15px;
-	font-size: 24px;
+	font-size: 20px;
 	border-radius: 0px 20px 20px 0px;
 }
