@@ -17,9 +17,8 @@
 
 	"modules-right": [
 		"privacy",
-		"custom/left-arrow-dark",
 		"tray",
-		"custom/left-arrow-light",
+		"mpris",
 		"custom/left-arrow-dark",
 		"network",
 		"custom/left-arrow-light",
@@ -90,8 +89,8 @@
 	/* Right */
 
 	"privacy": {
-		"icon-spacing": 4,
-		"icon-size": 18,
+		"icon-spacing": 8,
+		"icon-size": 15,
 		"transition-duration": 250,
 		"modules": [
 			{
@@ -113,7 +112,21 @@
 	},
 
 	"tray": {
-		"icon-size": 20
+		"icon-size": 18,
+		"spacing": 8
+	},
+
+	"mpris": {
+		"format": "{player_icon}",
+		"format-paused": "{status_icon}",
+		"player-icons": {
+			"default": "",
+			"mpv": "🎵"
+		},
+		"status-icons": {
+			"paused": ""
+		},
+		// "ignored-players": ["firefox"]
 	},
 
 	"custom/wallpaper-changer": {
@@ -178,7 +191,7 @@
 			"warning": 30,
 			"critical": 15
 		},
-		"format": "{icon} {capacity}%",
+		"format": "{icon}  {capacity}%",
 		"format-icons": [
 			"",
 			"",

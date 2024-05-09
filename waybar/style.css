@@ -1,12 +1,13 @@
 @define-color backgroundColor #344454;	/* Blue */
-@define-color moduleColor #0e0e0e;		/* Black */
+@define-color moduleColor #161c22;		/* Black */
 
 
 * {
 	font-family: RobotoMono Nerd Font;
-	font-size: 15px;
+	font-size: 14px;
 	border-radius: 20px;
 }
+
 
 window#waybar {
 	background: @backgroundColor;
@@ -18,27 +19,27 @@ window#waybar {
 
 #custom-right-arrow-dark {
 	color: @moduleColor;
-	font-size: 23px;
+	font-size: 21px;
 	border-radius: 0px;
 }
 
 #custom-left-arrow-dark {
 	color: @moduleColor;
-	font-size: 23px;
+	font-size: 21px;
 	border-radius: 0px;
 }
 
 #custom-right-arrow-light {
 	color: @backgroundColor;
 	background: @moduleColor;
-	font-size: 23px;
+	font-size: 21px;
 	border-radius: 0px;
 }
 
 #custom-left-arrow-light {
 	color: @backgroundColor;
 	background: @moduleColor;
-	font-size: 23px;
+	font-size: 21px;
 	border-radius: 0px;
 }
 
@@ -49,7 +50,7 @@ window#waybar {
 #custom-arch-icon {
 	color: #38afc4;
 	background: @moduleColor;
-	font-size:  25px;
+	font-size:  20px;
 	padding-left: 15px;
 	padding-right: 5px;
 	border-radius: 20px 0px 0px 20px;
@@ -96,8 +97,26 @@ window#waybar {
 
 #tray {
 	background: @moduleColor;
-	padding: 0 5px;
-	border-radius: 0px;
+	border-radius: 20px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin: 5px 4px;
+}
+
+#privacy {
+	background: @moduleColor;
+	border-radius: 20px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin: 5px 4px;
+}
+
+#mpris {
+	background: @moduleColor;
+	border-radius: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 5px 4px;
 }
 
 #custom-wallpaper-changer {
@@ -144,6 +163,6 @@ window#waybar {
 	background: @moduleColor;
 	padding-left: 10px;
 	padding-right: 15px;
-	font-size: 24px;
+	font-size: 20px;
 	border-radius: 0px 20px 20px 0px;
 }
