@@ -3,7 +3,7 @@
 
 
 * {
-	font-family: RobotoMono Nerd Font;
+	font-family: DroidSansM Nerd Font;
 	font-size: 14px;
 	border-radius: 20px;
 }
@@ -19,27 +19,27 @@ window#waybar {
 
 #custom-right-arrow-dark {
 	color: @moduleColor;
-	font-size: 21px;
+	font-size: 23px;
 	border-radius: 0px;
 }
 
 #custom-left-arrow-dark {
 	color: @moduleColor;
-	font-size: 21px;
+	font-size: 23px;
 	border-radius: 0px;
 }
 
 #custom-right-arrow-light {
 	color: @backgroundColor;
 	background: @moduleColor;
-	font-size: 21px;
+	font-size: 23px;
 	border-radius: 0px;
 }
 
 #custom-left-arrow-light {
 	color: @backgroundColor;
 	background: @moduleColor;
-	font-size: 21px;
+	font-size: 23px;
 	border-radius: 0px;
 }
 
@@ -53,6 +53,15 @@ window#waybar {
 	font-size:  20px;
 	padding-left: 15px;
 	padding-right: 5px;
+	border-radius: 20px 0px 0px 20px;
+}
+
+#custom-fedora-icon {
+	color: #38afc4;
+	background: @moduleColor;
+	font-size:  20px;
+	padding-left: 10px;
+	padding-right: 8px;
 	border-radius: 20px 0px 0px 20px;
 }
 

@@ -7,6 +7,5 @@ external="HDMI-A-1"
 
 random_background_1=$(ls $directory/* | shuf -n 1)
 random_background_2=$(ls $directory/* | shuf -n 1)
-# hyprctl hyprpaper unload all
-swww img -o $laptop $random_background_1
-swww img -o $external $random_background_2
+swww img -o $laptop $random_background_1 > /dev/null
+swww img -o $external $random_background_2 > /dev/null 
