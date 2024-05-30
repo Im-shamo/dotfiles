@@ -42,7 +42,7 @@ import os
 
 
 mod = "mod4"
-terminal = "konsole"
+terminal = "kitty"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -420,10 +420,10 @@ desktop_display_bar = bar.Bar(
 
 if qtile.core.name == "x11":
     screens = [
-        # Main Display
-        Screen(top=main_display_bar),
         # Disktop Display
         Screen(top=desktop_display_bar),
+        # Main Display
+        Screen(top=main_display_bar),
     ]
 else:
     screens = [
