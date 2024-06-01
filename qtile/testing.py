@@ -42,11 +42,23 @@ import os
 
 
 mod = "mod1"
-terminal = "alacritty"
+terminal = "kitty"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
+
+    # Qtile Shutdown and Reload
+    Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
+    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+
+
+    # +-------------------+
+    # |                   |
+    # |      windows      |
+    # |                   |
+    # +-------------------+
+
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
@@ -54,7 +66,7 @@ keys = [
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
-    # Moving out of range in Columns layout will create new column.
+    # Moving out of range in Columns Layout will create new column.
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
     Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
@@ -66,7 +78,6 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-
     Key([mod], 'period', lazy.next_screen(), desc='Next monitor'),
     Key([mod], "grave", lazy.screen.toggle_group()),
     # Toggle between split and unsplit sides of stack.
@@ -77,11 +88,16 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod, "shift"], "w", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window",),
     Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
-    Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+
+
+    # +------------------------------------+
+    # |                                    |
+    # |      Application and Controls      |
+    # |                                    |
+    # +------------------------------------+
 
     # app launches
     Key([mod], "r", lazy.spawn("rofi -i -show drun -modi drun -show-icons"), desc="Launch rofi"),
@@ -159,7 +175,7 @@ for group_id, group_name in enumerate(groups_dev_names, 1):
     group_id %= 10
     keys.extend(
         [
-            # mod1 + group number = switch to group
+            # mod + group number = switch to group
             Key(
                 [mod],
                 str(group_id),
@@ -167,7 +183,7 @@ for group_id, group_name in enumerate(groups_dev_names, 1):
                 desc="Switch to group {}".format(group.name), 
             ),
 
-            # mod1 + shift + group number = move focused window to group
+            # mod + shift + group number = move focused window to group
             Key(
                 [mod, "shift"], 
                 str(group_id), 
@@ -220,8 +236,6 @@ layouts = [
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
-from qtile_extras import widget
-from qtile_extras.widget.decorations import PowerLineDecoration
 
 # Drag floating layouts.
 mouse = [
@@ -370,10 +384,9 @@ main_display_bar = bar.Bar(
     [
         widget.CurrentLayoutIcon(mouse_callbacks={"Button1": lazy.next_layout()}),
         group_box(),
-        widget.Prompt(),
         widget.WindowName(),
         widget.Notify(),
-        widget.Systray(),
+        widget.Systray() if qtile.core.name == "x11" else widget.StatusNotifier(),
         widget.TextBox(**arrow_right),
         wallpaper_switcher(**arrow_right),
         widget.Net(font=mono_font, format= " {down:^5.1f}{down_suffix:<2}", background=normal_colors["blue"],**arrow_right),  # blue
@@ -406,14 +419,13 @@ desktop_display_bar = bar.Bar(
     [
         widget.CurrentLayoutIcon(),
         group_box(),
-        widget.Prompt(),
         widget.WindowName(),
         widget.TextBox(**arrow_right),
         widget.Clock(format="%d/%m/%Y %a %I:%M %p", background="1d6ac9", **arrow_right),   # Light blue
         widget.TextBox(
             fmt="󰐥",
             fontsize=26,
-            mouse_callbacks={"Button1": lazy.spawn("rofi -show power-menu -modi power-menu:rofi-power-menu")}
+            mouse_callbacks={"Button1": lazy.spawn('rofi -show menu -modi \"menu:rofi-power-menu --choices=shutdown/reboot/logout\"')}
         ),
         widget.Spacer(length=5),
     ],
@@ -424,10 +436,10 @@ desktop_display_bar = bar.Bar(
 
 if qtile.core.name == "x11":
     screens = [
-        # Main Display
-        Screen(top=main_display_bar),
         # Disktop Display
         Screen(top=desktop_display_bar),
+        # Main Display
+        Screen(top=main_display_bar),
     ]
 else:
     screens = [
