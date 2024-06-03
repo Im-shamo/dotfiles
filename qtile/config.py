@@ -42,7 +42,7 @@ import os
 
 
 mod = "mod4"
-terminal = "konsole"
+terminal = "kitty"
 
 @lazy.function
 def swap_screens(qtile):
@@ -483,7 +483,10 @@ if qtile.core.name == "x11":
         script = [
             f"{home}/.config/qtile/scripts/xrandr_setup.sh", 
             f"{home}/.config/qtile/scripts/nitrogen_wallpaper_changer.sh",
-            "picom"
+            "picom",
+            "nm-applet",
+            "blueman-applet",
+            "udiskie",
         ]
 
         for program in script:
