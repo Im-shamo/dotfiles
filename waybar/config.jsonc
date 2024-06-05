@@ -207,7 +207,7 @@
 	},
 	"custom/powerbutton": {
 		"format": "󰐥",
-		"on-click": "rofi -show power-menu -modi power-menu:rofi-power-menu",
+		"on-click": "~/.local/share/bin/logoutlaunch.sh",
 		"tooltip": false
 	}
 }
