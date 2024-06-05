@@ -40,9 +40,9 @@ import os
 # |                            |
 # +----------------------------+
 
-
+file_explorer = "nautilus"
 mod = "mod4"
-terminal = "kitty"
+terminal = "alacritty"
 
 @lazy.function
 def swap_screens(qtile):
@@ -74,19 +74,36 @@ keys = [
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
 
+    Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
+    Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
+    Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
+    Key([mod], "Up", lazy.layout.up(), desc="Move focus up"),
+
     # Move windows
+    Key([mod], "grave", swap_screens, desc="Swap workspace"),
+
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
     Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
-    Key([mod], "grave", swap_screens, desc="Swap workspace"),
+
+    Key([mod, "shift"], "Left", lazy.layout.shuffle_left(), desc="Move window to the left"),
+    Key([mod, "shift"], "Right", lazy.layout.shuffle_right(), desc="Move window to the right"),
+    Key([mod, "shift"], "Down", lazy.layout.shuffle_down(), desc="Move window down"),
+    Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
 
     # Resize windows
+    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    
     Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
     Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+
+    Key([mod, "control"], "Left", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key([mod, "control"], "Right", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key([mod, "control"], "Down", lazy.layout.grow_down(), desc="Grow window down"),
+    Key([mod, "control"], "Up", lazy.layout.grow_up(), desc="Grow window up"),
 
     # Move Cursor
     Key([mod], 'period', lazy.next_screen(), desc='Next monitor'),
@@ -117,7 +134,7 @@ keys = [
     Key([mod], "r", lazy.spawn("rofi -i -show drun -modi drun -show-icons"), desc="Launch rofi"),
     Key([], "Print", lazy.spawn("gnome-screenshot"), desc="Take screenshot"),
     Key([mod], "Print", lazy.spawn("gnome-screenshot -i"), desc="Launch gnome screenshot"),
-    Key([mod], "e", lazy.spawn("nemo"), desc="Spawn the file explorer (nemo)"),
+    Key([mod], "e", lazy.spawn(file_explorer), desc="Spawn the file explorer ({file_explorer})"),
 
     # Media Control
     # Source    https://askubuntu.com/questions/97936/terminal-command-to-set-audio-volume and https://www.reddit.com/r/qtile/comments/v718d8/how_to_setup_media_keys/
@@ -179,11 +196,24 @@ my_groups = {
     "7": "7",
     "8": "8",
     "9": "9",
-    "0": "0",
+    "10": "0",
+}
+
+my_groups_no_icon = {
+    " ": "1",
+    " ": "2",
+    " ": "3",
+    " ": "4",
+    " ": "5",
+    " ": "6",
+    "7": "7",
+    "8": "8",
+    "9": "9",
+    "10": "0",
 }
 
 groups = []
-for group_name, group_key in my_groups.items():
+for group_name, group_key in my_groups_no_icon.items():
     group = Group(group_name)
     groups.append(group)
     keys.extend(
@@ -312,16 +342,13 @@ normal_colors={
     "purple": "9678b6",
 }
 
-
 # from https://www.youtube.com/watch?v=mY1DFn8BLOU
-
 
 arrow_right = {
     "decorations": [
         PowerLineDecoration(path="arrow_right")
     ]
 }
-
 
 def volume(**kwargs):
     return widget.Volume(
@@ -364,7 +391,6 @@ def wallpaper_switcher(**kwargs):
         **kwargs
     )
 
-
 def group_box(**kwargs):
     colors = {
         "green": "70db70",
@@ -386,6 +412,13 @@ def group_box(**kwargs):
         **kwargs
     )
 
+def power_button(**kwargs):
+    return widget.TextBox(
+        fmt="󰐥",
+        fontsize=26,
+        mouse_callbacks={"Button1": lazy.spawn("rofi -show power-menu -modi power-menu:/home/shamokwok/Clone/dotfiles/qtile/scripts/rofi-power-menu")},
+        **kwargs
+    )
 
 widget_defaults = dict(
     font='DroidSansM Nerd Font',
@@ -404,7 +437,7 @@ main_display_bar = bar.Bar(
         group_box(),
         widget.WindowName(),
         widget.Notify(),
-        widget.Systray() if qtile.core.name == "x11" else widget.StatusNotifier(),
+        widget.StatusNotifier(),
         widget.TextBox(**arrow_right),
         wallpaper_switcher(**arrow_right),
         widget.Net(font=mono_font, format= " {down:^5.1f}{down_suffix:<2}", background=normal_colors["blue"],**arrow_right),  # blue
@@ -421,11 +454,7 @@ main_display_bar = bar.Bar(
         microphone(**arrow_right),
         widget.Clock(format="%d/%m/%Y %a %I:%M %p", background=normal_colors["light_blue"], **arrow_right),   # cyan
         widget.Battery(format="  {percent:.0%}",emoji=True,background=normal_colors["blue"], **arrow_right),
-        widget.TextBox(
-            fmt="󰐥",
-            fontsize=26,
-            mouse_callbacks={"Button1": lazy.spawn("rofi -show power-menu -modi power-menu:rofi-power-menu")}
-        ),
+        power_button(),
         widget.Spacer(length=5),
     ],
     26,
@@ -440,11 +469,7 @@ desktop_display_bar = bar.Bar(
         widget.WindowName(),
         widget.TextBox(**arrow_right),
         widget.Clock(format="%d/%m/%Y %a %I:%M %p", background="1d6ac9", **arrow_right),   # Light blue
-        widget.TextBox(
-            fmt="󰐥",
-            fontsize=26,
-            mouse_callbacks={"Button1": lazy.spawn('rofi -show menu -modi \"menu:rofi-power-menu --choices=shutdown/reboot/logout\"')}
-        ),
+        power_button(),
         widget.Spacer(length=5),
     ],
     26,
@@ -477,21 +502,25 @@ else:
 if qtile.core.name == "x11":
 
     @hook.subscribe.startup_once
-    def auto_startup_once():
+    def auto_startup_x11_once():
         home = os.path.expanduser("~")
         
         script = [
-            f"{home}/.config/qtile/scripts/xrandr_setup.sh", 
-            f"{home}/.config/qtile/scripts/nitrogen_wallpaper_changer.sh",
             "picom",
             "nm-applet",
             "blueman-applet",
             "udiskie",
+            f"{home}/.config/qtile/scripts/xrandr_setup.sh", 
+            f"{home}/.config/qtile/scripts/nitrogen_wallpaper_changer.sh",
         ]
 
         for program in script:
             subprocess.Popen(program)
 
+else:
+    @hook.subscribe.startup_once
+    def auto_startup_wayland_once():
+        pass
 
 
 # +-----------------------------+
