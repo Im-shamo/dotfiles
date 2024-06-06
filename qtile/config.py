@@ -29,10 +29,25 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from qtile_extras import widget
 from qtile_extras.widget.decorations import PowerLineDecoration
-
 from libqtile import hook
 import subprocess
 import os
+
+normal_colors={
+    "red": "881111",
+    "dark_red": "220000",
+    "orange": "#ff9933",
+    "yellow": "#b97f18",
+    "green": "#72b043",
+    "dark_green": "#007f4e",
+    "blue": "#194a7a",
+    "dark_blue": "0c0f3f",
+    "light_blue": "4682b4",
+    "black": "000000",
+    "light_gray": "d3d3d3",
+    "silver": "c0c0c0",
+    "purple": "9678b6",
+}
 
 # +----------------------------+
 # |                            |
@@ -197,6 +212,19 @@ my_groups = {
     "8": "8",
     "9": "9",
     "10": "0",
+    "F1": "F1",
+    "F2": "F2",
+    "F3": "F3",
+    "F4": "F4",
+    "F5": "F5",
+    "F6": "F6",
+    "F7": "F7",
+    "F8": "F8",
+    "F9": "F9",
+    "F10": "F10",
+    "F11": "F11",
+    "F12": "F12",
+
 }
 
 my_groups_no_icon = {
@@ -210,6 +238,18 @@ my_groups_no_icon = {
     "8": "8",
     "9": "9",
     "10": "0",
+    "F1": "F1",
+    "F2": "F2",
+    "F3": "F3",
+    "F4": "F4",
+    "F5": "F5",
+    "F6": "F6",
+    "F7": "F7",
+    "F8": "F8",
+    "F9": "F9",
+    "F10": "F10",
+    "F11": "F11",
+    "F12": "F12",
 }
 
 groups = []
@@ -328,20 +368,6 @@ reconfigure_screens = True
 
 mono_font = "DroidSansM Nerd Font"
 
-normal_colors={
-    "red": "#e12729",
-    "orange": "#ff9933",
-    "yellow": "#b97f18",
-    "green": "#72b043",
-    "dark_green": "#007f4e",
-    "blue": "#194a7a",
-    "light_blue": "4682b4",
-    "black": "000000",
-    "light_gray": "d3d3d3",
-    "silver": "c0c0c0",
-    "purple": "9678b6",
-}
-
 # from https://www.youtube.com/watch?v=mY1DFn8BLOU
 
 arrow_right = {
@@ -393,22 +419,24 @@ def wallpaper_switcher(**kwargs):
 
 def group_box(**kwargs):
     colors = {
-        "green": "70db70",
-        "dark_blue": "215578",
-        "light_gray": "6A6A6A",
+        "active": "7cc942",
+        "this_screen": normal_colors["light_blue"],
+        "not_this_screen": "6A6A6A",
+        "highlight": ['223538', '223538'],
     }
     return widget.GroupBox(
+        hide_unused = True,
         borderwidth = 3,
         disable_drag = True,
-        active = colors["green"],
-        inactive = colors["light_gray"],
-        rounded = True,
-        highlight_method = "border",
-        this_screen_border = colors["dark_blue"],
-        this_current_screen_border = colors["dark_blue"],
-        other_screen_border = colors["light_gray"],
-        other_current_screen_border = colors["light_gray"],
-        foreground = colors["light_gray"],
+        active = colors["active"],
+        inactive = colors["not_this_screen"],
+        highlight_method = "line",
+        highlight_color = colors["highlight"],
+        this_screen_border = colors["this_screen"],
+        this_current_screen_border = colors["this_screen"],
+        other_screen_border = colors["not_this_screen"],
+        other_current_screen_border = colors["not_this_screen"],
+        foreground = colors["not_this_screen"],
         **kwargs
     )
 

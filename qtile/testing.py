@@ -41,7 +41,7 @@ import os
 # +----------------------------+
 
 file_explorer = "nautilus"
-mod = "mod1"
+mod = "mod4"
 terminal = "alacritty"
 
 @lazy.function
@@ -393,22 +393,24 @@ def wallpaper_switcher(**kwargs):
 
 def group_box(**kwargs):
     colors = {
-        "green": "70db70",
-        "dark_blue": "215578",
-        "light_gray": "6A6A6A",
+        "active": "7cc942",
+        "this_screen": normal_colors["light_blue"],
+        "not_this_screen": "6A6A6A",
+        "highlight": ['223538', '223538'],
     }
     return widget.GroupBox(
+        hide_unused = True,
         borderwidth = 3,
         disable_drag = True,
-        active = colors["green"],
-        inactive = colors["light_gray"],
-        rounded = True,
-        highlight_method = "border",
-        this_screen_border = colors["dark_blue"],
-        this_current_screen_border = colors["dark_blue"],
-        other_screen_border = colors["light_gray"],
-        other_current_screen_border = colors["light_gray"],
-        foreground = colors["light_gray"],
+        active = colors["active"],
+        inactive = colors["not_this_screen"],
+        highlight_method = "line",
+        highlight_color = colors["highlight"],
+        this_screen_border = colors["this_screen"],
+        this_current_screen_border = colors["this_screen"],
+        other_screen_border = colors["not_this_screen"],
+        other_current_screen_border = colors["not_this_screen"],
+        foreground = colors["not_this_screen"],
         **kwargs
     )
 
