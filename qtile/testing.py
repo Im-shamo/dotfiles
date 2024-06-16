@@ -29,10 +29,25 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from qtile_extras import widget
 from qtile_extras.widget.decorations import PowerLineDecoration
-
 from libqtile import hook
 import subprocess
 import os
+
+normal_colors={
+    "red": "881111",
+    "dark_red": "220000",
+    "orange": "#ff9933",
+    "yellow": "#b97f18",
+    "green": "#72b043",
+    "dark_green": "#007f4e",
+    "blue": "#194a7a",
+    "dark_blue": "0c0f3f",
+    "light_blue": "4682b4",
+    "black": "000000",
+    "light_gray": "d3d3d3",
+    "silver": "c0c0c0",
+    "purple": "9678b6",
+}
 
 # +----------------------------+
 # |                            |
@@ -41,7 +56,7 @@ import os
 # +----------------------------+
 
 file_explorer = "nautilus"
-mod = "mod4"
+mod = "mod1"
 terminal = "alacritty"
 
 @lazy.function
@@ -197,6 +212,19 @@ my_groups = {
     "8": "8",
     "9": "9",
     "10": "0",
+    "F1": "F1",
+    "F2": "F2",
+    "F3": "F3",
+    "F4": "F4",
+    "F5": "F5",
+    "F6": "F6",
+    "F7": "F7",
+    "F8": "F8",
+    "F9": "F9",
+    "F10": "F10",
+    "F11": "F11",
+    "F12": "F12",
+
 }
 
 my_groups_no_icon = {
@@ -210,6 +238,18 @@ my_groups_no_icon = {
     "8": "8",
     "9": "9",
     "10": "0",
+    "F1": "F1",
+    "F2": "F2",
+    "F3": "F3",
+    "F4": "F4",
+    "F5": "F5",
+    "F6": "F6",
+    "F7": "F7",
+    "F8": "F8",
+    "F9": "F9",
+    "F10": "F10",
+    "F11": "F11",
+    "F12": "F12",
 }
 
 groups = []
@@ -233,7 +273,7 @@ for group_name, group_key in my_groups_no_icon.items():
             ),
 
             Key(
-                [mod, "mod1"], 
+                [mod, "control"], 
                 group_key,
                 lazy.window.togroup(group.name),
                 desc="move focused window to group {}".format(group.name)
@@ -256,7 +296,7 @@ layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
-    layout.Bsp(
+    layout.Bsp( # type: ignore
         margin = margin, 
         margin_on_single = margin, 
         border_focus = border_focus_colour,
@@ -264,13 +304,13 @@ layouts = [
         border_on_single = True,
         border_width = border_width,
     ),
-    layout.Max(
+    layout.Max( # type: ignore
         margin = margin,
         border_focus = border_focus_colour,
         border_normal = border_normal_colour,
         border_width = border_width,
     ),
-    layout.Matrix(
+    layout.Matrix( # type: ignore
         margin = margin,
         border_focus = border_focus_colour,
         border_normal = border_normal_colour,
@@ -299,13 +339,13 @@ bring_front_click = False
 floats_kept_above = True
 
 cursor_warp = False
-floating_layout = layout.Floating(
+floating_layout = layout.Floating( # type: ignore
     border_focus=border_focus_colour,
     border_normal=border_normal_colour,
     border_width=border_width,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
-        *layout.Floating.default_float_rules,
+        *layout.Floating.default_float_rules, # type: ignore
         Match(wm_class="confirmreset"),  # gitk
         Match(wm_class="makebranch"),  # gitk
         Match(wm_class="maketag"),  # gitk
@@ -327,20 +367,6 @@ reconfigure_screens = True
 # +-------------------------------------+
 
 mono_font = "DroidSansM Nerd Font"
-
-normal_colors={
-    "red": "#e12729",
-    "orange": "#ff9933",
-    "yellow": "#b97f18",
-    "green": "#72b043",
-    "dark_green": "#007f4e",
-    "blue": "#194a7a",
-    "light_blue": "4682b4",
-    "black": "000000",
-    "light_gray": "d3d3d3",
-    "silver": "c0c0c0",
-    "purple": "9678b6",
-}
 
 # from https://www.youtube.com/watch?v=mY1DFn8BLOU
 

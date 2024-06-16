@@ -55,7 +55,7 @@ normal_colors={
 # |                            |
 # +----------------------------+
 
-file_explorer = "nautilus"
+file_explorer = "nemo"
 mod = "mod4"
 terminal = "alacritty"
 
@@ -191,8 +191,6 @@ keys = [
         lazy.spawn("playerctl previous"),
         desc="Skip to previous"
     ),
-
-
 ]
 
 # +------------------------------+
@@ -224,7 +222,6 @@ my_groups = {
     "F10": "F10",
     "F11": "F11",
     "F12": "F12",
-
 }
 
 my_groups_no_icon = {
@@ -296,7 +293,7 @@ layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
-    layout.Bsp(
+    layout.Bsp( # type: ignore
         margin = margin, 
         margin_on_single = margin, 
         border_focus = border_focus_colour,
@@ -304,18 +301,18 @@ layouts = [
         border_on_single = True,
         border_width = border_width,
     ),
-    layout.Max(
+    layout.Max( # type: ignore
         margin = margin,
         border_focus = border_focus_colour,
         border_normal = border_normal_colour,
         border_width = border_width,
     ),
-    layout.Matrix(
-        margin = margin,
-        border_focus = border_focus_colour,
-        border_normal = border_normal_colour,
-        border_width = border_width,
-    ),
+    # layout.Matrix( # type: ignore
+    #     margin = margin,
+    #     border_focus = border_focus_colour,
+    #     border_normal = border_normal_colour,
+    #     border_width = border_width,
+    # ),
     # layout.MonadTall(),
     # layout.MonadWide(),
     # layout.RatioTile(),
@@ -339,13 +336,13 @@ bring_front_click = False
 floats_kept_above = True
 
 cursor_warp = False
-floating_layout = layout.Floating(
+floating_layout = layout.Floating( # type: ignore
     border_focus=border_focus_colour,
     border_normal=border_normal_colour,
     border_width=border_width,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
-        *layout.Floating.default_float_rules,
+        *layout.Floating.default_float_rules, # type: ignore
         Match(wm_class="confirmreset"),  # gitk
         Match(wm_class="makebranch"),  # gitk
         Match(wm_class="maketag"),  # gitk
