@@ -57,7 +57,7 @@ normal_colors={
 
 file_explorer = "nemo"
 mod = "mod4"
-terminal = "alacritty"
+terminal = "kitty"
 
 @lazy.function
 def swap_screens(qtile):
