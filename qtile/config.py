@@ -57,7 +57,8 @@ normal_colors={
 
 file_explorer = "nemo"
 mod = "mod4"
-terminal = "kitty"
+terminal = "flatpak run org.kde.konsole"
+terminal_name = "konsole"
 
 @lazy.function
 def swap_screens(qtile):
@@ -199,59 +200,60 @@ keys = [
 # |                              |
 # +------------------------------+
 
-my_groups = {
-    "Web  ": "1",
-    "Code  ": "2",
-    "Term  ": "3",
-    "Game  ": "4",
-    "Chat  ": "5",
-    "Music  ": "6",
-    "7": "7",
-    "8": "8",
-    "9": "9",
-    "10": "0",
-    "F1": "F1",
-    "F2": "F2",
-    "F3": "F3",
-    "F4": "F4",
-    "F5": "F5",
-    "F6": "F6",
-    "F7": "F7",
-    "F8": "F8",
-    "F9": "F9",
-    "F10": "F10",
-    "F11": "F11",
-    "F12": "F12",
-}
-
-my_groups_no_icon = {
-    " ": "1",
-    " ": "2",
-    " ": "3",
-    " ": "4",
-    " ": "5",
-    " ": "6",
-    "7": "7",
-    "8": "8",
-    "9": "9",
-    "10": "0",
-    "F1": "F1",
-    "F2": "F2",
-    "F3": "F3",
-    "F4": "F4",
-    "F5": "F5",
-    "F6": "F6",
-    "F7": "F7",
-    "F8": "F8",
-    "F9": "F9",
-    "F10": "F10",
-    "F11": "F11",
-    "F12": "F12",
-}
+#my_groups = [
+#    ({"name": " ", "matches": [Match(wm_class="firefox")], "spawn": ["firefox"], "screen_affinity": 1}, "1"),
+#    ({"name": " ", "matches": [Match(wm_class="code")], "spawn": ["code"], "screen_affinity": 0}, "2"),
+#    ({"name": " ", "matches": [Match(wm_class=terminal_name)], "spawn": [terminal]}, "3"),
+#    ({"name": " ", "matches": [], "spawn": []}, "4"),
+#    ({"name": " ", "matches": [Match(wm_class="webcord")], "spawn": ["flatpak run io.github.spacingbat3.webcord"]}, "5"),
+#    ({"name": " ", "matches": [], "spawn": []}, "6"),
+#    ({"name": "7", "matches": [], "spawn": []}, "7"),
+#    ({"name": "8", "matches": [], "spawn": []}, "8"),
+#    ({"name": "9", "matches": [], "spawn": []}, "9"),
+#    ({"name": "0", "matches": [], "spawn": []}, "0"),
+#    ({"name": "F1", "matches": [], "spawn": []}, "F1"),
+#    ({"name": "F2", "matches": [], "spawn": []}, "F2"),
+#    ({"name": "F3", "matches": [], "spawn": []}, "F3"),
+#    ({"name": "F4", "matches": [], "spawn": []}, "F4"),
+#    ({"name": "F5", "matches": [], "spawn": []}, "F5"),
+#    ({"name": "F6", "matches": [], "spawn": []}, "F6"),
+#    ({"name": "F7", "matches": [], "spawn": []}, "F7"),
+#    ({"name": "F8", "matches": [], "spawn": []}, "F8"),
+#    ({"name": "F9", "matches": [], "spawn": []}, "F9"),
+#    ({"name": "F10", "matches": [], "spawn": []}, "F10"),
+#    ({"name": "F11", "matches": [], "spawn": []}, "F11"),
+#    ({"name": "F12", "matches": [], "spawn": []}, "F12"),
+#]
+my_groups = [
+    ({"name": " ",     "matches": [], "spawn": []}, "1"),
+    ({"name": " ",     "matches": [], "spawn": []}, "2"),
+    ({"name": " ",     "matches": [], "spawn": []}, "3"),
+    ({"name": " ",     "matches": [], "spawn": []}, "4"),
+    ({"name": " ",     "matches": [], "spawn": []}, "5"),
+    ({"name": " ",     "matches": [], "spawn": []}, "6"),
+    ({"name": "7",      "matches": [], "spawn": []}, "7"),
+    ({"name": "8",      "matches": [], "spawn": []}, "8"),
+    ({"name": "9",      "matches": [], "spawn": []}, "9"),
+    ({"name": "0",      "matches": [], "spawn": []}, "0"),
+    ({"name": "F1",     "matches": [], "spawn": []}, "F1"),
+    ({"name": "F2",     "matches": [], "spawn": []}, "F2"),
+    ({"name": "F3",     "matches": [], "spawn": []}, "F3"),
+    ({"name": "F4",     "matches": [], "spawn": []}, "F4"),
+    ({"name": "F5",     "matches": [], "spawn": []}, "F5"),
+    ({"name": "F6",     "matches": [], "spawn": []}, "F6"),
+    ({"name": "F7",     "matches": [], "spawn": []}, "F7"),
+    ({"name": "F8",     "matches": [], "spawn": []}, "F8"),
+    ({"name": "F9",     "matches": [], "spawn": []}, "F9"),
+    ({"name": "F10",    "matches": [], "spawn": []}, "F10"),
+    ({"name": "F11",    "matches": [], "spawn": []}, "F11"),
+    ({"name": "F12",    "matches": [], "spawn": []}, "F12"),
+]
 
 groups = []
-for group_name, group_key in my_groups_no_icon.items():
-    group = Group(group_name)
+for my_group in my_groups:
+    group_key = my_group[1]
+
+    group = Group(**my_group[0])
     groups.append(group)
     keys.extend(
         [
@@ -441,7 +443,7 @@ def power_button(**kwargs):
     return widget.TextBox(
         fmt="󰐥",
         fontsize=26,
-        mouse_callbacks={"Button1": lazy.spawn("rofi -show power-menu -modi power-menu:/home/shamokwok/Clone/dotfiles/qtile/scripts/rofi-power-menu")},
+        mouse_callbacks={"Button1": lazy.spawn("rofi -show power-menu -modi 'power-menu:/home/shamokwok/Clone/dotfiles/qtile/scripts/rofi-power-menu --choices=shutdown/reboot/suspend/logout'")},
         **kwargs
     )
 
@@ -531,17 +533,26 @@ if qtile.core.name == "x11":
         home = os.path.expanduser("~")
         
         script = [
-            "picom",
             "nm-applet",
             "blueman-applet",
             "udiskie",
             f"{home}/.config/qtile/scripts/xrandr_setup.sh", 
-            f"{home}/.config/qtile/scripts/nitrogen_wallpaper_changer.sh",
+
         ]
 
         for program in script:
             subprocess.Popen(program)
+    @hook.subscribe.startup_complete
+    def startup_complete():
+        home = os.path.expanduser("~")
+        
+        script = [
+            "picom",
+            f"{home}/.config/qtile/scripts/nitrogen_wallpaper_changer.sh", 
+        ]
 
+        for program in script:
+            subprocess.Popen(program)
 else:
     @hook.subscribe.startup_once
     def auto_startup_wayland_once():
