@@ -464,7 +464,7 @@ main_display_bar = bar.Bar(
         group_box(),
         widget.WindowName(),
         widget.Notify(),
-        widget.StatusNotifier(),
+        widget.Systray(),
         widget.TextBox(**arrow_right),
         wallpaper_switcher(**arrow_right),
         widget.Net(font=mono_font, format= " {down:^5.1f}{down_suffix:<2}", background=normal_colors["blue"],**arrow_right),  # blue
@@ -537,18 +537,8 @@ if qtile.core.name == "x11":
             "blueman-applet",
             "udiskie",
             f"{home}/.config/qtile/scripts/xrandr_setup.sh", 
-
-        ]
-
-        for program in script:
-            subprocess.Popen(program)
-    @hook.subscribe.startup_complete
-    def startup_complete():
-        home = os.path.expanduser("~")
-        
-        script = [
-            "picom",
             f"{home}/.config/qtile/scripts/nitrogen_wallpaper_changer.sh", 
+           "picom",
         ]
 
         for program in script:
