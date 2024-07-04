@@ -464,7 +464,7 @@ main_display_bar = bar.Bar(
         group_box(),
         widget.WindowName(),
         widget.Notify(),
-        widget.Systray(),
+        widget.Systray(background=normal_colors["light_gray"]),
         widget.TextBox(**arrow_right),
         wallpaper_switcher(**arrow_right),
         widget.Net(font=mono_font, format= " {down:^5.1f}{down_suffix:<2}", background=normal_colors["blue"],**arrow_right),  # blue
@@ -530,19 +530,8 @@ if qtile.core.name == "x11":
 
     @hook.subscribe.startup_once
     def auto_startup_x11_once():
-        home = os.path.expanduser("~")
-        
-        script = [
-            "nm-applet",
-            "blueman-applet",
-            "udiskie",
-            f"{home}/.config/qtile/scripts/xrandr_setup.sh", 
-            f"{home}/.config/qtile/scripts/nitrogen_wallpaper_changer.sh", 
-           "picom",
-        ]
-
-        for program in script:
-            subprocess.Popen(program)
+        script = os.path.expanduser("~/.config/qtile/script/x11_startup.sh")
+        subprocess.Popen(script)
 else:
     @hook.subscribe.startup_once
     def auto_startup_wayland_once():
