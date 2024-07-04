@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
+#   Copy my files
+cd ~
+tar -xf "/media/shamokwok/Old PC HDD/Backup/Documents.tar.gz" &
+tar -xf "/media/shamokwok/Old PC HDD/Backup/Pictures.tar.gz" &
+tar -xf "/media/shamokwok/Old PC HDD/Backup/Linux_scripts.tar.gz" &
+tar -xf "/media/shamokwok/Old PC HDD/Backup/Iso.tar.gz" &
+
 #   Install needed packages
 sudo apt update
 sudo apt upgrade -y
-sudo apt install -y python3 python3-pip udiskie picom rofi wget gpg fish git vim keepassxc steam pavucontrol nitrogen
+sudo apt install -y python3 python3-pip udiskie picom rofi wget fish git vim steam pavucontrol nitrogen htop bashtop
 
 #   Install flatpaks
-yes | flatpak install org.gnome.font-viewer io.github.spacingbat3.webcord
+flatpak install org.gnome.font-viewer io.github.spacingbat3.webcord keepassxc
 
 #   Git configs
 git config --global user.name "im-shamo"
@@ -21,12 +28,18 @@ cd ~
 
 #   Install qtile
 sudo apt install -y dbus-x11 libnotify-bin python3-mypy xserver-xephyr python3-pytest
-pip install qtile[all] --user #--break-system-packages
-echo "[Desktop Entry]\nName=Qtile\nComment=Qtile Session\nExec=qtile start\nType=Application\nKeywords=wm;tiling" | sudo tee /usr/share/xsessions/qtile.desktop > /dev/null
+pip install qtile --user #--break-system-packages
+echo """[Desktop Entry]
+Name=Qtile
+Comment=Qtile Session
+Exec=qtile start
+Type=Application
+Keywords=wm;tiling""" | sudo tee /usr/share/xsessions/qtile.desktop > /dev/null
 cd ~/Clone
 git clone https://github.com/elParaguayo/qtile-extras.git
 cd dotfiles/qtile
 ln -s ~/Clone/qtile-extras/qtile_extras
+
 #   Install fonts
 cd ~/Downloads
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/DroidSansMono.zip
@@ -114,9 +127,4 @@ mkdir -p ~/Application/Foreman
 unzip Release.zip -d ~/Application/Foreman
 rm Release.zip
 
-#   Copy my files
-cd ~
-tar -xvf "/media/shamokwok/Old PC HDD/Backup/Documents.tar.gz"
-tar -xvf "/media/shamokwok/Old PC HDD/Backup/Pictures.tar.gz"
-tar -xvf "/media/shamokwok/Old PC HDD/Backup/Linux_scripts.tar.gz"
-tar -xvf "/media/shamokwok/Old PC HDD/Backup/Iso.tar.gz"
+
