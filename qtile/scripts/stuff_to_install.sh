@@ -20,6 +20,7 @@ ln -sf ~/Clone/dotfiles/qtile .
 cd ~
 
 #   Install qtile
+sudo apt install dbus-x11 libnoify-bin python3-mypy xserver-xephyr python3-pytest
 pip install qtile[all] --break-system-packages
 sudo echo """\
 [Desktop Entry]
@@ -79,7 +80,7 @@ winecfg
 
 #   Install virtual Machines
 cd ~/Downloads
-sudo apt install qemu-kvm libvirt-bin bridge-utils virt-manager
+sudo apt install qemu-kvm libvirt-bin bridge-utils virt-manager -y
 sudo adduser $USER libvirt
 
 #   https://www.linuxtechi.com/how-to-install-virtualbox-on-linuxmint/
@@ -101,6 +102,12 @@ git clone https://github.com/nwg-piotr/nwg-look.git
 cd nwg-look
 make build
 sudo make install
+
+#   Install Factorio Foreman
+cd ~/Downloads
+wget https://github.com/DanielKote/Foreman2/releases/download/v2.0-dev.13alpha/Release.zip
+mkdir -p ~/Application/Foreman
+unzip Release.zip -d ~/Application/Foreman
 
 #   Copy my files
 cd ~
