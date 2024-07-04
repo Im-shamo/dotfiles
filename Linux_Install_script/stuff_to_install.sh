@@ -87,7 +87,7 @@ sudo adduser $USER libvirt
 sudo apt install dkms build-essential linux-headers-$(uname -r) -y
 sudo apt install curl wget apt-transport-https gnupg2
 curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/vbox.gpg
-echo deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/vbox.gpg] http://download.virtualbox.org/virtualbox/debian jammy contrib | sudo tee /etc/apt/sources.list.d/virtualbox.list
+echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/vbox.gpg] http://download.virtualbox.org/virtualbox/debian jammy contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
 sudo apt update
 sudo apt install virtualbox-7.0 -y
 sudo usermod -aG vboxusers $USER
@@ -108,6 +108,7 @@ cd ~/Downloads
 wget https://github.com/DanielKote/Foreman2/releases/download/v2.0-dev.13alpha/Release.zip
 mkdir -p ~/Application/Foreman
 unzip Release.zip -d ~/Application/Foreman
+rm Release.zip
 
 #   Copy my files
 cd ~
