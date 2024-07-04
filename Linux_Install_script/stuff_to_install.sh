@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#   WARNGING ! this only works on linux mint 21 !
 #   Copy my files
 cd ~
 tar -xf "/media/shamokwok/Old PC HDD/Backup/Documents.tar.gz" &
@@ -119,12 +120,12 @@ cd nwg-look
 make build
 sudo make install
 
-
 #   Install Factorio Foreman
 cd ~/Downloads
 wget https://github.com/DanielKote/Foreman2/releases/download/v2.0-dev.13alpha/Release.zip
 mkdir -p ~/Application/Foreman
 unzip Release.zip -d ~/Application/Foreman
 rm Release.zip
+
 
 
