@@ -5,7 +5,7 @@ sudo apt upgrade -y
 sudo apt install -y python3 python3-pip udiskie picom rofi wget gpg fish git vim keepassxc steam pavucontrol nitrogen
 
 #   Install flatpaks
-flatpak install org.gnome.font-viewer io.github.spacingbat3.webcord
+yes | flatpak install org.gnome.font-viewer io.github.spacingbat3.webcord
 
 #   Git configs
 git config --global user.name "im-shamo"
@@ -20,26 +20,19 @@ ln -sf ~/Clone/dotfiles/qtile .
 cd ~
 
 #   Install qtile
-sudo apt install -y dbus-x11 libnoify-bin python3-mypy xserver-xephyr python3-pytest
-pip install qtile[all] --break-system-packages
-sudo echo """\
-[Desktop Entry]
-Name=Qtile
-Comment=Qtile Session
-Exec=qtile start
-Type=Application
-Keywords=wm;tiling""" > /usr/share/xsessions
+sudo apt install -y dbus-x11 libnotify-bin python3-mypy xserver-xephyr python3-pytest
+pip install qtile[all] --user #--break-system-packages
+echo "[Desktop Entry]\nName=Qtile\nComment=Qtile Session\nExec=qtile start\nType=Application\nKeywords=wm;tiling" | sudo tee /usr/share/xsessions/qtile.desktop > /dev/null
 cd ~/Clone
 git clone https://github.com/elParaguayo/qtile-extras.git
-cd qtile-extras
-pip install --user .
-
+cd dotfiles/qtile
+ln -s ~/Clone/qtile-extras/qtile_extras
 #   Install fonts
 cd ~/Downloads
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/DroidSansMono.zip
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip
 sudo mkdir -p /usr/share/fonts/Hack
-sudo unzip DroidSansMono.zip -d /usr/share/fonts/Hack
+sudo unzip Hack.zip -d /usr/share/fonts/Hack
 sudo mkdir -p /usr/share/fonts/DroidSansMono
 sudo unzip DroidSansMono.zip -d /usr/share/fonts/DroidSansM
 fc-list | grep Hack
@@ -80,8 +73,10 @@ winecfg
 
 #   Install virtual Machines
 cd ~/Downloads
-sudo apt install qemu-kvm libvirt-bin bridge-utils virt-manager -y
+sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager
 sudo adduser $USER libvirt
+sudo adduser $USER kvm
+sudo adduser $USER libvirt-qemu
 
 #   https://www.linuxtechi.com/how-to-install-virtualbox-on-linuxmint/
 sudo apt install dkms build-essential linux-headers-$(uname -r) -y
@@ -98,7 +93,7 @@ rm ./Oracle_VM_VirtualBox_Extension_Pack-7.0.12.vbox-extpack
 #   Install nwg-look and xcur2png
 sudo apt install -y golang libgtk-3-dev libcairo2-dev libglib2.0-dev libpng-dev libxcursor-dev
 
-cd ~/Downloads
+cd ~/Clone
 wget https://github.com/eworm-de/xcur2png/releases/download/0.7.1/xcur2png-0.7.1.tar.gz
 tar -xvf xcur2png-0.7.1.tar.gz
 cd xcur2png-0.7.1
@@ -106,11 +101,11 @@ cd xcur2png-0.7.1
 make
 sudo make install
 
-cd ~/Clone
 git clone https://github.com/nwg-piotr/nwg-look.git
 cd nwg-look
 make build
 sudo make install
+
 
 #   Install Factorio Foreman
 cd ~/Downloads
