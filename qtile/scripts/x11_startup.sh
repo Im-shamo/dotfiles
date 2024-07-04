@@ -5,23 +5,23 @@
 # |      Applets      |
 # |                   |
 # +-------------------+
-nm-applet
-blueman-applet
-udiskie
-nvidia-prime-applet
+nm-apple &
+blueman-applet &
+udiskie &
+/usr/lib/nvidia-prime-applet/nvidia-prime & # Very lazy TODO CHANGE
 
 # +-------------------+
 # |                   |
 # |      Scripts      |
 # |                   |
 # +-------------------+
-$HOME/.config/qtile/scripts/xrandr_setup.sh
-$HOME/.config/qtile/scripts/nitrogen_wallpaper_changer.sh 
+$HOME/.config/qtile/scripts/xrandr_setup.sh &
+$HOME/.config/qtile/scripts/nitrogen_wallpaper_changer.sh  &
 
 # +--------------------+
 # |                    |
 # |      Programs      |
 # |                    |
 # +--------------------+
-picom
-mintupdate
+picom &
+mintupdate &

@@ -530,7 +530,7 @@ if qtile.core.name == "x11":
 
     @hook.subscribe.startup_once
     def auto_startup_x11_once():
-        script = os.path.expanduser("~/.config/qtile/script/x11_startup.sh")
+        script = os.path.expanduser("~/.config/qtile/scripts/x11_startup.sh")
         subprocess.Popen(script)
 else:
     @hook.subscribe.startup_once
