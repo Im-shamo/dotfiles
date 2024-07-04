@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #   Install needed packages
 sudo apt update
-sudo apt upgrate -y
-sudo apt intsall -y python3 python3-pip udiskie picom rofi wget gpg fish git vim keepassxc steam pavucontrol nitrogen
+sudo apt upgrade -y
+sudo apt install -y python3 python3-pip udiskie picom rofi wget gpg fish git vim keepassxc steam pavucontrol nitrogen
 
 #   Install flatpaks
 flatpak install org.gnome.font-viewer io.github.spacingbat3.webcord
@@ -20,7 +20,7 @@ ln -sf ~/Clone/dotfiles/qtile .
 cd ~
 
 #   Install qtile
-sudo apt install dbus-x11 libnoify-bin python3-mypy xserver-xephyr python3-pytest
+sudo apt install -y dbus-x11 libnoify-bin python3-mypy xserver-xephyr python3-pytest
 pip install qtile[all] --break-system-packages
 sudo echo """\
 [Desktop Entry]
@@ -35,7 +35,7 @@ cd qtile-extras
 pip install --user .
 
 #   Install fonts
-cd Downloads
+cd ~/Downloads
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/DroidSansMono.zip
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip
 sudo mkdir -p /usr/share/fonts/Hack
@@ -44,22 +44,22 @@ sudo mkdir -p /usr/share/fonts/DroidSansMono
 sudo unzip DroidSansMono.zip -d /usr/share/fonts/DroidSansM
 fc-list | grep Hack
 fc-list | grep DroidSansM
-rm DroidSansMono.zip Hack.zip
+rm ./DroidSansMono.zip ./Hack.zip
 
 #   To install vscode 
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
 echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" |sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
 rm -f packages.microsoft.gpg
-sudo apt install apt-transport-https
-sudo apt update
-sudo apt install code
+sudo apt update 
+sudo apt install -y apt-transport-https
+sudo apt install code -y
 
 #   Install OpenTabletDriver
 cd ~/Downloads
-sudo apt update
 wget https://github.com/OpenTabletDriver/OpenTabletDriver/releases/latest/download/OpenTabletDriver.deb
-sudo apt install ./OpenTabletDriver.deb
+sudo apt install ./OpenTabletDriver.deb -y
+rm ./OpenTabletDriver.deb
 #   Enable OpenTabletDriver at startup
 sudo systemctl --user enable opentabletdriver.service --now
 
@@ -93,9 +93,18 @@ sudo apt install virtualbox-7.0 -y
 sudo usermod -aG vboxusers $USER
 wget https://download.virtualbox.org/virtualbox/7.0.12/Oracle_VM_VirtualBox_Extension_Pack-7.0.12.vbox-extpack
 sudo vboxmanage extpack install Oracle_VM_VirtualBox_Extension_Pack-7.0.12.vbox-extpack
+rm ./Oracle_VM_VirtualBox_Extension_Pack-7.0.12.vbox-extpack
 
-#   Install nwg-look
-sudo apt install golang libgtk-3-dev libcairo2-dev libglib2.0-dev
+#   Install nwg-look and xcur2png
+sudo apt install -y golang libgtk-3-dev libcairo2-dev libglib2.0-dev libpng-dev libxcursor-dev
+
+cd ~/Downloads
+wget https://github.com/eworm-de/xcur2png/releases/download/0.7.1/xcur2png-0.7.1.tar.gz
+tar -xvf xcur2png-0.7.1.tar.gz
+cd xcur2png-0.7.1
+./configure
+make
+sudo make install
 
 cd ~/Clone
 git clone https://github.com/nwg-piotr/nwg-look.git
