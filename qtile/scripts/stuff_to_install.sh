@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 #   Install needed packages
-
 sudo apt update
 sudo apt upgrate -y
-sudo apt intsall -y python3 python3-pip udiskie picom rofi wget gpg fish git vim keepassxc steam
+sudo apt intsall -y python3 python3-pip udiskie picom rofi wget gpg fish git vim keepassxc steam pavucontrol nitrogen
 
 #   Install flatpaks
 flatpak install org.gnome.font-viewer io.github.spacingbat3.webcord
@@ -93,6 +92,15 @@ sudo apt install virtualbox-7.0 -y
 sudo usermod -aG vboxusers $USER
 wget https://download.virtualbox.org/virtualbox/7.0.12/Oracle_VM_VirtualBox_Extension_Pack-7.0.12.vbox-extpack
 sudo vboxmanage extpack install Oracle_VM_VirtualBox_Extension_Pack-7.0.12.vbox-extpack
+
+#   Install nwg-look
+sudo apt install golang libgtk-3-dev libcairo2-dev libglib2.0-dev
+
+cd ~/Clone
+git clone https://github.com/nwg-piotr/nwg-look.git
+cd nwg-look
+make build
+sudo make install
 
 #   Copy my files
 cd ~
