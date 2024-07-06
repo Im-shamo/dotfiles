@@ -443,7 +443,7 @@ def power_button(**kwargs):
     return widget.TextBox(
         fmt="󰐥",
         fontsize=26,
-        mouse_callbacks={"Button1": lazy.spawn("rofi -show power-menu -modi 'power-menu:~/Clone/dotfiles/qtile/scripts/rofi-power-menu --choices=shutdown/reboot/suspend/logout'")},
+        mouse_callbacks={"Button1": lazy.spawn("rofi -show power-menu -theme glue_pro_blue -modi 'power-menu:~/Clone/dotfiles/qtile/scripts/rofi-power-menu --choices=shutdown/reboot/suspend/logout'")},
         **kwargs
     )
 
