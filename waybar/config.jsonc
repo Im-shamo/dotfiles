@@ -58,9 +58,9 @@
 
 	"custom/arch-icon": {
 		"format": "󰣇",
-		"on-click": "firefox https://wiki.archlinux.org/",
-		"on-click-right": "firefox https://archlinux.org/packages/",
-		"on-click-middle": "firefox https://aur.archlinux.org/",
+		"on-click": "chromium https://wiki.archlinux.org/",
+		"on-click-right": "chromium https://archlinux.org/packages/",
+		"on-click-middle": "chromium https://aur.archlinux.org/",
 		"tooltip-format": "archwiki"
 	},
 
@@ -207,7 +207,7 @@
 	},
 	"custom/powerbutton": {
 		"format": "󰐥",
-		"on-click": "~/.local/share/bin/logoutlaunch.sh",
+		"on-click": "wlogout",
 		"tooltip": false
 	}
 }
