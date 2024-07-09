@@ -57,7 +57,7 @@ normal_colors={
 
 file_explorer = "nemo"
 mod = "mod4"
-terminal = "gnome-terminal"
+terminal = "kitty"
 terminal_name = terminal
 
 @lazy.function
