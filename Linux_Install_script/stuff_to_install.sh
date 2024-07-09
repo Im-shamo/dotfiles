@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 #   WARNGING ! this only works on linux mint 21 !
 #   Copy my files
+echo    "WARNGING ! this only works on linux mint 21 !"
+read -p "Are you sure? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+
 cd ~
 tar -xf "/media/shamokwok/Old PC HDD/Backup/Documents.tar.gz" &
 tar -xf "/media/shamokwok/Old PC HDD/Backup/Pictures.tar.gz" &
@@ -127,5 +132,4 @@ mkdir -p ~/Application/Foreman
 unzip Release.zip -d ~/Application/Foreman
 rm Release.zip
 
-
-
+fi
