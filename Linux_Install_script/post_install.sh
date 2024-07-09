@@ -1,3 +1,3 @@
 #/usr/bin/env bash
-~/Linux_scripts/gen-desktop.py "~/Application/osu.AppImage" "osu"
-~/Linux_scripts/gen-desktop.py "wine /home/shamokwok/Application/Foreman/Release/Foreman.exe" "Foreman"
+~/Linux_scripts/gen-desktop.py "$HOME/Application/osu.AppImage" "osu"
+~/Linux_scripts/gen-desktop.py "wine $HOME/Application/Foreman/Release/Foreman.exe" "Foreman
