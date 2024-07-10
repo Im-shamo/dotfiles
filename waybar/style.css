@@ -171,7 +171,7 @@ window#waybar {
 #custom-powerbutton {
 	background: @moduleColor;
 	padding-left: 5px;
-	padding-right: 10px;
+	padding-right: 11px;
 	font-size: 20px;
 	border-radius: 0px 20px 20px 0px;
 }
