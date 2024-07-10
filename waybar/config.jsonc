@@ -153,12 +153,12 @@
 	"pulseaudio": {
 		"format": "{icon} {volume:2}%",
 		"format-bluetooth": "{icon}  {volume}%",
-		"format-muted": "",
+		"format-muted": " ",
 		"format-icons": {
 			"headphones": "",
 			"default": [
-				"",
-				""
+				" ",
+				" "
 			]
 		},
 		"scroll-step": 5,
