@@ -146,7 +146,7 @@
 		"tooltip-format-wifi": " {bandwidthDownOctets}   {bandwidthUpOctets}",
 		"tooltip-format-ethernet": " {bandwidthDownOctets}   {bandwidthUpOctets}",
 		"tooltip-format-disconnected": "Disconnected",
-		"on-click": "networkmanager_dmenu",
+		"on-click": "nm-connection-editor",
 		"max-length": 50
 	},
 
