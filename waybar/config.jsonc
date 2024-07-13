@@ -1,7 +1,7 @@
 // -*- mode: json -*-
 
 {
-	"layer": "top",
+	"layer": "bottom",
 	"position": "top",
     "margin": "10, 10, 0, 10",
 
@@ -32,6 +32,7 @@
 		"battery",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
+		"custom/swaync",
 		"custom/powerbutton"
 	],
 
@@ -61,7 +62,7 @@
 		"on-click": "chromium https://wiki.archlinux.org/",
 		"on-click-right": "chromium https://archlinux.org/packages/",
 		"on-click-middle": "chromium https://aur.archlinux.org/",
-		"tooltip-format": "archwiki"
+		"tooltip-format": "Archwiki"
 	},
 
 	"custom/fedora-icon":{
@@ -75,13 +76,13 @@
         "warp-on-scroll": false,
         "format": "{name}: {icon}",
         "format-icons": {
-            "1": "",
+            "1": "",
             "2": "",
             "3": "",
             "4": "",
             "5": "",
             "6": "",
-            "7": "",
+            "7": "",
             "8": "",
             "9": "",
             "10": "",
@@ -91,11 +92,15 @@
         }
     },
 
+	"hyprland/window": {
+		"format": "{title}"
+	},
+
 	/* Right */
 
 	"privacy": {
 		"icon-spacing": 8,
-		"icon-size": 15,
+		"icon-size": 18,
 		"transition-duration": 250,
 		"modules": [
 			{
@@ -143,15 +148,15 @@
 		"format-wifi": "{essid} ({signalStrength}%) ",
 		"format-ethernet": "{ipaddr}/{cidr} 󰌘",
 		"format-disconnected": "󰌙", 
-		"tooltip-format-wifi": " {bandwidthDownOctets}   {bandwidthUpOctets}",
-		"tooltip-format-ethernet": " {bandwidthDownOctets}   {bandwidthUpOctets}",
+		"tooltip-format-wifi": " {bandwidthDownBytes}   {bandwidthUpBytes}",
+		"tooltip-format-ethernet": " {bandwidthDownBytes}   {bandwidthUpBytes}",
 		"tooltip-format-disconnected": "Disconnected",
 		"on-click": "nm-connection-editor",
 		"max-length": 50
 	},
 
 	"pulseaudio": {
-		"format": "{icon} {volume:2}%",
+		"format": "{icon}{volume:3}%",
 		"format-bluetooth": "{icon}  {volume}%",
 		"format-muted": " ",
 		"format-icons": {
@@ -167,7 +172,7 @@
 	},
 
     "clock": {
-        "format": "{:%D %a %R} ",
+        "format": "{:%d/%m/%y %a %R} ",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
 			"mode"          : "year",
@@ -205,6 +210,28 @@
 			""
 		]
 	},
+
+	"custom/swaync": {
+	   "tooltip": false,
+ 	   "format": "{icon}",
+ 	   "format-icons": {
+ 	     "notification": "<span foreground='red'><sup></sup></span>",
+ 	     "none": "",
+ 	     "dnd-notification": "<span foreground='red'><sup></sup></span>",
+ 	     "dnd-none": "",
+ 	     "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+ 	     "inhibited-none": "",
+ 	     "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+ 	     "dnd-inhibited-none": ""
+ 	   },
+ 	   "return-type": "json",
+ 	   "exec-if": "which swaync-client",
+ 	   "exec": "swaync-client -swb",
+ 	   "on-click": "swaync-client -t -sw",
+ 	   "on-click-right": "swaync-client -d -sw",
+ 	   "escape": true
+  	},
+
 	"custom/powerbutton": {
 		"format": "󰐥",
 		"on-click": "wlogout",
