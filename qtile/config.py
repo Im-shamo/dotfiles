@@ -57,7 +57,7 @@ normal_colors={
 
 file_explorer = "nemo"
 mod = "mod4"
-terminal = "kitty"
+terminal = "alacritty"
 terminal_name = terminal
 
 @lazy.function
@@ -457,52 +457,52 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 bar_margin = [6,4,2,4]
-
-main_display_bar = bar.Bar(
-    [
-        widget.CurrentLayoutIcon(mouse_callbacks={"Button1": lazy.next_layout()}),
-        group_box(),
-        widget.WindowName(),
-        widget.Notify(),
-        widget.Systray(background=normal_colors["light_gray"]),
-        widget.TextBox(**arrow_right),
-        wallpaper_switcher(**arrow_right),
-        widget.Net(font=mono_font, format= " {down:^5.1f}{down_suffix:<2}", background=normal_colors["blue"],**arrow_right),  # blue
-        widget.Net(font=mono_font, format= " {up:^5.1f}{up_suffix:<2}", background=normal_colors["dark_green"],**arrow_right),  # green
-        widget.NetGraph(
-            mouse_callbacks={"Button1": lazy.spawn("networkmanager_dmenu")},
-            background=normal_colors["green"],
-            graph_color="215578",
-            type="line",
-            line_width=2,
-            **arrow_right,
-        ),
-        volume(),
-        microphone(**arrow_right),
-        widget.Clock(format="%d/%m/%Y %a %I:%M %p", background=normal_colors["light_blue"], **arrow_right),   # cyan
-        widget.Battery(format="  {percent:.0%}",emoji=True,background=normal_colors["blue"], **arrow_right),
-        power_button(),
-        widget.Spacer(length=5),
-    ],
-    26,
-    opacity = 1,
-    margin = bar_margin
-)
-
-desktop_display_bar = bar.Bar(
-    [
-        widget.CurrentLayoutIcon(),
-        group_box(),
-        widget.WindowName(),
-        widget.TextBox(**arrow_right),
-        widget.Clock(format="%d/%m/%Y %a %I:%M %p", background="1d6ac9", **arrow_right),   # Light blue
-        power_button(),
-        widget.Spacer(length=5),
-    ],
-    26,
-    opacity = 1,
-    margin = bar_margin
-)
+if qtile.core.name == "x11":
+    main_display_bar = bar.Bar(
+        [
+            widget.CurrentLayoutIcon(mouse_callbacks={"Button1": lazy.next_layout()}),
+            group_box(),
+            widget.WindowName(),
+            widget.Notify(),
+            widget.Systray(),
+            widget.TextBox(**arrow_right),
+            wallpaper_switcher(**arrow_right),
+            widget.Net(font=mono_font, format= " {down:^5.1f}{down_suffix:<2}", background=normal_colors["blue"],**arrow_right),  # blue
+            widget.Net(font=mono_font, format= " {up:^5.1f}{up_suffix:<2}", background=normal_colors["dark_green"],**arrow_right),  # green
+            widget.NetGraph(
+                mouse_callbacks={"Button1": lazy.spawn("networkmanager_dmenu")},
+                background=normal_colors["green"],
+                graph_color="215578",
+                type="line",
+                line_width=2,
+                **arrow_right,
+            ),
+            volume(),
+            microphone(**arrow_right),
+            widget.Clock(format="%d/%m/%Y %a %I:%M %p", background=normal_colors["light_blue"], **arrow_right),   # cyan
+            widget.Battery(format="  {percent:.0%}",emoji=True,background=normal_colors["blue"], **arrow_right),
+            power_button(),
+            widget.Spacer(length=5),
+        ],
+        26,
+        opacity = 1,
+        margin = bar_margin
+    )
+    
+    desktop_display_bar = bar.Bar(
+        [
+            widget.CurrentLayoutIcon(),
+            group_box(),
+            widget.WindowName(),
+            widget.TextBox(**arrow_right),
+            widget.Clock(format="%d/%m/%Y %a %I:%M %p", background="1d6ac9", **arrow_right),   # Light blue
+            power_button(),
+            widget.Spacer(length=5),
+        ],
+        26,
+        opacity = 1,
+        margin = bar_margin
+    )
 
 if qtile.core.name == "x11":
     screens = [
@@ -511,13 +511,13 @@ if qtile.core.name == "x11":
         # Main Display
         Screen(top=main_display_bar),
     ]
-else:
-    screens = [
-        # Desktop Display
-        Screen(top=desktop_display_bar),
-        # Main Display
-        Screen(top=main_display_bar)
-    ]
+# else:
+    # screens = [
+    #     # Desktop Display
+    #     Screen(top=desktop_display_bar),
+    #     # Main Display
+    #     Screen(top=main_display_bar)
+    # ]
 
 
 # +-------------------------------+

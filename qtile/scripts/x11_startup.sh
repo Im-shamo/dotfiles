@@ -8,7 +8,7 @@
 nm-apple &
 blueman-applet &
 udiskie &
-/usr/lib/nvidia-prime-applet/nvidia-prime & # Very lazy TODO CHANGE
+# /usr/lib/nvidia-prime-applet/nvidia-prime & # Very lazy TODO CHANGE
 
 # +-------------------+
 # |                   |
@@ -23,5 +23,5 @@ $HOME/.config/qtile/scripts/nitrogen_wallpaper_changer.sh  &
 # |      Programs      |
 # |                    |
 # +--------------------+
-picom &
-mintupdate &
+# picom &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
