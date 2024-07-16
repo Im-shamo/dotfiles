@@ -1,6 +1,6 @@
 if status is-interactive
     if test "$TERM" = "xterm-kitty"
-        fastfetch --logo-width 35 --logo "/home/shamokwok/Downloads/1024px-Archlinux-logo-only.svg.png"
+        fastfetch --logo-width 35 --logo "/home/shamokwok/Pictures/Anime/Honkai_Star_Rail/firefly-3-nobg.png"
     else
         fastfetch
     end
