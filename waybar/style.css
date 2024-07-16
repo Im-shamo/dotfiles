@@ -92,7 +92,7 @@ window#waybar {
 #workspaces button:hover {
 	background: @moduleColor;
 	border: @moduleColor;
-	padding: 0 11px;	/* Don't Change it cause it will not look right */
+	padding: 0 10px;	/* Don't Change it cause it will not look right */
 	border-radius: 0px;
 }
 
