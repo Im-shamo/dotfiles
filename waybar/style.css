@@ -1,19 +1,16 @@
 @define-color backgroundColor #344454;	/* Blue */
 @define-color moduleColor #161c22;		/* Black */
 
-
 * {
 	font-family: DroidSansM Nerd Font;
 	font-size: 14px;
 	border-radius: 20px;
 }
 
-
 window#waybar {
 	background: @backgroundColor;
 	color: #fdf6e3;
 }
-
 
 /* Powerline arrows */
 
@@ -42,8 +39,6 @@ window#waybar {
 	font-size: 23px;
 	border-radius: 0px;
 }
-
-
 
 /* Left */
 
