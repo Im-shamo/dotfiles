@@ -1,11 +1,2 @@
-#!/bin/bash
-
-directory=~/Pictures/Anime/Honkai_Impact/Widescreen
-laptop="eDP-1"
-external="HDMI-A-1"
-
-
-random_background_1=$(ls $directory/* | shuf -n 1)
-random_background_2=$(ls $directory/* | shuf -n 1)
-swww img -o $laptop $random_background_1 > /dev/null
-swww img -o $external $random_background_2 > /dev/null 
+#/usr/bin/env bash
+waypaper --random
