@@ -1,0 +1,28 @@
+[wofi]
+  path = "/usr/bin/wofi"
+  extra_args = "--allow-markup --columns=1 --hide-scroll"
+
+[menu.shutdown]
+  title = "Shutdown"
+  requires_confirmation = "false"
+
+[menu.reboot]
+  title = "Reboot"
+  requires_confirmation = "false"
+
+[menu.suspend]
+  title = "Suspend"
+  requires_confirmation = "false"
+
+[menu.hibernate]
+  title = "Hibernate"
+  requires_confirmation = "false"
+
+[menu.logout]
+  title = "Logout"
+  cmd = "hyprctl dispatch exit"
+  requires_confirmation = "false"
+
+[menu.lock-screen]
+  title = "Lock"
+  requires_confirmation = "false"
