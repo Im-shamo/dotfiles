@@ -234,7 +234,7 @@
 
 	"custom/powerbutton": {
 		"format": "󰐥",
-		"on-click": "wlogout",
+		"on-click": "wofi-power-menu",
 		"tooltip": false
 	}
 }
