@@ -67,7 +67,7 @@
 
 	"custom/fedora-icon":{
 		"format": "",
-		"on-click": "firefox https://docs.fedoraproject.org/en-US/docs/"
+		"on-click": "chromium https://docs.fedoraproject.org/en-US/docs/"
 	},
 
     "hyprland/workspaces": {
@@ -151,12 +151,12 @@
 		"tooltip-format-wifi": " {bandwidthDownBytes}   {bandwidthUpBytes}",
 		"tooltip-format-ethernet": " {bandwidthDownBytes}   {bandwidthUpBytes}",
 		"tooltip-format-disconnected": "Disconnected",
-		"on-click": "nm-connection-editor",
+		"on-click": "networkmanager_dmenu",
 		"max-length": 50
 	},
 
 	"pulseaudio": {
-		"format": "{icon}{volume:3}%",
+		"format": "{icon} {volume:2}%",
 		"format-bluetooth": "{icon}  {volume}%",
 		"format-muted": " ",
 		"format-icons": {
@@ -215,14 +215,14 @@
 	   "tooltip": false,
  	   "format": "{icon}",
  	   "format-icons": {
- 	     "notification": "<span foreground='red'><sup></sup></span>",
- 	     "none": "",
- 	     "dnd-notification": "<span foreground='red'><sup></sup></span>",
- 	     "dnd-none": "",
- 	     "inhibited-notification": "<span foreground='red'><sup></sup></span>",
- 	     "inhibited-none": "",
- 	     "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
- 	     "dnd-inhibited-none": ""
+ 	     	"notification": "<span foreground='red'><sup></sup></span>",
+ 	     	"none": "",
+ 	     	"dnd-notification": "<span foreground='red'><sup></sup></span>",
+ 	     	"dnd-none": "",
+ 	     	"inhibited-notification": "<span foreground='red'><sup></sup></span>",
+ 	     	"inhibited-none": "",
+ 	     	"dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+ 	     	"dnd-inhibited-none": ""
  	   },
  	   "return-type": "json",
  	   "exec-if": "which swaync-client",
@@ -234,7 +234,7 @@
 
 	"custom/powerbutton": {
 		"format": "󰐥",
-		"on-click": "wofi-power-menu",
+		"on-click": "rofi -show power-menu -theme glue_pro_blue -modi 'power-menu:/home/shamokwok/Clone/dotfiles/hypr/scripts/rofi-power-menu'",
 		"tooltip": false
 	}
 }
