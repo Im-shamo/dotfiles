@@ -6,7 +6,7 @@ def keybinds(file_path: str) -> list[list]:
         lines = text.readlines()
         keybind_lines = [ line for line in lines if "bind" in line ]
         # to strip away to bind, binde, =, \n
-        parsed_keybind_lines: list[str] = []
+        parsed_keybind_lines: list[list[str]] = []
         for line in keybind_lines:
             temp = line.rstrip('\n').split("=")[1:]
             temp = temp[0].split(",") if len(temp) >= 1 else []
