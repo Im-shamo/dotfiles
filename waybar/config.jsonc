@@ -16,6 +16,7 @@
 	],
 
 	"modules-right": [
+		"cava",
 		"privacy",
 		"tray",
 		"mpris",
@@ -35,7 +36,6 @@
 		"custom/swaync",
 		"custom/powerbutton"
 	],
-
 	/* powerline arrors */
 
 	"custom/left-arrow-dark": {
@@ -74,26 +74,43 @@
         "disable-scroll": true,
         "all-outputs": false,
         "warp-on-scroll": false,
-        "format": "{name}: {icon}",
+        "format": "{icon}",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "",
-            "8": "",
-            "9": "",
-            "10": "",
-            "urgent": "",
-            "focused": "",
-            "default": ""
+            "1": " ",
+            "2": " ",
+            "3": " ",
+            "4": " ",
+            "5": " ",
+            "6": " ",
+            "7": " ",
+            "8": "8",
+            "9": "9",
+            "10": "10",
+            "11": "11",
+            "12": "12",
+            "13": "13",
+            "14": "14",
+            "15": "15",
+            "16": "16",
+            "17": "17",
+            "18": "18",
+            "19": "19",
+            "20": "20",
+            "21": "21",
+            "22": "22",
+            "urgent": " ",
+            "focused": " ",
+            "default": " "
         }
     },
 
 	"hyprland/window": {
-		"format": "{title}"
+		"format": "{title}",
+		"separate-outputs": true,
+		"icon": true,
+		"rewrite": {
+			"(.*) - Chromium": "Chromium"	// xwayland title does not update and it look really ugly
+		}
 	},
 
 	/* Right */
@@ -234,7 +251,7 @@
 
 	"custom/powerbutton": {
 		"format": "󰐥",
-		"on-click": "rofi -show power-menu -theme glue_pro_blue -modi 'power-menu:/home/shamokwok/Clone/dotfiles/hypr/scripts/rofi-power-menu'",
+		"on-click": "rofi -show power-menu -theme rounded-green-dark -modi 'power-menu:/home/shamokwok/Clone/dotfiles/hypr/scripts/rofi-power-menu'",
 		"tooltip": false
 	}
 }
