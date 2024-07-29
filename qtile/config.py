@@ -147,10 +147,12 @@ keys = [
 
     # app launches
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "r", lazy.spawn("rofi -show drun -modi \"drun\" -theme glue_pro_blue -show-icons"), desc="Launch rofi"),
+    Key([mod], "r", lazy.spawn("rofi -show drun -modi \"drun\" -theme rounded-green-dark -show-icons"), desc="Launch rofi"),
     Key([], "Print", lazy.spawn("gnome-screenshot"), desc="Take screenshot"),
     Key([mod], "Print", lazy.spawn("gnome-screenshot -i"), desc="Launch gnome screenshot"),
     Key([mod], "e", lazy.spawn(file_explorer), desc="Spawn the file explorer ({file_explorer})"),
+    Key([mod], "c", lazy.spawn("code")),
+    Key([mod], "b", lazy.spawn("chromium")),
 
     # Media Control
     # Source    https://askubuntu.com/questions/97936/terminal-command-to-set-audio-volume and https://www.reddit.com/r/qtile/comments/v718d8/how_to_setup_media_keys/
@@ -443,7 +445,7 @@ def power_button(**kwargs):
     return widget.TextBox(
         fmt="󰐥",
         fontsize=26,
-        mouse_callbacks={"Button1": lazy.spawn("rofi -show power-menu -theme glue_pro_blue -modi 'power-menu:~/Clone/dotfiles/qtile/scripts/rofi-power-menu --choices=shutdown/reboot/suspend/logout'")},
+        mouse_callbacks={"Button1": lazy.spawn("rofi -show power-menu -theme rounded-green-dark -modi 'power-menu:~/Clone/dotfiles/qtile/scripts/rofi-power-menu --choices=shutdown/reboot/suspend/logout'")},
         **kwargs
     )
 
