@@ -59,15 +59,15 @@
 
 	"custom/arch-icon": {
 		"format": "󰣇",
-		"on-click": "chromium https://wiki.archlinux.org/",
-		"on-click-right": "chromium https://archlinux.org/packages/",
-		"on-click-middle": "chromium https://aur.archlinux.org/",
+		"on-click": "firefox https://wiki.archlinux.org/",
+		"on-click-right": "firefox https://archlinux.org/packages/",
+		"on-click-middle": "firefox https://aur.archlinux.org/",
 		"tooltip-format": "Archwiki"
 	},
 
 	"custom/fedora-icon":{
 		"format": "",
-		"on-click": "chromium https://docs.fedoraproject.org/en-US/docs/"
+		"on-click": "firefox https://docs.fedoraproject.org/en-US/docs/"
 	},
 
     "hyprland/workspaces": {
@@ -94,7 +94,7 @@
 		"separate-outputs": true,
 		"icon": true,
 		"rewrite": {
-			"(.*) - Chromium": "Chromium"	// xwayland title does not update and it look really ugly
+			"(.*) - Chromium": "Chromium"	// xwayland title does not update and it looks really ugly
 		}
 	},
 
