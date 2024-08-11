@@ -83,7 +83,7 @@ window#waybar {
 	text-shadow: inherit;
 	border-radius: 0px;
 }
-
+ 
 #workspaces button:hover { 
 	background: @moduleColor;
 	border: @moduleColor;
