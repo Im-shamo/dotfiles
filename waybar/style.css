@@ -92,7 +92,7 @@ window#waybar {
 }
 
 #window {
-	background: @backgroundColor; 
+	background: @backgroundColor;
 	padding-left: 15px;
 	border-radius: 0px;
 }
