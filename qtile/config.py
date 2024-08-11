@@ -506,6 +506,24 @@ if qtile.core.name == "x11":
         margin = bar_margin
     )
 
+    virt_bar = bar.Bar(
+        [
+            widget.CurrentLayoutIcon(mouse_callbacks={"Button1": lazy.next_layout()}),
+            group_box(),
+            widget.WindowName(),
+            widget.Notify(),
+            widget.Systray(),
+            widget.TextBox(**arrow_right),
+            volume(**arrow_right),
+            widget.Clock(format="%d/%m/%Y %a %I:%M %p", background=normal_colors["light_blue"], **arrow_right),   # cyan
+            power_button(),
+            widget.Spacer(length=5),
+        ],
+        26,
+        opacity = 1,
+        margin = bar_margin
+    )
+
 if qtile.core.name == "x11":
     screens = [
         # Disktop Display
