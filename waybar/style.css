@@ -84,7 +84,7 @@ window#waybar {
 	border-radius: 0px;
 }
 
-#workspaces button:hover { 
+#workspaces button:hover {
 	background: @moduleColor;
 	border: @moduleColor;
 	padding: 0 9px;	/* Don't Change it cause it will not look right */
