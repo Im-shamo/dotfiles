@@ -21,6 +21,9 @@
 		"tray",
 		"mpris",
 		"custom/left-arrow-dark",
+		"custom/network_traffic",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
 		"network",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
@@ -146,6 +149,7 @@
 		"on-click": "~/.config/hypr/scripts/wallpaperChanger"
 	},
 
+	/*
 	"network": {
 		"format-wifi": "{essid} ({signalStrength}%) ",
 		"format-ethernet": "{ipaddr}/{cidr} 󰌘",
@@ -156,6 +160,22 @@
 		"on-click": "networkmanager_dmenu",
 		"max-length": 50
 	},
+	*/
+	"network": {
+        //"interface": "wlp0s20f3", // (Optional) To force the use of this interface  "format-wifi": "  {essid}",
+        "format": "⚠Disabled",
+        "format-wifi": "",
+        "format-ethernet": "󰌘",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "⚠Disabled",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "family": "ipv4",
+        "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+        "tooltip-format-ethernet": "󰌘 {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
+        //"min-length": 2,
+        //"max-length": 2,
+        "on-click": "nm-connection-editor"
+    },
 
 	"pulseaudio": {
 		"format": "{icon} {volume:2}%",
@@ -236,7 +256,13 @@
 
 	"custom/powerbutton": {
 		"format": "󰐥",
-		"on-click": "rofi -show power-menu -theme rounded-green-dark -modi 'power-menu:/home/shamokwok/Clone/dotfiles/hypr/scripts/rofi-power-menu'",
+		// "on-click": "rofi -show power-menu -theme rounded-green-dark -modi 'power-menu:/home/shamokwok/Clone/dotfiles/hypr/scripts/rofi-power-menu'",
+		"on-click": "nwgbar",
 		"tooltip": false
+	},
+
+	"custom/network_traffic": {
+	 	"exec": "~/.config/waybar/scripts/network_traffic.sh",
+        "return-type": "json"
 	}
 }

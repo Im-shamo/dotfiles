@@ -130,7 +130,11 @@ window#waybar {
 	padding-right: 5px;
 	border-radius: 0px;
 }
-
+#custom-network_traffic {
+	color: #9678b6;
+	background-color: @moduleColor;
+	border-radius: 0px;
+}
 #network {
 	color: #38afc4;
 	background: @moduleColor;
