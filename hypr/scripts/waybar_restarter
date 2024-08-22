@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# kill waybar
-pkill --exact waybar
-waybar
