@@ -55,10 +55,11 @@ normal_colors={
 # |                            |
 # +----------------------------+
 
-file_explorer = "nemo"
+file_explorer = "dolphin"
 mod = "mod4"
 terminal = "kitty"
 terminal_name = terminal
+manu = "wofi --normal-window --show drun --allow-images"
 
 @lazy.function
 def swap_screens(qtile):
@@ -147,7 +148,7 @@ keys = [
 
     # app launches
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "r", lazy.spawn("rofi -show drun -modi \"drun\" -theme rounded-green-dark -show-icons"), desc="Launch rofi"),
+    Key([mod], "r", lazy.spawn(manu), desc="Launch wofi"),
     Key([], "Print", lazy.spawn("gnome-screenshot"), desc="Take screenshot"),
     Key([mod], "Print", lazy.spawn("gnome-screenshot -i"), desc="Launch gnome screenshot"),
     Key([mod], "e", lazy.spawn(file_explorer), desc="Spawn the file explorer ({file_explorer})"),
@@ -445,7 +446,8 @@ def power_button(**kwargs):
     return widget.TextBox(
         fmt="󰐥",
         fontsize=26,
-        mouse_callbacks={"Button1": lazy.spawn("rofi -show power-menu -theme rounded-green-dark -modi 'power-menu:~/Clone/dotfiles/qtile/scripts/rofi-power-menu --choices=shutdown/reboot/suspend/logout'")},
+        # mouse_callbacks={"Button1": lazy.spawn("rofi -show power-menu -modi 'power-menu:~/Clone/dotfiles/qtile/scripts/rofi-power-menu --choices=shutdown/reboot/suspend/logout'")},
+        mouse_callbacks = {"Button1": lazy.spawn("nwgbar")},
         **kwargs
     )
 

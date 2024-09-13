@@ -5,10 +5,8 @@
 # |      Applets      |
 # |                   |
 # +-------------------+
-nm-apple &
+nm-applet &
 blueman-applet &
-udiskie &
-# /usr/lib/nvidia-prime-applet/nvidia-prime & # Very lazy TODO CHANGE
 
 # +-------------------+
 # |                   |
