@@ -59,7 +59,8 @@ file_explorer = "dolphin"
 mod = "mod4"
 terminal = "kitty"
 terminal_name = terminal
-manu = "wofi --normal-window --show drun --allow-images"
+#manu = "wofi --normal-window --show drun --allow-images"
+manu = "rofi -show drun -show-icons"
 
 @lazy.function
 def swap_screens(qtile):
@@ -446,8 +447,8 @@ def power_button(**kwargs):
     return widget.TextBox(
         fmt="󰐥",
         fontsize=26,
-        # mouse_callbacks={"Button1": lazy.spawn("rofi -show power-menu -modi 'power-menu:~/Clone/dotfiles/qtile/scripts/rofi-power-menu --choices=shutdown/reboot/suspend/logout'")},
-        mouse_callbacks = {"Button1": lazy.spawn("nwgbar")},
+        mouse_callbacks={"Button1": lazy.spawn("rofi -show power-menu -modi 'power-menu:~/Clone/dotfiles/qtile/scripts/rofi-power-menu --choices=shutdown/reboot/suspend/logout'")},
+        #mouse_callbacks = {"Button1": lazy.spawn("nwgbar")},
         **kwargs
     )
 
