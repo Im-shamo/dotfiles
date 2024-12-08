@@ -1,0 +1,65 @@
+{
+    "additional-repositories": [
+        "multilib"
+    ],
+    "archinstall-language": "English",
+    "audio_config": {
+        "audio": "pipewire"
+    },
+    "bootloader": "Systemd-boot",
+    "config_version": "3.0.1",
+    "disk_config": null,
+    "disk_encryption": null,
+    "hostname": "shamokwok-hp",
+    "kernels": [
+        "linux"
+    ],
+    "locale_config": {
+        "kb_layout": "us",
+        "sys_enc": "UTF-8",
+        "sys_lang": "en_HK.UTF-8"
+    },
+    "mirror_config": {
+        "custom_mirrors": [],
+        "mirror_regions": {
+            "Hong Kong": [
+                "{\"url\":\"http://hkg.mirror.rackspace.com/archlinux/\",\"protocol\":\"http\",\"active\":true,\"country\":\"Hong Kong\",\"country_code\":\"HK\",\"isos\":true,\"ipv4\":true,\"ipv6\":false,\"details\":\"https://archlinux.org/mirrors/rackspace.com/560/\",\"delay\":21980,\"last_sync\":\"2024-12-08T10:29:39Z\",\"duration_avg\":0.5699678094763505,\"duration_stddev\":0.34270111115768415,\"completion_pct\":1.0,\"score\":7}",
+                "{\"url\":\"https://hkg.mirror.rackspace.com/archlinux/\",\"protocol\":\"https\",\"active\":true,\"country\":\"Hong Kong\",\"country_code\":\"HK\",\"isos\":true,\"ipv4\":true,\"ipv6\":false,\"details\":\"https://archlinux.org/mirrors/rackspace.com/1321/\",\"delay\":21981,\"last_sync\":\"2024-12-08T10:29:39Z\",\"duration_avg\":0.5896961864672209,\"duration_stddev\":0.3901372206801563,\"completion_pct\":1.0,\"score\":7}",
+                "{\"url\":\"https://arch-mirror.wtako.net/\",\"protocol\":\"https\",\"active\":true,\"country\":\"Hong Kong\",\"country_code\":\"HK\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/wtako.net/828/\",\"delay\":2914,\"last_sync\":\"2024-12-08T15:00:00Z\",\"duration_avg\":0.6498561000823975,\"duration_stddev\":0.23313799776532299,\"completion_pct\":1.0,\"score\":2}",
+                "{\"url\":\"http://mirror.xtom.com.hk/archlinux/\",\"protocol\":\"http\",\"active\":true,\"country\":\"Hong Kong\",\"country_code\":\"HK\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/xtom.com.hk/1067/\",\"delay\":1955,\"last_sync\":\"2024-12-08T15:20:00Z\",\"duration_avg\":0.35656176839556014,\"duration_stddev\":0.17066980402653278,\"completion_pct\":1.0,\"score\":1}",
+                "{\"url\":\"https://mirror.xtom.com.hk/archlinux/\",\"protocol\":\"https\",\"active\":true,\"country\":\"Hong Kong\",\"country_code\":\"HK\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/xtom.com.hk/1068/\",\"delay\":1958,\"last_sync\":\"2024-12-08T15:20:00Z\",\"duration_avg\":0.6501466165270124,\"duration_stddev\":0.40968109900004196,\"completion_pct\":1.0,\"score\":2}",
+                "{\"url\":\"http://mirror-hk.koddos.net/archlinux/\",\"protocol\":\"http\",\"active\":true,\"country\":\"Hong Kong\",\"country_code\":\"HK\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/koddos.net/1180/\",\"delay\":11286,\"last_sync\":\"2024-12-08T10:19:37Z\",\"duration_avg\":0.45739383833748953,\"duration_stddev\":0.5246996014889324,\"completion_pct\":1.0,\"score\":4}",
+                "{\"url\":\"https://mirror-hk.koddos.net/archlinux/\",\"protocol\":\"https\",\"active\":true,\"country\":\"Hong Kong\",\"country_code\":\"HK\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/koddos.net/1181/\",\"delay\":11262,\"last_sync\":\"2024-12-08T10:19:37Z\",\"duration_avg\":0.7893232586740078,\"duration_stddev\":0.5229722864658138,\"completion_pct\":0.9942857142857143,\"score\":4}",
+                "{\"url\":\"https://asia.mirror.pkgbuild.com/\",\"protocol\":\"https\",\"active\":true,\"country\":\"Hong Kong\",\"country_code\":\"HK\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/geo.mirror.pkgbuild.com/1764/\",\"delay\":68,\"last_sync\":\"2024-12-08T15:25:09Z\",\"duration_avg\":0.5479571887425014,\"duration_stddev\":0.2460564969163475,\"completion_pct\":1.0,\"score\":1}"
+            ]
+        }
+    },
+    "network_config": {
+        "type": "nm"
+    },
+    "ntp": true,
+    "packages": [
+        "git"
+    ],
+    "parallel downloads": 5,
+    "profile_config": {
+        "gfx_driver": "All open-source",
+        "greeter": "sddm",
+        "profile": {
+            "custom_settings": {
+                "KDE Plasma": {},
+                "Qtile": {}
+            },
+            "details": [
+                "Qtile",
+                "KDE Plasma"
+            ],
+            "main": "Desktop"
+        }
+    },
+    "save_config": null,
+    "swap": true,
+    "timezone": "Hongkong",
+    "uki": false,
+    "version": "3.0.1"
+}
