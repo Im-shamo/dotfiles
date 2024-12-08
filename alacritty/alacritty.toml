@@ -1,4 +1,3 @@
-shell = "fish"
 [colors.primary]
     background = "#222222"
 [font]
@@ -10,3 +9,6 @@ shell = "fish"
 
 [window]
     opacity = 0.95
+
+[terminal]
+shell = "fish"
