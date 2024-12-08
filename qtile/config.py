@@ -57,7 +57,7 @@ normal_colors={
 
 file_explorer = "dolphin"
 mod = "mod4"
-terminal = "kitty"
+terminal = "alacritty"
 terminal_name = terminal
 #manu = "wofi --normal-window --show drun --allow-images"
 manu = "rofi -show drun -show-icons"
