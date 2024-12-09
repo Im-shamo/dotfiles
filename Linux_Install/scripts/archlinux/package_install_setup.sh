@@ -48,8 +48,8 @@ sudo pacman -S --noconfirm --needed \
 
 # bluetooth and printers
 sudo pacman -S --noconfirm --needed \
-    bluez bluez-utiles \
-    cpus cpus-pdf cups-pk-helper system-config-printer \
+    bluez bluez-utils \
+    cups cups-pdf cups-pk-helper system-config-printer \
 
 sudo usermod -aG lp $USER
 systemctl --user enable bluetooth.service cups.socket
