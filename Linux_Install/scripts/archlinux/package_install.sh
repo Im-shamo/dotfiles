@@ -18,12 +18,37 @@ fi
 
 sudo pacman -Syy
 
-# python development
+# Desktop usage
+# Qtile
 
-# c development
 
-# rust development
+# Hyprland
 
-# fonts
-echo "installing fonts"
-sudo pacman -S --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji otf-droid-nerd ttf-hack-nerd
+
+# Office / Productivity
+
+
+# Theming
+
+
+# Utility
+
+
+# Web
+
+
+# Game
+
+
+
+# 2. Development
+# Text editor
+
+
+# Python development
+
+
+# C development
+
+
+# Rust development
