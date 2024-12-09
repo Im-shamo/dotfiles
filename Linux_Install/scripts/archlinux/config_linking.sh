@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
-# config="$HOME/.config"
-config=$(pwd)/test
+config="$HOME/.config"
+# config=$(pwd)/test
 dots="$HOME/Clone/dotfiles"
 
 if [[ ! -d $dots ]]; then
