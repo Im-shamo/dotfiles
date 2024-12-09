@@ -41,7 +41,7 @@ echo "Installing Utility"
 sudo pacman -S --noconfirm --needed \
     wget vim curl udiskie conky man xorg-xrandr arandr \
     polkit polkit-gnome polkit-kde-agent gnome-keyring \
-    kitty alacarity \
+    kitty alacritty \
     nemo file-roller gnome-disk-utility exfat-utils ntfs-3g\
     flatpak 
 
@@ -52,7 +52,8 @@ sudo pacman -S --noconfirm --needed \
     cups cups-pdf cups-pk-helper system-config-printer \
 
 sudo usermod -aG lp $USER
-systemctl --user enable bluetooth.service cups.socket
+systemctl --user enable cups.socket
+sudo systemctl enable bluetooth.service
 
 
 # Office and Productivity
