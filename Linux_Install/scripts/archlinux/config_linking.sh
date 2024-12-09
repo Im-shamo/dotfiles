@@ -21,6 +21,11 @@ folders=("alacritty" "awesome" "fish" "hypr" "hyprlock" "kitty" "picom" "qtile" 
 for (( i=0; i<9; i++)); do
     target=$dots/${folders[$i]}
     location=$config/${folders[$i]}
+
+    # If the config file already exists, then rename it
+    if [[ -d $location ]]; then
+        mv $location $location.bak
+    fi
     if [[ ! -d $target ]]; then
         echo "$dots folder does not exists."
         exit 1
