@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-if ! command -v git > 2 > &1 > /dev/null; then
+if ! command -v git > 2 >&1 > /dev/null; then
     echo "install git"
     sudo pacman -S git
 fi
