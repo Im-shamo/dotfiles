@@ -18,6 +18,7 @@ fi
 sudo pacman -Syy
 sudo pacman -S --noconfirm --needed reflector
 sudo reflector -c HK,TW --sort rate -p https --save /etc/pacman.d/mirrorlist
+sudo pacman -Syyu
 
 # Desktop usage
 # Qtile
