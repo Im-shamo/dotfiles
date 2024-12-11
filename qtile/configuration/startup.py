@@ -8,7 +8,7 @@ if qtile.core.name == "x11":
 
     @hook.subscribe.startup_once
     def startup_once():
-        subprocess.Popen(os.path.json(scripts_dir, "x111_starup.sh"))
+        subprocess.Popen(os.path.join(scripts_dir, "x11_startup.sh"))
 
         ### Environment Variables ###
         # TODO: add environment variables
