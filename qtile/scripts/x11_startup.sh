@@ -21,5 +21,5 @@ $HOME/.config/qtile/scripts/nitrogen_wallpaper_changer.sh  &
 # |      Programs      |
 # |                    |
 # +--------------------+
-# picom &
+picom &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
