@@ -79,5 +79,5 @@ keys = [
     Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="Skip to next"),
     Key([], "XF86AudioPrev",  lazy.spawn("playerctl previous"), desc="Skip to previous"),
     
-    # Todo: Add the rest of the keyboard controls
+    # TODO: Add the rest of the keyboard controls
 ]

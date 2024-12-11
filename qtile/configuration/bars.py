@@ -93,7 +93,7 @@ def power_button(**kwargs):
         **kwargs
     )
 
-# Todo: Add wayland
+# TODO: Add wayland
 bars: dict[bar.Bar] = {
     "main": bar.Bar(
         [

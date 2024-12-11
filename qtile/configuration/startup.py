@@ -11,4 +11,4 @@ if qtile.core.name == "x11":
         subprocess.Popen(os.path.json(scripts_dir, "x111_starup.sh"))
 
         ### Environment Variables ###
-        # Todo: add environment variables
+        # TODO: add environment variables
