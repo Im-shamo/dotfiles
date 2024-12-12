@@ -1,32 +1,5 @@
 #!/usr/bin/bash
 
-while test $# -gt 0; do
-    case "$1" in
-        -h | --help )
-        echo "This script install packages for archlinux"
-        echo " "
-        echo "package_instal_setup.sh [options]"
-        echo ""
-        echo "options:"
-        echo "-h, --help                Show help"
-        echo "-i, --install <parts>     To install parts. Accepts a comma list."
-        echo "                          To install a whole section just type in the section name."
-        echo "                          Here are the available parts:"
-        echo " "
-        echo "                          desktop: qtile, hyprland"
-        echo " "
-        echo "                          programs: utility, bluetooth_printer, office"
-        echo "                                    theming, multimedia, game, communication"
-        echo "                                    password, fonts "
-        echo " "
-        echo "                          dev: code_clients, editor, c, python, rust, node"
-        echo " "
-        echo "                          virtualiztion: virtualbox "
-        exit 0
-    ;;
-    esac
-done
-
 # https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
 # Reset
 Color_Off='\033[0m'       # Text Reset
@@ -101,149 +74,391 @@ On_IPurple='\033[0;105m'  # Purple
 On_ICyan='\033[0;106m'    # Cyan
 On_IWhite='\033[0;107m'   # White
 
-if ! command -v git 2>&1 >/dev/null; then
-    echo "install git"
-    sudo pacman -S git
-fi
+sections=("desktop" "programs" "dev" "virtualization")
+parts=("qtile" "hyprland" "utility" "bluetooth_printer" "office" "theming"
+        "multimedia" "game" "communication" "password" "fonts" "code_clients"
+        "editor" "c" "python" "rust" "node" "virtualbox")
+declare -a downloaded
+declare -a install_list
 
-if ! command -v yay 2>&1 >/dev/null; then
-    echo "installing yay"
+
+function install_git {
+    echo -e "${Green}Install git${Color_Off}"
+    sudo pacman -S --noconfirm --needed git
+}
+
+function install_yay {
+    echo -e "${Green}Install yay${Color_Off}"
     temp=`mktemp -d`
     cd $temp
     git clone https://aur.archlinux.org/yay-bin.git
 
     cd yay-bin
-    makepkg -si
-fi
+    makepkg -si --needed --no-confirm
+    cd ~
+}
 
-sudo pacman -Syy
-sudo pacman -S --noconfirm --needed reflector
-sudo reflector -c HK,TW --sort rate -p https --save /etc/pacman.d/mirrorlist
-sudo pacman -Syyu
+
+function update_mirror {
+    sudo pacman -S --noconfirm --needed reflector
+    sudo reflector -c HK,TW --sort rate -p https --save /etc/pacman.d/mirrorlist
+}
 
 # Desktop usage
-# Qtile
-echo -e "\n${Red}Qtile Specific${Color_Off}"
-sudo pacman -S --noconfirm --needed \
-    picom rofi pavucontrol nitrogen dbus libnotify xorg-server-xephyr python-dbus-next
-yay -S --noconfirm --needed qtile-extras 
 
 
-# Hyprland
-echo -e "\n${Red}Hyprland Specific${Color_Off}"
-yay -S --noconfirm --needed \
-    hyprland-meta-git waybar
+function install_qtile {
+    downloaded+=("qtile")
+    # Qtile
+    echo -e "\n${Green}Qtile Specific${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        picom rofi pavucontrol nitrogen dbus libnotify xorg-server-xephyr python-dbus-next
+    yay -S --noconfirm --needed qtile-extras 
+}
+
+function install_hyprland {
+    downloaded+=("hyprland")
+    # Hyprland
+    echo -e "\n${Green}Hyprland Specific${Color_Off}"
+    yay -S --noconfirm --needed \
+        hyprland-meta-git waybar
+}
 
 
-# Utility
-echo -e "\n${Red}Installing Utility${Color_Off}"
+function install_desktop_all {
+    install_qtile
+    install_hyprland
+}
 
-# basic, polkit / keyring, termimal,
-# file manager / archiving / partitioning, application,
-sudo pacman -S --noconfirm --needed \
-    wget vim curl udiskie conky man xorg-xrandr arandr \
-    polkit polkit-gnome polkit-kde-agent gnome-keyring \
-    kitty alacritty fastfetch \
-    nemo file-roller gnome-disk-utility exfat-utils ntfs-3g\
-    flatpak 
+function install_utility {
+    downloaded+=("utility")
+    # Utility
+    echo -e "\n${Green}Installing Utility${Color_Off}"
 
+    # basic, polkit / keyring, termimal,
+    # file manager / archiving / partitioning, application,
+    sudo pacman -S --noconfirm --needed \
+        wget vim curl udiskie conky man xorg-xrandr arandr \
+        polkit polkit-gnome polkit-kde-agent gnome-keyring \
+        kitty alacritty fastfetch \
+        nemo file-roller gnome-disk-utility exfat-utils ntfs-3g\
+        flatpak 
+}    
 
-# bluetooth and printers
-echo -e "\n${Red}Bluetooth and Printers${Color_Off}"
-sudo pacman -S --noconfirm --needed \
-    bluez bluez-utils \
-    cups cups-pdf cups-pk-helper system-config-printer \
+function install_bluetooth_printers {
+    downloaded+=("bluetooth_printer")
+    # bluetooth and printers
+    echo -e "\n${Green}Bluetooth and Printers${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        bluez bluez-utils \
+        cups cups-pdf cups-pk-helper system-config-printer \
 
-sudo usermod -aG lp $USER
-sudo systemctl enable bluetooth.service cups.socket
+    sudo usermod -aG lp $USER
+    sudo systemctl enable bluetooth.service cups.socket
+}
 
+function install_office {
+    downloaded+=("office")
+    # Office and Productivity
+    echo -e "\n${Green}Office and Productivity Software${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        libreoffice-fresh
+}
 
-# Office and Productivity
-echo -e "\n${Red}Office and Productivity Software${Color_Off}"
-sudo pacman -S --noconfirm --needed \
-    libreoffice-fresh
+function install_theming {
+    downloaded+=("theming")
+    # Theming
+    echo -e "\n${Green}Theming${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        nwg-look breeze-gtk
+    yay -S --noconfirm --needed \
+        gradience
+}
 
+function install_multimedia {
+    downloaded+=("multimedia")
+    # Multimedia
+    echo -e "\n${Green}Multimedia Software${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        firefox vlc \
+        eog loupe curtail
+}
 
-# Theming
-echo -e "\n${Red}Theming${Color_Off}"
-sudo pacman -S --noconfirm --needed \
-    nwg-look breeze-gtk
-yay -S --noconfirm --needed \
-    gradience
+function install_game {
+    downloaded+=("game")
+    # Game
+    echo -e "\n${Green}Games${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        steam lutris
+}
 
-# Multimedia
-echo -e "\n${Red}Multimedia Software${Color_Off}"
-sudo pacman -S --noconfirm --needed \
-    firefox vlc \
-    eog loupe curtail
+function install_communication {
+    donwloaded+=("communication")
+    # Communication
+    echo -e "\n${Green}Communication Software${Color_Off}"
+    flatpak --noninteractive install flathub io.github.spacingbat3.webcord
+}
 
+function install_password {
+    downloaded+=("password")
+    # Password
+    echo -e "\n${Green}Secrets${Color_Off}"
+    flatpak --noninteractive install flathub org.keepassxc.KeePassXC
+}
 
-# Game
-echo -e "\n${Red}Games${Color_Off}"
-sudo pacman -S --noconfirm --needed \
-    steam lutris
+function install_fonts {
+    downloaded+=("fonts")
+    # Fonts
+    echo -e "\n${Green}Fonts${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        gnome-font-viewer \
+        noto-fonts noto-fonts-cjk noto-fonts-emoji otf-droid-nerd ttf-hack-nerd
+}
 
-
-# Communication
-echo -e "\n${Red}Communication Software${Color_Off}"
-flatpak --noninteractive install flathub io.github.spacingbat3.webcord
-
-
-# Password
-echo -e "\n${Red}Secrets${Color_Off}"
-flatpak --noninteractive install flathub org.keepassxc.KeePassXC
-
-
-# Fonts
-echo -e "\n${Red}Fonts${Color_Off}"
-sudo pacman -S --noconfirm --needed \
-    gnome-font-viewer \
-    noto-fonts noto-fonts-cjk noto-fonts-emoji otf-droid-nerd ttf-hack-nerd
-
+function install_programs_all {
+    install_utility
+    install_bluetooth_printers
+    install_office
+    install_theming
+    install_multimedia
+    install_game
+    install_communication
+    install_password
+    install_fonts
+}
 
 # 2. Development
-# Code forge clients
-echo -e "\n${Red}Code forge clients${Color_Off}"
-sudo pacman -S --noconfirm --needed \
-    github-cli
+function install_code_forge_clients {
+    donwloaded+=("code_clients")
+    # Code forge clients
+    echo -e "\n${Green}Code forge clients${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        github-cli
+}
 
+function install_text_editors {
+    donwloaded+=("editor")
+    # Text editor
+    echo -e "\n${Green}Test editor${Color_Off}"
+    yay -S --noconfirm --needed \
+        visual-studio-code-bin
+}
 
-# Text editor
-echo -e "\n${Red}Test editor${Color_Off}"
-yay -S --noconfirm --needed \
-    visual-studio-code-bin
+function install_python_dev {
+    donwloaded+=("python")
+    # Python development
+    echo -e "\n${Green}Python Development${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        python python-pip python-pipx 
+}
 
+function install_c_dev {
+    donwloaded+=("c")
+    # C development
+    echo -e "\n${Green}C Development${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        gcc gdb
+}
 
-# Python development
-echo -e "\n${Red}Python Development${Color_Off}"
-sudo pacman -S --noconfirm --needed \
-    python python-pip python-pipx 
+function install_rust_dev {
+    donwloaded+=("rust")
+    # Rust development
+    echo -e "\n${Green}Rust Development${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        rustup
+}
 
+function install_node_dev {
+    donwloaded+=("node")
+    # Node.js
+    echo -e "\n${Green}Node.js${Color_Off}"
+    yay -S --noconfirm --needed \
+        nvm npm
 
-# C development
-echo -e "\n${Red}C Development${Color_Off}"
-sudo pacman -S --noconfirm --needed \
-    gcc gdb
+    nvm install node
+}
 
-
-# Rust development
-echo -e "\n${Red}Rust Development${Color_Off}"
-sudo pacman -S --noconfirm --needed \
-    rustup
-
-
-# Node.js
-echo -e "\n${Red}Node.js${Color_Off}"
-yay -S --noconfirm --needed \
-    nvm npm
-
-nvm install node
-
+function install_dev_all {
+    install_code_forge_clients
+    install_c_dev
+    install_python_dev
+    install_rust_dev
+    install_node_dev
+}
 
 # 3. Virtualization
-# VirtualBox
-echo -e "\n${Red}VirtualBox${Color_Off}"
-sudo pacman -S --noconfirm --needed \
-    virtualbox virtualbox-host-modules-lts virtualbox-guest-iso 
-yay -S --noconfirm --needed \
-    virtualbox-ext-oracle
+function install_virtualbox {
+    donwloaded+=("virtualbox")
+    # VirtualBox
+    echo -e "\n${Red}VirtualBox${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        virtualbox virtualbox-host-modules-lts virtualbox-guest-iso 
+    yay -S --noconfirm --needed \
+        virtualbox-ext-oracle
+}
+
+# TODO: add kvm/quem
+
+
+
+function install_virtualization_all {
+    install_virutalbox
+}
+
+
+function installation {
+    sudo pacman -Syy
+    install_git
+    install_yay
+    update_mirror
+    sudo pacman -Syy
+    for part in ${install_list[@]}; do
+        case "$part" in
+            # section
+            desktop )
+                install_desktop_all
+            ;;
+            program )
+                install_programs_all
+            ;;
+            dev )
+                install_dev_all
+            ;;
+            virtualization )
+                install_virtualization_all
+            ;;
+
+            # window manager
+            qtile )
+                install_qtile
+            ;;
+            hyprland )
+                install_hyprland
+            ;;
+            # desktop section
+            utility )
+                install_utility
+            ;;
+            bluetooth_printer )
+                install_bluetooth_printers
+            ;;
+            office )
+                install_office
+            ;;
+            theming )
+                install_theming
+            ;;
+            multimedia )
+                install_multimedia
+            ;;
+            game )
+                install_game
+            ;;
+            communication )
+                install_communication
+            ;;
+            password )
+                install_fonts
+            ;;
+            fonts )
+                install_fonts
+            ;;
+            # dev
+            code_forge_clients )
+                install_code_forge_clients
+            ;;
+            editor )
+                install_text_editors
+            ;;
+            c )
+                install_c_dev
+            ;;
+            python )
+                install_python_dev
+            ;;
+            rust )
+                install_rust_dev
+            ;;
+            node )
+                install_node_dev
+            ;;
+            # virtualization
+            virtualbox )
+                install_virtualbox
+            ;;
+            
+            # error
+            * )
+                echo -e "${Red}Unknown ${part} part${Colour_Off}"
+            ;;
+        esac
+
+    done
+ 
+}
+
+
+while test $# -gt 0; do
+    case "$1" in
+        -h | --help )
+        echo "This script install packages for archlinux"
+        echo " "
+        echo "package_instal_setup.sh [options]"
+        echo ""
+        echo "options:"
+        echo "-h, --help                Show help"
+        echo "-i <parts>, --install <parts>"
+        echo "                          Accepts a comma list."
+        echo "                          To install a whole section just type in the section name."
+        echo "                          Here are the available parts:"
+        echo " "
+        echo "                          desktop: qtile, hyprland"
+        echo " "
+        echo "                          programs: utility, bluetooth_printer, office"
+        echo "                                    theming, multimedia, game, communication"
+        echo "                                    password, fonts "
+        echo " "
+        echo "                          dev: code_clients, editor, c, python, rust, node"
+        echo " "
+        echo "                          virtualization: virtualbox "
+        exit 0
+    ;;
+        -i | --install )
+        shift
+        if test $# -gt 0; then
+            IFS=',' read -r -a install_list <<< "$1"
+        fi
+        installation
+        exit 0
+    ;;
+        -e | --exclude )
+        shift
+        if test $# -gt 0; then
+            IFS=',' read -r -a exclude_list <<< "$1"
+        fi
+        declare -i counter=0
+        declare -p exclude_list
+        for part in ${parts[@]}; do
+            counter=$((0))
+            if test -z ${exclude_list[@]}; then
+                install_list+=($part)
+            else
+                for ex in ${exclude_list[@]}; do
+                    if test $part != $ex; then
+                        install_list+=($part)
+                    else
+                        unset "exclude_list[counter]"
+                    fi
+                    counter=$((counter + 1))
+                done
+            fi
+        done
+        installation
+        exit 0
+    ;;
+    * )
+        break
+    ;;
+    esac
+done
+
