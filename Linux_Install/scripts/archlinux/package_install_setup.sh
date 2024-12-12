@@ -1,5 +1,32 @@
 #!/usr/bin/bash
 
+while test $# -gt 0; do
+    case "$1" in
+        -h | --help )
+        echo "This script install packages for archlinux"
+        echo " "
+        echo "package_instal_setup.sh [options]"
+        echo ""
+        echo "options:"
+        echo "-h, --help                Show help"
+        echo "-i, --install <parts>     To install parts. Accepts a comma list."
+        echo "                          To install a whole section just type in the section name."
+        echo "                          Here are the available parts:"
+        echo " "
+        echo "                          desktop: qtile, hyprland"
+        echo " "
+        echo "                          programs: utility, bluetooth_printer, office"
+        echo "                                    theming, multimedia, game, communication"
+        echo "                                    password, fonts "
+        echo " "
+        echo "                          dev: code_clients, editor, c, python, rust, node"
+        echo " "
+        echo "                          virtualiztion: virtualbox "
+        exit 0
+    ;;
+    esac
+done
+
 # https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
 # Reset
 Color_Off='\033[0m'       # Text Reset
@@ -74,12 +101,12 @@ On_IPurple='\033[0;105m'  # Purple
 On_ICyan='\033[0;106m'    # Cyan
 On_IWhite='\033[0;107m'   # White
 
-if ! command -v git>2>&1>/dev/null; then
+if ! command -v git 2>&1 >/dev/null; then
     echo "install git"
     sudo pacman -S git
 fi
 
-if ! command -v yay>2>&1>/dev/null; then
+if ! command -v yay 2>&1 >/dev/null; then
     echo "installing yay"
     temp=`mktemp -d`
     cd $temp
@@ -116,7 +143,7 @@ echo -e "\n${Red}Installing Utility${Color_Off}"
 sudo pacman -S --noconfirm --needed \
     wget vim curl udiskie conky man xorg-xrandr arandr \
     polkit polkit-gnome polkit-kde-agent gnome-keyring \
-    kitty alacritty \
+    kitty alacritty fastfetch \
     nemo file-roller gnome-disk-utility exfat-utils ntfs-3g\
     flatpak 
 
