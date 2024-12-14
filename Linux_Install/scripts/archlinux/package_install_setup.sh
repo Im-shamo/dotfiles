@@ -75,9 +75,11 @@ On_ICyan='\033[0;106m'    # Cyan
 On_IWhite='\033[0;107m'   # White
 
 sections=("desktop" "programs" "drivers" "dev" "virtualization")
-parts=("qtile" "hyprland" "utility" "office" "theming"
-        "multimedia" "file_sharing" "game" "communication" "password" "fonts" "bluetooth" "printer" "code_forge_client"
+parts=("qtile" "hyprland" "kde" "utility" "office" "theming"
+        "multimedia" "file_sharing" "game" "communication" "password" "fonts" "bluetooth" "printer" "audio" "code_forge_clients"
         "editor" "c" "python" "rust" "node" "virtualbox")
+
+skip=false
 declare -a downloaded
 declare -a install_list
 
@@ -112,7 +114,8 @@ function install_qtile {
     # Qtile
     echo -e "\n${Green}Qtile Specific${Color_Off}"
     sudo pacman -S --noconfirm --needed \
-        picom rofi pavucontrol nitrogen dbus libnotify xorg-server-xephyr python-dbus-next
+        picom rofi pavucontrol nitrogen dbus libnotify xorg-server-xephyr python-dbus-next \
+        python-psutil
     yay -S --noconfirm --needed qtile-extras 
 }
 
@@ -122,6 +125,15 @@ function install_hyprland {
     echo -e "\n${Green}Hyprland Specific${Color_Off}"
     yay -S --noconfirm --needed \
         hyprland-meta-git waybar
+}
+
+function install_kde {
+    downlaoded+=("kde")
+    echo -e "\n${green}KDE plasma${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        kde-utilities-meta kde-system-meta kde-network-meta tesseract-data-eng \
+        systemsettings plasma-desktop
+
 }
 
 
@@ -143,7 +155,6 @@ function install_utility {
         kitty alacritty fastfetch \
         nemo file-roller gnome-disk-utility exfat-utils ntfs-3g\
         flatpak \
-        tesseract-data-eng kde-utilities-meta kde-system-meta \
         tk
         
     
@@ -175,8 +186,7 @@ function install_multimedia {
     echo -e "\n${Green}Multimedia Software${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         firefox vlc \
-        eog loupe curtail \
-        kde-network-meta
+        eog loupe curtail 
 }
 function install_file_sharing {
     downloaded+=("file_sharing")
@@ -245,6 +255,15 @@ function install_printer {
     sudo systemctl enable cups.socket
 }
 
+function install_audio {
+    downloaded+=("audio")
+    sudo pacman -S --noconfirm --needed \
+        pipewire lib32-pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse \
+        pipewire-v4l2
+
+    systemctl --user enable pipewire-pulse.service
+}
+
 # function install_nvidia {
 #     # TODO: finish nvidia driver install
 # }
@@ -252,6 +271,7 @@ function install_printer {
 function install_drivers {
     install_bluetooth
     install_printer
+    install_audio
 }
 
 
@@ -348,11 +368,13 @@ function install_list_from_exclude {
 }
 
 function installation {
-    sudo pacman -Syy
-    install_git
-    install_yay
-    update_mirror
-    sudo pacman -Syy
+    if test "$skip" = false; then
+        sudo pacman -Syy
+        install_git
+        install_yay
+        update_mirror
+        sudo pacman -Syy
+    fi
     for part in ${install_list[@]}; do
         case "$part" in
             # section
@@ -378,6 +400,9 @@ function installation {
             ;;
             hyprland )
                 install_hyprland
+            ;;
+            kde )
+                install_kde
             ;;
             # desktop section
             utility )
@@ -413,6 +438,9 @@ function installation {
             ;;
             printer )
                 install_printer
+            ;;
+            audio )
+                install_audio
             ;;
             # dev
             code_forge_clients )
@@ -461,15 +489,15 @@ function help {
         echo "                          Install all parts "
         echo "                          Here are the available parts:"
         echo " "
-        echo "                          desktop: qtile, hyprland"
+        echo "                          desktop: qtile, hyprland, kde"
         echo " "
         echo "                          programs: utility, bluetooth_printer, office"
         echo "                                    theming, multimedia, file_sharing, game, communication"
         echo "                                    password, fonts "
         echo " "
-        echo "                          drivers: bluetooth, printer"
+        echo "                          drivers: bluetooth, printer, audio"
         echo " "
-        echo "                          dev: code_forge_client, editor, c, python, rust, node"
+        echo "                          dev: code_forge_clients, editor, c, python, rust, node"
         echo " "
         echo "                          virtualization: virtualbox "
         echo " "
@@ -478,6 +506,8 @@ function help {
         echo " "
         echo "-e <parts>, --exclude <parts>"
         echo "                          Accepts a comma seperated list to exclude."
+        echo " "
+        echo "--skip                    Skips the setups"
 }
 
 if test $# -eq 0; then
@@ -515,6 +545,10 @@ while test $# -gt 0; do
         install_list=("${parts[@]}")
         installation
         exit 0
+    ;;
+        --skip )
+        shift
+        skip=true
     ;;
     * )
         break
