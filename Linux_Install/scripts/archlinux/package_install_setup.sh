@@ -74,9 +74,9 @@ On_IPurple='\033[0;105m'  # Purple
 On_ICyan='\033[0;106m'    # Cyan
 On_IWhite='\033[0;107m'   # White
 
-sections=("desktop" "programs" "dev" "virtualization")
-parts=("qtile" "hyprland" "utility" "bluetooth_printer" "office" "theming"
-        "multimedia" "game" "communication" "password" "fonts" "code_forge_client"
+sections=("desktop" "programs" "drivers" "dev" "virtualization")
+parts=("qtile" "hyprland" "utility" "office" "theming"
+        "multimedia" "file_sharing" "game" "communication" "password" "fonts" "bluetooth" "printer" "code_forge_client"
         "editor" "c" "python" "rust" "node" "virtualbox")
 declare -a downloaded
 declare -a install_list
@@ -138,24 +138,15 @@ function install_utility {
     # basic, polkit / keyring, termimal,
     # file manager / archiving / partitioning, application,
     sudo pacman -S --noconfirm --needed \
-        wget vim curl udiskie conky man xorg-xrandr arandr \
+        vim udiskie conky man xorg-xrandr arandr \
         polkit polkit-gnome polkit-kde-agent gnome-keyring \
         kitty alacritty fastfetch \
         nemo file-roller gnome-disk-utility exfat-utils ntfs-3g\
         flatpak 
+    
+    yay -S --noconfirm --needed \
+        clipse
 }    
-
-function install_bluetooth_printers {
-    downloaded+=("bluetooth_printer")
-    # bluetooth and printers
-    echo -e "\n${Green}Bluetooth and Printers${Color_Off}"
-    sudo pacman -S --noconfirm --needed \
-        bluez bluez-utils \
-        cups cups-pdf cups-pk-helper system-config-printer \
-
-    sudo usermod -aG lp $USER
-    sudo systemctl enable bluetooth.service cups.socket
-}
 
 function install_office {
     downloaded+=("office")
@@ -183,7 +174,14 @@ function install_multimedia {
         firefox vlc \
         eog loupe curtail
 }
+function install_file_sharing {
+    downloaded+=("file_sharing")
 
+    echo -e "\n${Green}File sharing${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        qbittorrent curl wget
+    
+}
 function install_game {
     downloaded+=("game")
     # Game
@@ -193,7 +191,7 @@ function install_game {
 }
 
 function install_communication {
-    donwloaded+=("communication")
+    downloaded+=("communication")
     # Communication
     echo -e "\n${Green}Communication Software${Color_Off}"
     flatpak --noninteractive install flathub io.github.spacingbat3.webcord
@@ -217,7 +215,6 @@ function install_fonts {
 
 function install_programs_all {
     install_utility
-    install_bluetooth_printers
     install_office
     install_theming
     install_multimedia
@@ -227,9 +224,36 @@ function install_programs_all {
     install_fonts
 }
 
-# 2. Development
+# 2. Drivers
+function install_bluetooth {
+    downloaded+=("bluetooth")
+    sudo pacman -S --noconfirm --needed \
+        bluez bluez-utils blueman
+    sudo usermod -aG lp $USER
+    sudo systemctl enable bluetooth.service
+}
+
+function install_printer {
+    downloaded+=("printer")
+    sudo pacman -S --noconfirm --needed \
+        cups cups-pdf cups-pk-helper system-config-printer
+    sudo usermod -aG lp $USER
+    sudo systemctl enable cups.socket
+}
+
+# function install_nvidia {
+#     # TODO: finish nvidia driver install
+# }
+
+function install_drivers {
+    install_bluetooth
+    install_printer
+}
+
+
+# 3. Development
 function install_code_forge_clients {
-    donwloaded+=("code_clients")
+    downloaded+=("code_clients")
     # Code forge clients
     echo -e "\n${Green}Code forge clients${Color_Off}"
     sudo pacman -S --noconfirm --needed \
@@ -237,7 +261,7 @@ function install_code_forge_clients {
 }
 
 function install_text_editors {
-    donwloaded+=("editor")
+    downloaded+=("editor")
     # Text editor
     echo -e "\n${Green}Test editor${Color_Off}"
     yay -S --noconfirm --needed \
@@ -245,7 +269,7 @@ function install_text_editors {
 }
 
 function install_python_dev {
-    donwloaded+=("python")
+    downloaded+=("python")
     # Python development
     echo -e "\n${Green}Python Development${Color_Off}"
     sudo pacman -S --noconfirm --needed \
@@ -253,7 +277,7 @@ function install_python_dev {
 }
 
 function install_c_dev {
-    donwloaded+=("c")
+    downloaded+=("c")
     # C development
     echo -e "\n${Green}C Development${Color_Off}"
     sudo pacman -S --noconfirm --needed \
@@ -261,7 +285,7 @@ function install_c_dev {
 }
 
 function install_rust_dev {
-    donwloaded+=("rust")
+    downloaded+=("rust")
     # Rust development
     echo -e "\n${Green}Rust Development${Color_Off}"
     sudo pacman -S --noconfirm --needed \
@@ -269,7 +293,7 @@ function install_rust_dev {
 }
 
 function install_node_dev {
-    donwloaded+=("node")
+    downloaded+=("node")
     # Node.js
     echo -e "\n${Green}Node.js${Color_Off}"
     yay -S --noconfirm --needed \
@@ -288,7 +312,7 @@ function install_dev_all {
 
 # 3. Virtualization
 function install_virtualbox {
-    donwloaded+=("virtualbox")
+    downloaded+=("virtualbox")
     # VirtualBox
     echo -e "\n${Green}VirtualBox${Color_Off}"
     sudo pacman -S --noconfirm --needed \
@@ -335,6 +359,9 @@ function installation {
             program )
                 install_programs_all
             ;;
+            drivers )
+                install_drivers
+            ;;
             dev )
                 install_dev_all
             ;;
@@ -353,9 +380,6 @@ function installation {
             utility )
                 install_utility
             ;;
-            bluetooth_printer )
-                install_bluetooth_printers
-            ;;
             office )
                 install_office
             ;;
@@ -364,6 +388,9 @@ function installation {
             ;;
             multimedia )
                 install_multimedia
+            ;;
+            file_sharing )
+                install_file_sharing
             ;;
             game )
                 install_game
@@ -376,6 +403,13 @@ function installation {
             ;;
             fonts )
                 install_fonts
+            ;;
+            # drivers
+            bluetooth )
+                install_bluetooth
+            ;;
+            printer )
+                install_printer
             ;;
             # dev
             code_forge_clients )
@@ -412,30 +446,46 @@ function installation {
  
 }
 
-
-while test $# -gt 0; do
-    case "$1" in
-        -h | --help )
+function help {
         echo "This script install packages for archlinux"
         echo " "
         echo "package_instal_setup.sh [options]"
         echo ""
         echo "options:"
         echo "-h, --help                Show help"
-        echo "-i <parts>, --install <parts>"
-        echo "                          Accepts a comma list."
-        echo "                          To install a whole section just type in the section name."
+        echo " "
+        echo "-a, --all"
+        echo "                          Install all parts "
         echo "                          Here are the available parts:"
         echo " "
         echo "                          desktop: qtile, hyprland"
         echo " "
         echo "                          programs: utility, bluetooth_printer, office"
-        echo "                                    theming, multimedia, game, communication"
+        echo "                                    theming, multimedia, file_sharing, game, communication"
         echo "                                    password, fonts "
+        echo " "
+        echo "                          drivers: bluetooth, printer"
         echo " "
         echo "                          dev: code_forge_client, editor, c, python, rust, node"
         echo " "
         echo "                          virtualization: virtualbox "
+        echo " "
+        echo "-i <parts>, --install <parts>"
+        echo "                          Accepts a comma seperated list to install."
+        echo " "
+        echo "-e <parts>, --exclude <parts>"
+        echo "                          Accepts a comma seperated list to exclude."
+}
+
+if test $# -eq 0; then
+    help
+    exit 0
+fi
+
+while test $# -gt 0; do
+    case "$1" in
+        -h | --help )
+        help
         exit 0
     ;;
         -i | --install )
@@ -457,6 +507,11 @@ while test $# -gt 0; do
             exit 0
         fi
     ;;
+        -a | --a )
+        shift
+        install_list=("${parts[@]}")
+        installation
+        exit 0
     * )
         break
     ;;
