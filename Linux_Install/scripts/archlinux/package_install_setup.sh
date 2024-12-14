@@ -76,7 +76,7 @@ On_IWhite='\033[0;107m'   # White
 
 sections=("desktop" "programs" "dev" "virtualization")
 parts=("qtile" "hyprland" "utility" "bluetooth_printer" "office" "theming"
-        "multimedia" "game" "communication" "password" "fonts" "code_clients"
+        "multimedia" "game" "communication" "password" "fonts" "code_forge_client"
         "editor" "c" "python" "rust" "node" "virtualbox")
 declare -a downloaded
 declare -a install_list
@@ -290,7 +290,7 @@ function install_dev_all {
 function install_virtualbox {
     donwloaded+=("virtualbox")
     # VirtualBox
-    echo -e "\n${Red}VirtualBox${Color_Off}"
+    echo -e "\n${Green}VirtualBox${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         virtualbox virtualbox-host-modules-lts virtualbox-guest-iso 
     yay -S --noconfirm --needed \
@@ -305,6 +305,20 @@ function install_virtualization_all {
     install_virutalbox
 }
 
+
+function install_list_from_exclude {
+    for part in "${parts[@]}"; do
+        if test "${#exclude_list[@]}" -eq 0; then
+            install_list+=("${part}")
+        else
+            for ((i=0; i<"${#exclude_list[@]}"; i++)); do
+                if test "${part}" != "${exclude_list[$i]}"; then
+                    install_list+=("${part}")
+                fi
+            done
+        fi
+    done
+}
 
 function installation {
     sudo pacman -Syy
@@ -377,7 +391,7 @@ function installation {
                 install_python_dev
             ;;
             rust )
-                install_rust_dev
+                install_rust_devcode_clients
             ;;
             node )
                 install_node_dev
@@ -389,7 +403,7 @@ function installation {
             
             # error
             * )
-                echo -e "${Red}Unknown ${part} part${Colour_Off}"
+                echo -e "${Red}Unknown part: ${part}"
             ;;
         esac
 
@@ -418,7 +432,7 @@ while test $# -gt 0; do
         echo "                                    theming, multimedia, game, communication"
         echo "                                    password, fonts "
         echo " "
-        echo "                          dev: code_clients, editor, c, python, rust, node"
+        echo "                          dev: code_forge_client, editor, c, python, rust, node"
         echo " "
         echo "                          virtualization: virtualbox "
         exit 0
@@ -427,34 +441,20 @@ while test $# -gt 0; do
         shift
         if test $# -gt 0; then
             IFS=',' read -r -a install_list <<< "$1"
+
+            installation
+            exit 0
         fi
-        installation
-        exit 0
     ;;
         -e | --exclude )
         shift
         if test $# -gt 0; then
             IFS=',' read -r -a exclude_list <<< "$1"
+
+            install_list_from_exclude
+            installation
+            exit 0
         fi
-        declare -i counter=0
-        declare -p exclude_list
-        for part in ${parts[@]}; do
-            counter=$((0))
-            if test -z ${exclude_list[@]}; then
-                install_list+=($part)
-            else
-                for ex in ${exclude_list[@]}; do
-                    if test $part != $ex; then
-                        install_list+=($part)
-                    else
-                        unset "exclude_list[counter]"
-                    fi
-                    counter=$((counter + 1))
-                done
-            fi
-        done
-        installation
-        exit 0
     ;;
     * )
         break
