@@ -143,7 +143,8 @@ function install_utility {
         kitty alacritty fastfetch \
         nemo file-roller gnome-disk-utility exfat-utils ntfs-3g\
         flatpak \
-        tesseract-data-eng kde-utilities-meta kde-system-meta
+        tesseract-data-eng kde-utilities-meta kde-system-meta \
+        tk
         
     
     yay -S --noconfirm --needed \
