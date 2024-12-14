@@ -18,6 +18,7 @@ floating_layout = layout.Floating(
         Match(title="pinentry"),                    # GPG key password entry
         Match(wm_class="Conky-Sysinfo"),
         Match(wm_class="gnome-screenshot"),
+        Match(wm_class="clipse")
     ]
 )
 
