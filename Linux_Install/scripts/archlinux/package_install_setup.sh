@@ -391,7 +391,8 @@ function installation {
                 install_python_dev
             ;;
             rust )
-                install_rust_devcode_clients
+                install_rust_dev
+                code_clients
             ;;
             node )
                 install_node_dev
