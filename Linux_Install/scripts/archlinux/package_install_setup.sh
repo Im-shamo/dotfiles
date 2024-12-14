@@ -138,7 +138,7 @@ function install_utility {
     # basic, polkit / keyring, termimal,
     # file manager / archiving / partitioning, application,
     sudo pacman -S --noconfirm --needed \
-        vim udiskie conky man xorg-xrandr arandr \
+        vim udiskie conky man xorg-xrandr arandr man less \
         polkit polkit-gnome polkit-kde-agent gnome-keyring \
         kitty alacritty fastfetch \
         nemo file-roller gnome-disk-utility exfat-utils ntfs-3g\
