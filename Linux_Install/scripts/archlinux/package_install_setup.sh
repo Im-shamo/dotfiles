@@ -94,7 +94,7 @@ function install_yay {
     git clone https://aur.archlinux.org/yay-bin.git
 
     cd yay-bin
-    makepkg -si --needed --no-confirm
+    makepkg -si --needed --noconfirm
     cd ~
 }
 
@@ -142,7 +142,9 @@ function install_utility {
         polkit polkit-gnome polkit-kde-agent gnome-keyring \
         kitty alacritty fastfetch \
         nemo file-roller gnome-disk-utility exfat-utils ntfs-3g\
-        flatpak 
+        flatpak \
+        tesseract-data-eng kde-utilities-meta kde-system-meta
+        
     
     yay -S --noconfirm --needed \
         clipse
@@ -172,7 +174,8 @@ function install_multimedia {
     echo -e "\n${Green}Multimedia Software${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         firefox vlc \
-        eog loupe curtail
+        eog loupe curtail \
+        kde-network-meta
 }
 function install_file_sharing {
     downloaded+=("file_sharing")
@@ -299,7 +302,6 @@ function install_node_dev {
     yay -S --noconfirm --needed \
         nvm npm
 
-    nvm install node
 }
 
 function install_dev_all {
@@ -512,6 +514,7 @@ while test $# -gt 0; do
         install_list=("${parts[@]}")
         installation
         exit 0
+    ;;
     * )
         break
     ;;
