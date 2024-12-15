@@ -76,7 +76,7 @@ On_IWhite='\033[0;107m'   # White
 
 sections=("desktop" "programs" "drivers" "dev" "virtualization")
 parts=("qtile" "hyprland" "kde" "utility" "office" "theming"
-        "multimedia" "file_sharing" "game" "communication" "password" "fonts" "bluetooth" "printer" "audio" "code_forge_clients"
+        "multimedia" "file_sharing" "game" "communication" "password" "fonts" "backup" "bluetooth" "printer" "audio" "nvidia" "code_forge_clients"
         "editor" "c" "python" "rust" "node" "virtualbox")
 
 skip=false
@@ -103,7 +103,7 @@ function install_yay {
 
 function update_mirror {
     sudo pacman -S --noconfirm --needed reflector
-    sudo reflector -c HK,TW --sort rate -p https --save /etc/pacman.d/mirrorlist
+    sudo reflector -c HK --sort rate -p https --save /etc/pacman.d/mirrorlist
 }
 
 # Desktop usage
@@ -129,10 +129,10 @@ function install_hyprland {
 
 function install_kde {
     downlaoded+=("kde")
-    echo -e "\n${green}KDE plasma${Color_Off}"
+    echo -e "\n${Green}KDE plasma${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         kde-utilities-meta kde-system-meta kde-network-meta tesseract-data-eng \
-        systemsettings plasma-desktop
+        systemsettings plasma-desktop filelight
 
 }
 
@@ -140,6 +140,7 @@ function install_kde {
 function install_desktop_all {
     install_qtile
     install_hyprland
+    install_kde
 }
 
 function install_utility {
@@ -227,6 +228,13 @@ function install_fonts {
         noto-fonts noto-fonts-cjk noto-fonts-emoji otf-droid-nerd ttf-hack-nerd
 }
 
+function install_backup {
+    downloaded+=("backup")
+    echo -e "\n${Green}Backup${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        timeshift
+}
+
 function install_programs_all {
     install_utility
     install_office
@@ -236,6 +244,7 @@ function install_programs_all {
     install_communication
     install_password
     install_fonts
+    install_backup
 }
 
 # 2. Drivers
@@ -264,9 +273,11 @@ function install_audio {
     systemctl --user enable pipewire-pulse.service
 }
 
-# function install_nvidia {
-#     # TODO: finish nvidia driver install
-# }
+function install_nvidia {
+    downloaded+=("nvidia")
+    sudo pacman -S --noconfirm --needed \
+        dkms linux-headers nvidia-open-dkms nvidia-utils lib32-nvidia-utils
+}
 
 function install_drivers {
     install_bluetooth
@@ -347,7 +358,6 @@ function install_virtualbox {
 # TODO: add kvm/quem
 
 
-
 function install_virtualization_all {
     install_virutalbox
 }
@@ -365,6 +375,10 @@ function install_list_from_exclude {
             done
         fi
     done
+}
+
+function finished_success {
+    echo -e "\n${Green}Finished Install!${Color_Off}"
 }
 
 function installation {
@@ -427,10 +441,13 @@ function installation {
                 install_communication
             ;;
             password )
-                install_fonts
+                install_password
             ;;
             fonts )
                 install_fonts
+            ;;
+            backup )
+                install_backup
             ;;
             # drivers
             bluetooth )
@@ -441,6 +458,9 @@ function installation {
             ;;
             audio )
                 install_audio
+            ;;
+            nvidia )
+                install_nvidia
             ;;
             # dev
             code_forge_clients )
@@ -493,7 +513,7 @@ function help {
         echo " "
         echo "                          programs: utility, bluetooth_printer, office"
         echo "                                    theming, multimedia, file_sharing, game, communication"
-        echo "                                    password, fonts "
+        echo "                                    password, fonts, backup"
         echo " "
         echo "                          drivers: bluetooth, printer, audio"
         echo " "
@@ -540,7 +560,7 @@ while test $# -gt 0; do
             exit 0
         fi
     ;;
-        -a | --a )
+        -a | --all )
         shift
         install_list=("${parts[@]}")
         installation
