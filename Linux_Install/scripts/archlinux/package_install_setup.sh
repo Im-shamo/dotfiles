@@ -91,6 +91,7 @@ function install_git {
 
 function install_yay {
     echo -e "${Green}Install yay${Color_Off}"
+    sudo pacman -S --noconfirm --needed base-devel
     temp=`mktemp -d`
     cd $temp
     git clone https://aur.archlinux.org/yay-bin.git
@@ -279,6 +280,18 @@ function install_nvidia {
         dkms linux-headers nvidia-open-dkms nvidia-utils lib32-nvidia-utils
 }
 
+function install_nvidia_closed {
+    downloaded+=("nvidia")
+    sudo pacman -S --noconfirm --needed \
+        dkms linux-headers nvidia-dkms nvidia-utils lib32-nvidia-utils
+}
+
+function install_amd {
+    downloaded+=("amd")
+    sudo pacman -S --noconfirm --needed \
+	xf86-video-amdgpu mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon
+}
+
 function install_drivers {
     install_bluetooth
     install_printer
@@ -462,6 +475,12 @@ function installation {
             nvidia )
                 install_nvidia
             ;;
+	    nvidia_closed )
+		install_nvidia_closed
+	    ;;
+            amd )
+	    	install_amd
+	    ;;
             # dev
             code_forge_clients )
                 install_code_forge_clients
@@ -515,7 +534,7 @@ function help {
         echo "                                    theming, multimedia, file_sharing, game, communication"
         echo "                                    password, fonts, backup"
         echo " "
-        echo "                          drivers: bluetooth, printer, audio"
+        echo "                          drivers: bluetooth, printer, audio, nvidia, nvidia_closed, amd"
         echo " "
         echo "                          dev: code_forge_clients, editor, c, python, rust, node"
         echo " "
