@@ -1,17 +1,21 @@
 import os
+
+### Key ###
 mod = "mod4"
 
+### Programs ###
 file_explorer = "dolphin"
 
 terminal = "alacritty"
 terminal_name = terminal
 
-#manu = "wofi --normal-window --show drun --allow-images"
-manu = "rofi -show drun -show-icons"
+#menu = "wofi --normal-window --show drun --allow-images"
+menu = "rofi -show drun -show-icons"
 
 browser = "firefox"
 code_editor = "code"
 
+### Widgets ###
 mono_font = "DroidSansM Nerd Font"
 
 colours = {
