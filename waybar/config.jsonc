@@ -256,8 +256,8 @@
 
 	"custom/powerbutton": {
 		"format": "󰐥",
-		// "on-click": "rofi -show power-menu -theme rounded-green-dark -modi 'power-menu:/home/shamokwok/Clone/dotfiles/hypr/scripts/rofi-power-menu'",
-		"on-click": "tschuss",
+		"on-click": "rofi -show power-menu -modi 'power-menu:/home/shamokwok/.config/waybar/scripts/rofi-power-menu'",
+		// "on-click": "tschuss",
 		"tooltip": false
 	},
 
