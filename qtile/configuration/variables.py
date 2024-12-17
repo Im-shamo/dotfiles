@@ -6,7 +6,7 @@ mod = "mod4"
 ### Programs ###
 file_explorer = "dolphin"
 
-terminal = "alacritty"
+terminal = "kitty"
 terminal_name = terminal
 
 #menu = "wofi --normal-window --show drun --allow-images"
