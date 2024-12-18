@@ -241,7 +241,7 @@ function install_wine {
     echo -e "\n${Green}Wine${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         wine wine-gecko wine-mono winetricks\
-        lib32-pipewire lib32-libpulse lib32-alsa lib32-alsa-lib lib32-alsa-plugins
+        lib32-pipewire lib32-libpulse lib32-alsa-lib lib32-alsa-plugins
 }
 
 function install_programs_all {
