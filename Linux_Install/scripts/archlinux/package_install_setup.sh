@@ -76,7 +76,7 @@ On_IWhite='\033[0;107m'   # White
 
 sections=("desktop" "programs" "drivers" "dev" "virtualization")
 parts=("qtile" "hyprland" "kde" "utility" "office" "theming"
-        "multimedia" "file_sharing" "game" "communication" "password" "fonts" "backup" "bluetooth" "printer" "audio" "nvidia" "code_forge_clients"
+        "multimedia" "file_sharing" "game" "communication" "password" "fonts" "backup" "wine" "bluetooth" "printer" "audio" "nvidia" "code_forge_clients"
         "editor" "c" "python" "rust" "node" "virtualbox")
 
 skip=false
@@ -129,7 +129,7 @@ function install_hyprland {
 }
 
 function install_kde {
-    downlaoded+=("kde")
+    downloaded+=("kde")
     echo -e "\n${Green}KDE plasma${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         kde-utilities-meta kde-system-meta kde-network-meta tesseract-data-eng \
@@ -236,6 +236,14 @@ function install_backup {
         timeshift
 }
 
+function install_wine {
+    downloaded+=("wine")
+    echo -e "\n${Green}Wine${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        wine wine-gecko wine-mono winetricks\
+        lib32-pipewire lib32-libpulse lib32-alsa lib32-alsa-lib lib32-alsa-plugins
+}
+
 function install_programs_all {
     install_utility
     install_office
@@ -246,6 +254,7 @@ function install_programs_all {
     install_password
     install_fonts
     install_backup
+    install_wine
 }
 
 # 2. Drivers
@@ -461,6 +470,9 @@ function installation {
             ;;
             backup )
                 install_backup
+            ;;
+            wine )
+                install_wine
             ;;
             # drivers
             bluetooth )
