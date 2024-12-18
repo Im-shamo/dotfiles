@@ -22,3 +22,6 @@ if qtile.core.name == "x11":
 
         # ssh
         os.environ["SSH_AUTH_SOCK"] = f"{os.path.join(os.environ["XDG_RUNTIME_DIR"], "gcr", "ssh")}"
+
+        # Dolphin fix
+        os.environ["XDG_MENU_PREFIX"] = "arch-"
