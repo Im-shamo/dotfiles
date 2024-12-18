@@ -10,7 +10,7 @@ terminal = "kitty"
 terminal_name = terminal
 
 #menu = "wofi --normal-window --show drun --allow-images"
-menu = "rofi -show drun -show-icons"
+menu = os.path.expanduser("~/.config/rofi/launchers/type-1/launcher.sh")
 
 browser = "firefox"
 code_editor = "code"
