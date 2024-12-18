@@ -60,12 +60,12 @@ keys = [
     Key([mod], "c", lazy.spawn(code_editor)),
     Key([mod], "b", lazy.spawn(browser)),
 
-    # Clipse
-    Key([mod], "v", lazy.spawn(f"{terminal} --class clipse -e fish -c 'clipse'")),
-
     # Screenshots
-    Key([], "Print", lazy.spawn("gnome-screenshot"), desc="Take screenshot"),
-    Key([mod], "Print", lazy.spawn("gnome-screenshot -i"), desc="Launch gnome screenshot"),
+    Key([], "Print", lazy.spawn("spectacle -m -b -c"), desc="Take screenshot"),
+    Key([mod], "Print", lazy.spawn("spectacle -g"), desc="Launch spectacle screenshot"),
+
+    # Wallpaper
+    Key([mod], "w", lazy.spawn(os.path.join(scripts_dir, "nitrogen_wallpaper_changer.sh"))),
 
     # Media Control
     # Source 
