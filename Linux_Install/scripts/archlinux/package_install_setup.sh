@@ -112,11 +112,24 @@ function update_mirror {
 
 function install_qtile {
     downloaded+=("qtile")
-    # Qtile
     echo -e "\n${Green}Qtile Specific${Color_Off}"
+
+    # Dependances 
     sudo pacman -S --noconfirm --needed \
-        picom rofi pavucontrol nitrogen dbus libnotify xorg-server-xephyr python-dbus-next \
-        python-psutil
+        qtile alsa-utils canto-daemon cmus jupyter_console khal libinput libpulse\
+        lm_sensors moc python-bowler python-dbus-fast python-iwlib python-keyring\
+        python-libcst python-mpd2 python-psutil python-pywayland python-pywlroots\
+        python-setproctitle python-xdg python-xkbcommon xorg-xwayland xcb-util-cursor
+
+    # Development 
+    sudo pacman -S --noconfirm --needed \
+        python-pytest pre-commit python-gobject xorg-server-xephyr mypy\
+        imagemagick gtk-layer-shell libnotify xorg-server-xvfb
+
+    # My applications
+    sudo pacman -S --noconfirm --needed \
+        picom rofi pavucontrol nitrogen dunst cava
+    
     yay -S --noconfirm --needed qtile-extras 
 }
 
