@@ -21,6 +21,17 @@ keys = [
     Key([mod], "grave", swap_screens, desc="Swap workspace"),
     Key([mod], 'period', lazy.next_screen(), desc='Move cursor to next monitor'),
 
+    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
+    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
+    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
+    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
+
+    Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
+    Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
+    Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
+    Key([mod], "Up", lazy.layout.up(), desc="Move focus up"),
+    
+    # Windows
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
     Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
@@ -45,7 +56,7 @@ keys = [
     Key([mod, "control"], "Up", lazy.layout.grow_up(), desc="Grow window up"),
 
     # Spliting
-    Key([mod], 'period', lazy.next_screen(), desc='Next monitor'),
+    Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack"),
 
     # Layout switching
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),

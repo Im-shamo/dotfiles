@@ -3,25 +3,15 @@ import os
 import subprocess
 
 from configuration.variables import *
+from configuration.environment_varables import set_environment_varables
 
 if qtile.core.name == "x11":
-
     @hook.subscribe.startup_once
     def startup_once():
         subprocess.Popen(os.path.join(scripts_dir, "x11_startup.sh"))
+        set_environment_varables()
 
-        ### Environment Variables ###
-        # TODO: add environment variables
-        os.environ["PATH"] = f"{os.path.expanduser("~/.local/bin")}:{os.environ["PATH"]}"
-        os.environ["EDITOR"] = "vim"
-        os.environ["VISUAL"] = "vim"
-        os.environ["BROWSER"] = browser
-        
-        # Theming
-        os.environ["QT_QPA_PLATFORMTHEME"] = "qt6ct"
-        os.environ["XCURSOR_PATH"] = os.path.expanduser("~/.local/share/icons")
-        # ssh
-        os.environ["SSH_AUTH_SOCK"] = f"{os.path.join(os.environ["XDG_RUNTIME_DIR"], "gcr", "ssh")}"
-
-        # Dolphin fix
-        os.environ["XDG_MENU_PREFIX"] = "arch-"
+elif qtile.core.name == "wayland":
+    @hook.subscribe.startup_once
+    def startup_once():
+        set_environment_varables()
