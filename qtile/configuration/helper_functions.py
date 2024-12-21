@@ -1,6 +1,8 @@
 from libqtile.lazy import lazy
-from libqtile import qtile
+import subprocess
+import os
 
+from configuration.variables import *
 @lazy.function
 def swap_screens(qtile):
     group_0 = qtile.screens[0].group
@@ -8,3 +10,7 @@ def swap_screens(qtile):
 
     group_0.toscreen(screen=1)
     group_1.toscreen(screen=0)
+
+@lazy.function
+def notify_send_test(qtile):
+    subprocess.run([os.path.join(scripts_dir, "test.sh")])

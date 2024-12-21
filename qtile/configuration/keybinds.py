@@ -2,7 +2,7 @@ from libqtile.config import Key
 from libqtile.lazy import lazy
 
 from configuration.variables import *
-from configuration.helper_functions import swap_screens
+from configuration.helper_functions import swap_screens, notify_send_test
 
 keys = [
     # Qtile shutdown and reload
@@ -77,6 +77,7 @@ keys = [
 
     # Wallpaper
     Key([mod], "w", lazy.spawn(os.path.join(scripts_dir, "nitrogen_wallpaper_changer.sh"))),
+    Key([mod, "shift"], "w", lazy.spawn("nitrogen")),
 
     # Media Control
     # Source 
@@ -89,9 +90,12 @@ keys = [
 
     # Playback
     Key([], "XF86AudioPlay",  lazy.spawn("playerctl play-pause"), desc="Play/Pause player"),
-    Key([],  "XF86AudioStop",  lazy.spawn("playerctl stop"),  desc="Stop audio"),
-    Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="Skip to next"),
+    Key([], "XF86AudioStop",  lazy.spawn("playerctl stop"),  desc="Stop audio"),
+    Key([], "XF86AudioNext",  lazy.spawn("playerctl next"), desc="Skip to next"),
     Key([], "XF86AudioPrev",  lazy.spawn("playerctl previous"), desc="Skip to previous"),
-    
+
+    # Laptop display brightness
+    Key([], "XF86MonBrightnessUp", lazy.spawn("blight set +1%")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("blight set -1%")) 
     # TODO: Add the rest of the keyboard controls
 ]
