@@ -16,10 +16,10 @@ if qtile.core.name == "x11":
         os.environ["EDITOR"] = "vim"
         os.environ["VISUAL"] = "vim"
         os.environ["BROWSER"] = browser
-
-        # hack to get qt apps to look correct
-        os.environ["QT_QPA_PLATFORMTHEME"] = "kde"
-
+        
+        # Theming
+        os.environ["QT_QPA_PLATFORMTHEME"] = "qt6ct"
+        os.environ["XCURSOR_PATH"] = os.path.expanduser("~/.local/share/icons")
         # ssh
         os.environ["SSH_AUTH_SOCK"] = f"{os.path.join(os.environ["XDG_RUNTIME_DIR"], "gcr", "ssh")}"
 

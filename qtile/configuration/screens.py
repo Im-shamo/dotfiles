@@ -1,10 +1,9 @@
 from libqtile.config import Screen
 
-from configuration.bars import bars
+from configuration.bars import my_bars
 
 # TODO: Add wayland
 screens = [
-    Screen(top = bars["secondary"]),
-    Screen(top = bars["main"]),
-    # Screen(top = bars["virt"]),
+    Screen(top = my_bars.secondary_bar),
+    Screen(top = my_bars.main_bar),
 ]

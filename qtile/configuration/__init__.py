@@ -1,6 +1,6 @@
 from configuration.keybinds import keys
 from configuration.groups import groups
-from configuration.bars import widget_defaults, extension_default
+from configuration.widgets import widget_defaults, extension_default
 from configuration.screens import screens
 from configuration.layouts import layouts
 from configuration.floating_layout import floating_layout
