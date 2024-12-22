@@ -138,7 +138,7 @@ function install_hyprland {
     # Hyprland
     echo -e "\n${Green}Hyprland Specific${Color_Off}"
     yay -S --noconfirm --needed \
-        hyprland-meta-git waybar
+        hyprland-meta-git waybar mako slurp grim
 }
 
 function install_kde {
