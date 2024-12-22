@@ -4,7 +4,7 @@
 * {
 	font-family: DroidSansM Nerd Font;
 	font-size: 14px;
-	border-radius: 20px;
+	border-radius: 5px;
 }
 
 window#waybar {
@@ -46,9 +46,9 @@ window#waybar {
 	color: #38afc4;
 	background: @moduleColor;
 	font-size:  20px;
-	padding-left: 15px;
+	padding-left: 10px;
 	padding-right: 5px;
-	border-radius: 20px 0px 0px 20px;
+	border-radius: 5px 0px 0px 5px;
 }
 
 #custom-fedora-icon {
@@ -178,7 +178,7 @@ window#waybar {
 #custom-powerbutton {
 	background: @moduleColor;
 	padding-left: 5px;
-	padding-right: 15px;
+	padding-right: 10px;
 	font-size: 20px;
-	border-radius: 0px 20px 20px 0px;
+	border-radius: 0px 5px 5px 0px;
 }
