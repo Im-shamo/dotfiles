@@ -89,8 +89,7 @@ class MyWidgets:
         return widget.TextBox(
             fmt="󰐥",
             fontsize=26,
-            mouse_callbacks={"Button1": lazy.spawn("rofi -show power-menu -modi 'power-menu:~/Clone/dotfiles/qtile/scripts/rofi-power-menu --choices=shutdown/reboot/suspend/logout'")},
-            #mouse_callbacks = {"Button1": lazy.spawn("nwgbar")},
+            mouse_callbacks={"Button1": lazy.spawn(os.path.expanduser("~/.config/rofi/powermenu/type-1/powermenu.sh"))},
             **kwargs
         )
 

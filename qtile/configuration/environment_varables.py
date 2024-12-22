@@ -3,7 +3,7 @@ from configuration.variables import *
 
 
 def set_environment_varables(backend = "x11"):
-    os.environ["PATH"] = f"{os.path.expanduser("~/.local/bin")}:{os.environ["PATH"]}"
+    os.environ["PATH"] = f"{os.path.expanduser("~/.local/bin")}:{os.path.expanduser("~/.config/rofi/applets/bin")}:{os.path.expanduser("~/.config/rofi/scripts")}:{os.environ["PATH"]}"
     os.environ["EDITOR"] = "vim"
     os.environ["VISUAL"] = "vim"
     os.environ["BROWSER"] = browser
