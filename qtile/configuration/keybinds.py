@@ -2,7 +2,7 @@ from libqtile.config import Key
 from libqtile.lazy import lazy
 
 from configuration.variables import *
-from configuration.helper_functions import swap_screens, notify_send_test
+from configuration.helper_functions import swap_screens
 
 keys = [
     # Qtile shutdown and reload

@@ -10,7 +10,3 @@ def swap_screens(qtile):
 
     group_0.toscreen(screen=1)
     group_1.toscreen(screen=0)
-
-@lazy.function
-def notify_send_test(qtile):
-    subprocess.run([os.path.join(scripts_dir, "test.sh")])
