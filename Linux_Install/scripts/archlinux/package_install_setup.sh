@@ -390,11 +390,19 @@ function install_virtualbox {
         virtualbox-ext-oracle
 }
 
-# TODO: add kvm/quem
+function install_qemu {
+    downloaded+=("qemu")
+    echo -e "\n${Green}Qemu${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        qemu-desktop libvirt dnsmasq iptables-nft virt-manager
+    sudo usermod -aG libvirt $USER
+    sudo systemctl enable libvirtd.socket virtlogd.socket
+}
 
 
 function install_virtualization_all {
     install_virutalbox
+    install_qemu
 }
 
 
@@ -500,12 +508,12 @@ function installation {
             nvidia )
                 install_nvidia
             ;;
-	    nvidia_closed )
-		install_nvidia_closed
-	    ;;
+	        nvidia_closed )
+		        install_nvidia_closed
+	        ;;
             amd )
 	    	install_amd
-	    ;;
+	        ;;
             # dev
             code_forge_clients )
                 install_code_forge_clients
@@ -529,6 +537,9 @@ function installation {
             # virtualization
             virtualbox )
                 install_virtualbox
+            ;;
+            qemu )
+                install_qemu
             ;;
             
             # error
