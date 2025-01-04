@@ -1,4 +1,4 @@
 #!/bin/bash
-
+waybar_dir=~/.config/waybar
 pkill --exact waybar
-waybar -c $HOME/Clone/dotfiles/waybar/config.jsonc -s /home/shamokwok/Clone/dotfiles/waybar/style.css
+waybar -c $waybar_dir/config.jsonc -s $waybar_dir/style.css
