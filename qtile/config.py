@@ -8,7 +8,7 @@ if qtile.core.name == "x11":
     follow_mouse_focus = True
     bring_front_click = False
     floats_kept_above = True
-    cursor_warp = True
+    cursor_warp = False
     auto_minimize = False
     wl_input_rules = False
     wmname = "LG3D"
