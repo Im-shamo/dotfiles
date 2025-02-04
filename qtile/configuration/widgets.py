@@ -55,8 +55,8 @@ class MyWidgets:
         return widget.TextBox(
             fmt="Switch Wallpaper  ",
             mouse_callbacks={
-                "Button1": lazy.spawn(os.path.expanduser("~/.config/qtile/scripts/nitrogen_wallpaper_changer.sh")),
-                "Button3": lazy.spawn("nitrogen")
+                "Button1": lazy.spawn(os.path.expanduser("~/Clone/dotfiles/qtile/scripts/wallpaper_changer.sh")),
+                "Button3": lazy.spawn("waypaper")
                 },
             background=self.colours["PURPLE"],
             **kwargs
