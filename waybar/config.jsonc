@@ -16,13 +16,9 @@
 	],
 
 	"modules-right": [
-		"cava",
 		"privacy",
 		"tray",
 		"mpris",
-		// "custom/left-arrow-dark",
-		// "custom/network_traffic",
-		// "custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"pulseaudio",
 		"custom/left-arrow-light",
@@ -33,7 +29,6 @@
 		"battery",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
-		"custom/swaync",
 		"custom/powerbutton"
 	],
 	/* powerline arrors */
@@ -159,6 +154,7 @@
 		"max-length": 50
 	},
 	*/
+
 	"network": {
         //"interface": "wlp0s20f3", // (Optional) To force the use of this interface  "format-wifi": "  {essid}",
         "format": "⚠Disabled",
@@ -215,6 +211,7 @@
 			"on-scroll-down": "shift_down"
 		}
     },
+
 	"battery": {
 		"states": {
 			"good": 95,
@@ -230,27 +227,6 @@
 			""
 		]
 	},
-
-	"custom/swaync": {
-	   "tooltip": false,
- 	   "format": "{icon}",
- 	   "format-icons": {
- 	     	"notification": "<span foreground='red'><sup></sup></span>",
- 	     	"none": "",
- 	     	"dnd-notification": "<span foreground='red'><sup></sup></span>",
- 	     	"dnd-none": "",
- 	     	"inhibited-notification": "<span foreground='red'><sup></sup></span>",
- 	     	"inhibited-none": "",
- 	     	"dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
- 	     	"dnd-inhibited-none": ""
- 	   },
- 	   "return-type": "json",
- 	   "exec-if": "which swaync-client",
- 	   "exec": "swaync-client -swb",
- 	   "on-click": "swaync-client -t -sw",
- 	   "on-click-right": "swaync-client -d -sw",
- 	   "escape": true
-  	},
 
 	"custom/powerbutton": {
 		"format": "󰐥",
