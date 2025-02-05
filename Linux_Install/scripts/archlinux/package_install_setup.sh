@@ -119,7 +119,8 @@ function install_qtile {
         qtile alsa-utils canto-daemon cmus jupyter_console khal libinput libpulse\
         lm_sensors moc python-bowler python-dbus-fast python-iwlib python-keyring\
         python-libcst python-mpd2 python-psutil python-pywayland python-pywlroots\
-        python-setproctitle python-xdg python-xkbcommon xorg-xwayland xcb-util-cursor
+        python-setproctitle python-xdg python-xkbcommon xorg-xwayland xcb-util-cursor\
+        python-psutil
 
     # Development 
     sudo pacman -S --noconfirm --needed \
@@ -128,7 +129,7 @@ function install_qtile {
 
     # My applications
     sudo pacman -S --noconfirm --needed \
-        picom rofi pavucontrol nitrogen dunst cava
+        picom rofi-wayland pavucontrol nitrogen dunst cava
     
     yay -S --noconfirm --needed qtile-extras 
 }
@@ -137,8 +138,13 @@ function install_hyprland {
     downloaded+=("hyprland")
     # Hyprland
     echo -e "\n${Green}Hyprland Specific${Color_Off}"
-    yay -S --noconfirm --needed \
-        hyprland-meta-git waybar mako slurp grim
+
+    sudo pacman -S --noconfirm --needed \
+        hyprland hyprcursor hypridle hyprlock hyprpolkitagent hyprpaper \
+        waybar mako slurp grim rofi-wayland pavucontrol
+
+    yay -S --nonconfirm --needed \
+        hyprshot 
 }
 
 function install_kde {
@@ -166,15 +172,14 @@ function install_utility {
     # file manager / archiving / partitioning, application,
     sudo pacman -S --noconfirm --needed \
         vim udiskie conky man xorg-xrandr arandr man less \
-        polkit polkit-gnome polkit-kde-agent gnome-keyring \
-        kitty alacritty fastfetch \
+        polkit gnome-keyring \
+        kitty fastfetch \
         nemo file-roller gnome-disk-utility exfat-utils ntfs-3g\
         flatpak \
         tk
         
-    
     yay -S --noconfirm --needed \
-        clipse
+        clipse-bin
 }    
 
 function install_office {
@@ -290,7 +295,7 @@ function install_printer {
 function install_audio {
     downloaded+=("audio")
     sudo pacman -S --noconfirm --needed \
-        pipewire lib32-pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse \
+        pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse \
         pipewire-v4l2
 
     systemctl --user enable pipewire-pulse.service
@@ -438,7 +443,7 @@ function installation {
             desktop )
                 install_desktop_all
             ;;
-            program )
+            programs )
                 install_programs_all
             ;;
             drivers )
