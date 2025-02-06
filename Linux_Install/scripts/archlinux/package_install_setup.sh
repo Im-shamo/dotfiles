@@ -117,7 +117,7 @@ function install_qtile {
     # Dependances 
     sudo pacman -S --noconfirm --needed \
         qtile alsa-utils canto-daemon cmus jupyter_console khal libinput libpulse\
-        lm_sensors moc python-bowler python-dbus-fast python-iwlib python-keyring\
+        lm_sensors python-bowler python-dbus-fast python-iwlib python-keyring\
         python-libcst python-mpd2 python-psutil python-pywayland python-pywlroots\
         python-setproctitle python-xdg python-xkbcommon xorg-xwayland xcb-util-cursor\
         python-psutil
@@ -129,7 +129,7 @@ function install_qtile {
 
     # My applications
     sudo pacman -S --noconfirm --needed \
-        picom rofi-wayland pavucontrol nitrogen dunst cava
+        picom rofi-wayland pavucontrol nitrogen dunst
     
     yay -S --noconfirm --needed qtile-extras 
 }
@@ -143,7 +143,7 @@ function install_hyprland {
         hyprland hyprcursor hypridle hyprlock hyprpolkitagent hyprpaper \
         waybar mako slurp grim rofi-wayland pavucontrol
 
-    yay -S --nonconfirm --needed \
+    yay -S --noconfirm --needed \
         hyprshot 
 }
 

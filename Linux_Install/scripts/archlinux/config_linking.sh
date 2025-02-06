@@ -16,7 +16,7 @@ fi
 
 cd $config
 
-folders=("alacritty" "awesome" "fish" "hypr" "hyprlock" "kitty" "picom" "qtile" "waybar" "wofi")
+folders=("alacritty" "awesome" "fish" "hypr" "hyprlock" "kitty" "picom" "qtile" "waybar" "wofi" "rofi")
 
 for (( i=0; i<9; i++)); do
     target=$dots/${folders[$i]}
