@@ -230,7 +230,7 @@
 
 	"custom/powerbutton": {
 		"format": "󰐥",
-		"on-click": "$HOME/.config/rofi/powermenu/type-1/powermenu.sh",
+		"on-click": "~/.config/rofi/powermenu/type-1/powermenu.sh",
 		"tooltip": false
 	},
 
