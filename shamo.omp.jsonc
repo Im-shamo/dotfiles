@@ -64,7 +64,7 @@
             "threshold": 0
           },
           "trailing_diamond": "\ue0b4",
-          "template": " \ueba2 {{ .FormattedMs }}\u2800",
+          "template": " \ueba2 {{ .FormattedMs }} ",
           "foreground": "#ffffff",
           "background": "#83769c",
           "type": "executiontime",
