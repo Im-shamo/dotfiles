@@ -66,7 +66,7 @@ keys = [
 
     # App launchers
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "r", lazy.spawn(menu), desc=f"Launch {menu.split(" ")[0]}"),
+    Key([mod], "r", lazy.spawn(menu), desc=f"Launch {menu.split(' ')[0]}"),
     Key([mod], "e", lazy.spawn(file_explorer), desc=f"Spawn the file explorer ({file_explorer})"),
     Key([mod], "c", lazy.spawn(code_editor)),
     Key([mod], "b", lazy.spawn(browser)),
@@ -76,10 +76,10 @@ keys = [
     Key([mod], "Print", lazy.spawn("spectacle -g"), desc="Launch spectacle screenshot"),
 
     # Wallpaper
-    Key([mod], "w", lazy.spawn(f"bash {os.path.join(scripts_dir, "wallpaper_changer.sh")}")),
+    Key([mod], "w", lazy.spawn(f"bash {os.path.join(scripts_dir, 'wallpaper_changer.sh')}")),
     Key([mod, "shift"], "w", lazy.spawn("waypaper")),
     Key([mod], "s", lazy.spawn("selector")),
-    Key([mod, "shift"], "s", lazy.spawn(f"bash {os.path.join(scripts_dir, "safe_wallpaper.sh")}")),
+    Key([mod, "shift"], "s", lazy.spawn(f"bash {os.path.join(scripts_dir, 'safe_wallpaper.sh')}")),
 
     # Media Control
     # Source 
