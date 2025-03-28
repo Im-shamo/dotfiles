@@ -13,15 +13,14 @@ blueman-applet &
 # |      Scripts      |
 # |                   |
 # +-------------------+
-$HOME/.config/qtile/scripts/xrandr_setup.sh &
-$HOME/Clone/dotfiles/qtile/scripts/wallpaper_changer.sh &
+~/.config/qtile/scripts/wallpaper_changer.sh &
 
 # +--------------------+
 # |                    |
 # |      Programs      |
 # |                    |
 # +--------------------+
-picom &
+dunst & # Notification
+picom & # Compositor
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-clipse -listen &
-xsettingsd &
+clipse -listen & # Clipboard manager
