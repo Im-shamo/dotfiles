@@ -5,19 +5,14 @@ mod = "mod4"
 
 ### Programs ###
 file_explorer = "dolphin"
-
-terminal = "konsole"
+terminal = "kitty"
 terminal_name = terminal
-
-#menu = "wofi --normal-window --show drun --allow-images"
 menu = os.path.expanduser("~/.config/rofi/launchers/type-1/launcher.sh")
-
 browser = "firefox"
 code_editor = "code"
 
 ### Widgets ###
 mono_font = "DroidSansM Nerd Font"
-
 colours = {
     "RED":          "#881111",
     "DARK_RED":     "#220000",
