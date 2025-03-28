@@ -7,14 +7,12 @@ from configuration.variables import *
 from configuration.widgets import arrow_right, my_widgets
 
 class MyBars:
-    @property
     def main_bar_x11(self):
         return bar.Bar(
             [
                 widget.CurrentLayoutIcon(mouse_callbacks={"Button1": lazy.next_layout()}),
                 my_widgets.group_box(),
                 widget.WindowName(),
-                widget.Notify(),
                 widget.Systray(),
                 widget.TextBox(**arrow_right),
                 my_widgets.wallpaper_switcher(**arrow_right),
@@ -40,7 +38,6 @@ class MyBars:
             margin = bar_margin
         )
 
-    @property
     def secondary_bar_x11(self):
         return bar.Bar(
             [
@@ -57,7 +54,6 @@ class MyBars:
             margin = bar_margin
         )
 
-    @property
     def virt_bar(self):
         return bar.Bar(
             [
@@ -78,7 +74,6 @@ class MyBars:
         )
 
     # TODO: Add wayland
-    @property
     def main_bar_wayland(self):
         return bar.Bar(
             [
@@ -110,7 +105,6 @@ class MyBars:
             margin = bar_margin
         )
 
-    @property
     def secondary_bar_wayland(self):
         return bar.Bar(
             [
@@ -128,6 +122,4 @@ class MyBars:
         )
 
 my_bars = MyBars()
-
-
 
