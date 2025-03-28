@@ -97,7 +97,7 @@ keys = [
     Key([], "XF86AudioPrev",  lazy.spawn("playerctl previous"), desc="Skip to previous"),
 
     # Laptop display brightness
-    Key([], "XF86MonBrightnessUp", lazy.spawn("blight set +1%")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("blight set -1%")) 
+    Key([], "XF86MonBrightnessUp", lazy.spawn("blight set +5%")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("blight set -5%")),
     # TODO: Add the rest of the keyboard controls
 ]
