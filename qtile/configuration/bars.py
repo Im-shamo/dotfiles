@@ -53,6 +53,26 @@ class MyBars:
             opacity = 1,
             margin = bar_margin
         )
+    
+    def hp_stream_bar_x11(self):
+        return bar.Bar(
+            [
+                widget.CurrentLayoutIcon(mouse_callbacks={"Button1": lazy.next_layout()}),
+                my_widgets.group_box(),
+                widget.WindowName(),
+                widget.Systray(),
+                widget.TextBox(**arrow_right),
+                my_widgets.wallpaper_switcher(**arrow_right),
+                my_widgets.volume(**arrow_right),
+                widget.Clock(format="%d/%m/%Y %a %I:%M %p", background=colours["LIGHT_BLUE"], **arrow_right),   # cyan
+                widget.Battery(format="  {percent:.0%}",emoji=True,background=colours["BLUE"], **arrow_right),
+                my_widgets.power_button(),
+                widget.Spacer(length=5),
+            ],
+            26,
+            opacity = 1,
+            margin = bar_margin
+        )
 
     def virt_bar(self):
         return bar.Bar(

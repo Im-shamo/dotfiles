@@ -6,7 +6,9 @@ def set_environment_varables(backend = "x11"):
     os.environ["PATH"] = f"{os.path.expanduser('~/.local/bin')}:{os.path.expanduser('~/.config/rofi/applets/bin')}:{os.path.expanduser('~/.config/rofi/scripts')}:{os.environ['PATH']}"
 
     # Theming
-    # os.environ["QT_QPA_PLATFORMTHEME"] = "qt5ct"
+    os.environ["QT_QPA_PLATFORMTHEME"] = "qt6ct"
+
+    # os.environ["XCURSOR_SIZE"] = "24"
 
     # ssh
     os.environ["SSH_AUTH_SOCK"] = f"{os.path.join(os.environ['XDG_RUNTIME_DIR'], 'gcr', 'ssh')}"
