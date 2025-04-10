@@ -1,8 +1,12 @@
 #!/usr/bin/bash
 
 config="$HOME/.config"
-# config=$(pwd)/test
 dots="$HOME/Clone/dotfiles"
+
+folders=(
+    "alacritty" "awesome" "dunst" "fish" "hypr" "hyprlock" "i3" "kitty"
+    "picom" "qtile" "waybar" "wofi"
+    )
 
 if [[ ! -d $dots ]]; then
     echo "$dots folder does not exist."
@@ -16,21 +20,20 @@ fi
 
 cd $config
 
-folders=("alacritty" "awesome" "fish" "hypr" "hyprlock" "kitty" "picom" "qtile" "waybar" "wofi" "rofi")
-
-for (( i=0; i<9; i++)); do
-    target=$dots/${folders[$i]}
-    location=$config/${folders[$i]}
+for foldername in "${folders[@]}"; do
+    target=$dots/$foldername
+    config_location=$config/$foldername
 
     # If the config file already exists, then rename it
-    if [[ -d $location ]]; then
-        mv $location $location.bak
+    if [[ -d $config_location ]] || [[ -f $config_location ]]; then
+        mv $config_location ${config_location}.bak
     fi
-    if [[ ! -d $target ]]; then
-        echo "$dots folder does not exists."
-        exit 1
+
+    if [[ -d $target ]] || [[ -f $target ]]; then
+        ln -s $target
+        echo "$config_location -> $target"
+    else
+        echo "error: $target does not exist!"
     fi
-    echo "$location -> $target"
-    ln -s $target
 done
 

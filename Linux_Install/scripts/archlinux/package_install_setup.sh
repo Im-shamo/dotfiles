@@ -75,9 +75,23 @@ On_ICyan='\033[0;106m'    # Cyan
 On_IWhite='\033[0;107m'   # White
 
 sections=("desktop" "programs" "drivers" "dev" "virtualization")
-parts=("qtile" "hyprland" "kde" "utility" "office" "theming"
-        "multimedia" "file_sharing" "game" "communication" "password" "fonts" "backup" "wine" "bluetooth" "printer" "audio" "nvidia" "code_forge_clients"
-        "editor" "c" "python" "rust" "node" "virtualbox")
+parts=(
+    # desktop
+    "qtile" "hyprland" "kde"
+
+    # programs
+    "basic" "utility" "office" "theming" "multimedia" "file_sharing" "game"
+    "communication" "password_management" "fonts" "backup" "wine"
+    
+    # drivers
+    "bluetooth" "printer" "audio" "nvidia" "nvidia_closed" "amd"
+    
+    # development
+    "code_forge_clients" "text_editors" "python" "c" "rust" "node"
+
+    # virtualization
+    "virtualbox" "qemu"
+   )
 
 skip=false
 declare -a downloaded
@@ -114,24 +128,24 @@ function install_qtile {
     downloaded+=("qtile")
     echo -e "\n${Green}Qtile Specific${Color_Off}"
 
-    # Dependances 
+    # Qtile Dependances 
     sudo pacman -S --noconfirm --needed \
-        qtile alsa-utils canto-daemon cmus jupyter_console khal libinput libpulse\
-        lm_sensors python-bowler python-dbus-fast python-iwlib python-keyring\
-        python-libcst python-mpd2 python-psutil python-pywayland python-pywlroots\
-        python-setproctitle python-xdg python-xkbcommon xorg-xwayland xcb-util-cursor\
-        python-psutil
+	    alsa-utils canto-daemon cmus jupyter_console khal libinput libpulse \
+	    lm_sensors python-bowler python-dbus-fast python-iwlib python-keyring \
+	    python-libcst python-mpd2 python-psutil python-pywayland python-pywlroots \
+	    python-setproctitle python-pyxdg python-xkbcommon xorg-xwayland
 
     # Development 
     sudo pacman -S --noconfirm --needed \
-        python-pytest pre-commit python-gobject xorg-server-xephyr mypy\
+        python-pytest pre-commit python-gobject xorg-server-xephyr mypy \
         imagemagick gtk-layer-shell libnotify xorg-server-xvfb
 
     # My applications
     sudo pacman -S --noconfirm --needed \
-        picom rofi-wayland pavucontrol nitrogen dunst
+        picom rofi-wayland feh pavucontrol dunst xorg-xrdb
     
-    yay -S --noconfirm --needed qtile-extras 
+    yay -S --noconfirm --needed \
+        waypaper qtile-extras 
 }
 
 function install_hyprland {
@@ -141,7 +155,7 @@ function install_hyprland {
 
     sudo pacman -S --noconfirm --needed \
         hyprland hyprcursor hypridle hyprlock hyprpolkitagent hyprpaper \
-        waybar mako slurp grim rofi-wayland pavucontrol
+        waybar rofi-wayland pavucontrol
 
     yay -S --noconfirm --needed \
         hyprshot 
@@ -153,14 +167,21 @@ function install_kde {
     sudo pacman -S --noconfirm --needed \
         kde-utilities-meta kde-system-meta kde-network-meta tesseract-data-eng \
         systemsettings plasma-desktop filelight
-
 }
-
 
 function install_desktop_all {
     install_qtile
     install_hyprland
     install_kde
+}
+
+function install_basic {
+    downloaded+=("basic")
+
+    echo -e "\n${green}Installing Basic${Color_Off}"
+    
+    sudo pacman -S --noconfirm --needed \
+        man-db man-pages less nvim networkmanager xdg-user-dirs arch-xdg-menu
 }
 
 function install_utility {
@@ -184,7 +205,7 @@ function install_utility {
 
 function install_office {
     downloaded+=("office")
-    # Office and Productivity
+
     echo -e "\n${Green}Office and Productivity Software${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         libreoffice-fresh
@@ -192,22 +213,23 @@ function install_office {
 
 function install_theming {
     downloaded+=("theming")
-    # Theming
+
     echo -e "\n${Green}Theming${Color_Off}"
     sudo pacman -S --noconfirm --needed \
-        nwg-look breeze-gtk
+        nwg-look qt5ct breeze-gtk breeze breeze-icons
     yay -S --noconfirm --needed \
-        gradience
+        gradience qt6ct-kde
 }
 
 function install_multimedia {
     downloaded+=("multimedia")
-    # Multimedia
+
     echo -e "\n${Green}Multimedia Software${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         firefox vlc \
         eog loupe curtail 
 }
+
 function install_file_sharing {
     downloaded+=("file_sharing")
 
@@ -216,9 +238,10 @@ function install_file_sharing {
         qbittorrent curl wget
     
 }
+
 function install_game {
     downloaded+=("game")
-    # Game
+
     echo -e "\n${Green}Games${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         steam lutris
@@ -226,22 +249,23 @@ function install_game {
 
 function install_communication {
     downloaded+=("communication")
-    # Communication
-    echo -e "\n${Green}Communication Software${Color_Off}"
+
+    echo -e "\n${Green}Installing Communication Software${Color_Off}"
     flatpak --noninteractive install flathub io.github.spacingbat3.webcord
 }
 
 function install_password {
-    downloaded+=("password")
-    # Password
-    echo -e "\n${Green}Secrets${Color_Off}"
-    flatpak --noninteractive install flathub org.keepassxc.KeePassXC
+    downloaded+=("password_management")
+
+    echo -e "\n${Green}Installing Password Management${Color_Off}"
+    sudo pacman -S --noconfirm --needed \
+        keepassxc
 }
 
 function install_fonts {
     downloaded+=("fonts")
-    # Fonts
-    echo -e "\n${Green}Fonts${Color_Off}"
+
+    echo -e "\n${Green}Installing Fonts${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         gnome-font-viewer \
         noto-fonts noto-fonts-cjk noto-fonts-emoji otf-droid-nerd ttf-hack-nerd
@@ -249,14 +273,16 @@ function install_fonts {
 
 function install_backup {
     downloaded+=("backup")
-    echo -e "\n${Green}Backup${Color_Off}"
+
+    echo -e "\n${Green}Installing Backup${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         timeshift
 }
 
 function install_wine {
     downloaded+=("wine")
-    echo -e "\n${Green}Wine${Color_Off}"
+
+    echo -e "\n${Green}Installing Wine${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         wine wine-gecko wine-mono winetricks\
         lib32-pipewire lib32-libpulse lib32-alsa-lib lib32-alsa-plugins
@@ -278,45 +304,55 @@ function install_programs_all {
 # 2. Drivers
 function install_bluetooth {
     downloaded+=("bluetooth")
+
+    echo -e "\n${Green}Installing Bluetooth${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         bluez bluez-utils blueman
-    sudo usermod -aG lp $USER
     sudo systemctl enable bluetooth.service
 }
 
 function install_printer {
     downloaded+=("printer")
+
+    echo -e "\n${Green}Installing Printer${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         cups cups-pdf cups-pk-helper system-config-printer
-    sudo usermod -aG lp $USER
     sudo systemctl enable cups.socket
 }
 
 function install_audio {
     downloaded+=("audio")
+
+    echo -e "\n${Green}Installing Audio${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse \
-        pipewire-v4l2
+        pipewire-v4l2 pipewire-jack
 
     systemctl --user enable pipewire-pulse.service
 }
 
 function install_nvidia {
     downloaded+=("nvidia")
+
+    echo -e "\n${Green}Installing Nvidia${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         dkms linux-headers nvidia-open-dkms nvidia-utils lib32-nvidia-utils
 }
 
 function install_nvidia_closed {
-    downloaded+=("nvidia")
+    downloaded+=("nvidia_closed")
+
+    echo -e "\n${Green}Installing Nvidia Closed${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         dkms linux-headers nvidia-dkms nvidia-utils lib32-nvidia-utils
 }
 
 function install_amd {
     downloaded+=("amd")
+
+    echo -e "\n${Green}Installing Amd${Color_Off}"
     sudo pacman -S --noconfirm --needed \
-	xf86-video-amdgpu mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon
+	    xf86-video-amdgpu mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon
 }
 
 function install_drivers {
@@ -328,24 +364,24 @@ function install_drivers {
 
 # 3. Development
 function install_code_forge_clients {
-    downloaded+=("code_clients")
-    # Code forge clients
-    echo -e "\n${Green}Code forge clients${Color_Off}"
+    downloaded+=("code_forge_clients")
+    echo -e "\n${Green}Installing Code Forge Clients${Color_Off}"
+
     sudo pacman -S --noconfirm --needed \
         github-cli
 }
 
 function install_text_editors {
-    downloaded+=("editor")
-    # Text editor
-    echo -e "\n${Green}Test editor${Color_Off}"
+    downloaded+=("text_editors")
+
+    echo -e "\n${Green}Installing Text Editor${Color_Off}"
     yay -S --noconfirm --needed \
         visual-studio-code-bin
 }
 
 function install_python_dev {
     downloaded+=("python")
-    # Python development
+    
     echo -e "\n${Green}Python Development${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         python python-pip python-pipx 
@@ -353,27 +389,26 @@ function install_python_dev {
 
 function install_c_dev {
     downloaded+=("c")
-    # C development
-    echo -e "\n${Green}C Development${Color_Off}"
+
+    echo -e "\n${Green}Installing c${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         gcc gdb
 }
 
 function install_rust_dev {
     downloaded+=("rust")
-    # Rust development
-    echo -e "\n${Green}Rust Development${Color_Off}"
+
+    echo -e "\n${Green}Install rust${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         rustup
 }
 
 function install_node_dev {
     downloaded+=("node")
-    # Node.js
-    echo -e "\n${Green}Node.js${Color_Off}"
+
+    echo -e "\n${Green}Install node${Color_Off}"
     yay -S --noconfirm --needed \
         nvm npm
-
 }
 
 function install_dev_all {
@@ -387,19 +422,21 @@ function install_dev_all {
 # 3. Virtualization
 function install_virtualbox {
     downloaded+=("virtualbox")
-    # VirtualBox
+
     echo -e "\n${Green}VirtualBox${Color_Off}"
     sudo pacman -S --noconfirm --needed \
-        virtualbox virtualbox-host-modules-lts virtualbox-guest-iso 
+        virtualbox virtualbox-host-modules-dkms virtualbox-guest-iso 
     yay -S --noconfirm --needed \
         virtualbox-ext-oracle
 }
 
 function install_qemu {
     downloaded+=("qemu")
+
     echo -e "\n${Green}Qemu${Color_Off}"
     sudo pacman -S --noconfirm --needed \
         qemu-desktop libvirt dnsmasq iptables-nft virt-manager
+
     sudo usermod -aG libvirt $USER
     sudo systemctl enable libvirtd.socket virtlogd.socket
 }
@@ -431,15 +468,14 @@ function finished_success {
 
 function installation {
     if test "$skip" = false; then
-        sudo pacman -Syy
+        sudo pacman -Syu
         install_git
         install_yay
         update_mirror
-        sudo pacman -Syy
+        sudo pacman -Syu
     fi
     for part in ${install_list[@]}; do
         case "$part" in
-            # section
             desktop )
                 install_desktop_all
             ;;
@@ -466,7 +502,8 @@ function installation {
             kde )
                 install_kde
             ;;
-            # desktop section
+	    
+            # apps section
             utility )
                 install_utility
             ;;
@@ -488,7 +525,7 @@ function installation {
             communication )
                 install_communication
             ;;
-            password )
+            password_management )
                 install_password
             ;;
             fonts )
@@ -500,6 +537,7 @@ function installation {
             wine )
                 install_wine
             ;;
+            
             # drivers
             bluetooth )
                 install_bluetooth
@@ -519,11 +557,12 @@ function installation {
             amd )
 	    	install_amd
 	        ;;
+
             # dev
             code_forge_clients )
                 install_code_forge_clients
             ;;
-            editor )
+            text_editor )
                 install_text_editors
             ;;
             c )
@@ -534,11 +573,11 @@ function installation {
             ;;
             rust )
                 install_rust_dev
-                code_clients
             ;;
             node )
                 install_node_dev
             ;;
+
             # virtualization
             virtualbox )
                 install_virtualbox
@@ -546,48 +585,52 @@ function installation {
             qemu )
                 install_qemu
             ;;
-            
+
             # error
             * )
-                echo -e "${Red}Unknown part: ${part}"
+                echo -e "${Red}Unknown part: ${part}${Color_Off}"
             ;;
         esac
-
     done
- 
 }
 
 function help {
         echo "This script install packages for archlinux"
         echo " "
         echo "package_instal_setup.sh [options]"
-        echo ""
+        echo " "
         echo "options:"
-        echo "-h, --help                Show help"
+        echo "-h, --help"
+        echo "    Show help"
         echo " "
         echo "-a, --all"
-        echo "                          Install all parts "
-        echo "                          Here are the available parts:"
+        echo "    Install all parts "
+        echo "    Here are the available parts:"
         echo " "
-        echo "                          desktop: qtile, hyprland, kde"
+        echo "    desktop:"
+        echo "        qtile, hyprland, kde"
         echo " "
-        echo "                          programs: utility, bluetooth_printer, office"
-        echo "                                    theming, multimedia, file_sharing, game, communication"
-        echo "                                    password, fonts, backup"
+        echo "    programs:"
+        echo "        basic, utility, office, theming, multimedia, file_sharing, game,"
+        echo "        communication, password_management, fonts, backup, wine,"
         echo " "
-        echo "                          drivers: bluetooth, printer, audio, nvidia, nvidia_closed, amd"
+        echo "    drivers:"
+        echo "        bluetooth, printer, audio, nvidia, nvidia_closed, amd"
         echo " "
-        echo "                          dev: code_forge_clients, editor, c, python, rust, node"
+        echo "    development:"
+        echo "        code_forge_clients, text_editors, python, c, rust, node"
         echo " "
-        echo "                          virtualization: virtualbox "
+        echo "    virtualization:"
+        echo "        virtualbox, qemu"
         echo " "
         echo "-i <parts>, --install <parts>"
-        echo "                          Accepts a comma seperated list to install."
+        echo "    Accepts a comma seperated list to install."
         echo " "
         echo "-e <parts>, --exclude <parts>"
-        echo "                          Accepts a comma seperated list to exclude."
+        echo "   Accepts a comma seperated list to exclude."
         echo " "
-        echo "--skip                    Skips the setups"
+        echo "--skip"
+        echo "    Skips the setups"
 }
 
 if test $# -eq 0; then
