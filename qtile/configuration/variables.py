@@ -4,7 +4,7 @@ import os
 mod = "mod4"
 
 ### Programs ###
-file_explorer = "dolphin"
+file_explorer = "nemo"
 terminal = "kitty"
 terminal_name = terminal
 menu = os.path.expanduser("~/.config/rofi/launchers/type-1/launcher.sh")

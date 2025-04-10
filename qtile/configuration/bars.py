@@ -54,7 +54,7 @@ class MyBars:
             margin = bar_margin
         )
     
-    def hp_stream_bar_x11(self):
+    def small_screen_bar_x11(self):
         return bar.Bar(
             [
                 widget.CurrentLayoutIcon(mouse_callbacks={"Button1": lazy.next_layout()}),
