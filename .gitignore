@@ -1,0 +1,5 @@
+*.vscode
+*__pycache__
+HyDE_dotfiles/hypr/theme
+qtile/qtile_extras
+.~lock*
