@@ -4,11 +4,11 @@ import os
 mod = "mod4"
 
 ### Programs ###
-file_explorer = "nemo"
-terminal = "kitty"
+file_explorer = "dolphin"
+terminal = "alacritty"
 terminal_name = terminal
 menu = os.path.expanduser("~/.config/rofi/launchers/type-1/launcher.sh")
-browser = "firefox"
+browser = "brave"
 code_editor = "code"
 
 ### Widgets ###

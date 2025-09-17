@@ -14,6 +14,7 @@ blueman-applet &
 # |                   |
 # +-------------------+
 ~/.config/qtile/scripts/wallpaper_changer.sh &
+~/.config/qtile/scripts/xrandr_setup.sh &
 
 # +--------------------+
 # |                    |
@@ -23,5 +24,5 @@ blueman-applet &
 dunst &             # Notification
 picom &             # Compositor
 udiskie -t &        # Disk mounting
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+/usr/lib/polkit-gnome/polkit-kde-authentication-agent-1 &
 clipse -listen &    # Clipboard manager
