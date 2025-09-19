@@ -7,7 +7,7 @@ from configuration.variables import *
 from configuration.widgets import arrow_right, my_widgets
 
 class MyBars:
-    def main_bar_x11(self):
+    def main_bar_x11_desktop(self):
         return bar.Bar(
             [
                 widget.CurrentLayoutIcon(mouse_callbacks={"Button1": lazy.next_layout()}),
@@ -191,7 +191,7 @@ class MyBars:
                 my_widgets.group_box(),
                 widget.WindowName(),
                 widget.Notify(),
-                widget.StatusNotifier(), # As systray is no available in wayland
+                widget.StatusNotifier(), # As systray is not available in wayland
                 widget.TextBox(**arrow_right),
                 my_widgets.wallpaper_switcher(**arrow_right),
                 widget.Net(font=mono_font, format= " {down:^5.1f}{down_suffix:<2}", background=colours["BLUE"],**arrow_right),  # blue
@@ -223,6 +223,45 @@ class MyBars:
                 widget.WindowName(),
                 widget.TextBox(**arrow_right),
                 widget.Clock(format="%d/%m/%Y %a %I:%M %p", background="1d6ac9", **arrow_right),   # Light blue
+                my_widgets.power_button(),
+                widget.Spacer(length=5),
+            ],
+            26,
+            opacity = 1,
+            margin = bar_margin
+        )
+
+    def main_bar_wayland_small(self):
+        return bar.Bar(
+            [
+                widget.CurrentLayoutIcon(mouse_callbacks={"Button1": lazy.next_layout()}),
+                my_widgets.group_box(),
+                widget.WindowName(),
+                widget.Systray(),
+                widget.TextBox(**arrow_right),
+                my_widgets.wallpaper_switcher(**arrow_right),
+                my_widgets.volume(**arrow_right),
+                widget.Clock(format="%d/%m/%Y %a %I:%M %p", background=colours["LIGHT_BLUE"], **arrow_right),   # cyan
+                widget.Battery(format="  {percent:.0%}",emoji=True,background=colours["BLUE"], **arrow_right),
+                my_widgets.power_button(),
+                widget.Spacer(length=5),
+            ],
+            26,
+            opacity = 1,
+            margin = bar_margin
+        )
+
+    def main_bar_wayland_small_desktop(self):
+        return bar.Bar(
+            [
+                widget.CurrentLayoutIcon(mouse_callbacks={"Button1": lazy.next_layout()}),
+                my_widgets.group_box(),
+                widget.WindowName(),
+                widget.StatusNotifier(),
+                widget.TextBox(**arrow_right),
+                my_widgets.wallpaper_switcher(**arrow_right),
+                my_widgets.volume(**arrow_right),
+                widget.Clock(format="%d/%m/%Y %a %I:%M %p", background=colours["LIGHT_BLUE"], **arrow_right),   # cyan
                 my_widgets.power_button(),
                 widget.Spacer(length=5),
             ],
