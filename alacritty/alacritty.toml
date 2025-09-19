@@ -1,10 +1,10 @@
 [colors.primary]
     background = "#222222"
 [font]
-    normal = { family = "Hack Nerd Font Mono", style = "Regular"}
-    bold = { family = "Hack Nerd Font Mono", style = "Regular"}
-    italic = { family = "Hack Nerd Font Mono", style = "Regular"}
-    bold_italic = { family = "Hack Nerd Font Mono", style = "Regular"}
+    normal = { family = "Hack", style = "Regular"}
+    bold = { family = "Hack", style = "Regular"}
+    italic = { family = "Hack", style = "Regular"}
+    bold_italic = { family = "Hack", style = "Regular"}
     size = 12
 
 [window]
