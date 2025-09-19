@@ -5,7 +5,7 @@ dots="$HOME/Clone/dotfiles"
 
 folders=(
     "alacritty" "awesome" "dunst" "fish" "hypr" "hyprlock" "i3" "kitty"
-    "picom" "qtile" "waybar" "wofi"
+    "picom" "qtile" "waybar" "wofi" "nvim"
     )
 
 if [[ ! -d $dots ]]; then
