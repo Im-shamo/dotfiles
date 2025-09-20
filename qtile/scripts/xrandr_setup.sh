@@ -5,7 +5,7 @@ rate=144
 res=1920x1080
 
 if [[ -z "$laptop" ]]; then
-xrandr --output $external --mode $res --rate $rate
+xrandr --output "$external" --mode $res --rate $rate
 else
-xrandr --output $laptop --mode  $res --rate $rate --output $external --mode $res --rate $rate --right-of $laptop
+xrandr --output "$laptop" --mode  $res --rate $rate --output "$external" --mode $res --rate $rate --right-of "$laptop"
 fi
