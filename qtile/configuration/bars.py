@@ -1,4 +1,4 @@
-from libqtile import bar
+﻿from libqtile import bar
 from libqtile.lazy import lazy
 from qtile_extras import widget
 from qtile_extras.widget.decorations import PowerLineDecoration
