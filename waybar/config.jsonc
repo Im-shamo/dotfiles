@@ -54,15 +54,15 @@
 
 	"custom/arch-icon": {
 		"format": "󰣇",
-		"on-click": "firefox https://wiki.archlinux.org/",
-		"on-click-right": "firefox https://archlinux.org/packages/",
-		"on-click-middle": "firefox https://aur.archlinux.org/",
+		"on-click": "brave https://wiki.archlinux.org/",
+		"on-click-right": "brave https://archlinux.org/packages/",
+		"on-click-middle": "brave https://aur.archlinux.org/",
 		"tooltip-format": "Archwiki"
 	},
 
 	"custom/fedora-icon":{
 		"format": "",
-		"on-click": "firefox https://docs.fedoraproject.org/en-US/docs/"
+		"on-click": "brave https://docs.fedoraproject.org/en-US/docs/"
 	},
 
     "hyprland/workspaces": {
@@ -134,7 +134,7 @@
 		"status-icons": {
 			"paused": ""
 		}
-		// "ignored-players": ["firefox"]
+		// "ignored-players": ["brave"]
 	},
 
 	"custom/wallpaper-changer": {
