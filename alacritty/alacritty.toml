@@ -1,10 +1,7 @@
 [colors.primary]
     background = "#222222"
 [font]
-    normal = { family = "Hack", style = "Regular"}
-    bold = { family = "Hack", style = "Regular"}
-    italic = { family = "Hack", style = "Regular"}
-    bold_italic = { family = "Hack", style = "Regular"}
+    normal = { family = "DroidSansMNerdFont", style = "Regular"}
     size = 12
 
 [window]
