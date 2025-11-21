@@ -21,19 +21,21 @@ fi
 cd $config
 
 for foldername in "${folders[@]}"; do
-    target=$dots/$foldername
-    config_location=$config/$foldername
+    target="$dots"/"$foldername"
+    config_location="$config"/"$foldername"
 
     # If the config file already exists, then rename it
-    if [[ -d $config_location ]] || [[ -f $config_location ]]; then
-        mv $config_location ${config_location}.bak
+    if [[ -d "$config_location" ]] || [[ -f "$config_location" ]]; then
+        mv "$config_location" "${config_location}".bak
     fi
 
-    if [[ -d $target ]] || [[ -f $target ]]; then
-        ln -s $target
+    if [[ -d "$target" ]] || [[ -f "$target" ]]; then
+        ln -s "$target"
         echo "$config_location -> $target"
     else
         echo "error: $target does not exist!"
     fi
 done
 
+cd $HOME
+ln -s "$dots"/.vimrc .
