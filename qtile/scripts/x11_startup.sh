@@ -24,5 +24,5 @@ blueman-applet &
 dunst &             # Notification
 picom &             # Compositor
 udiskie -t &        # Disk mounting
-/usr/lib/polkit-gnome/polkit-kde-authentication-agent-1 &
+/usr/lib/polkit-kde-authentication-agent-1 &
 clipse -listen &    # Clipboard manager
