@@ -1,15 +1,15 @@
 # Dotfiles
 I use qtile.
-# Todo
-## Readme
+## Todo
+### Readme
 - [ ] Desktop Manager Images
 - [ ] Quick Install links
 
-## Qtile
+### Qtile: My main x11 WM
 - [x] Identify laptop and desktop
 - [ ] Resolution Changing Bars
 - [ ] Scratchpad
 
-## Hyprland
+### Hyprland: My main Wayland WM
 
-## Scripts
+### Scripts
