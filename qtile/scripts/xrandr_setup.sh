@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 external=$(xrandr | grep -i  "HDMI" | cut -d " " -f1)
 laptop=$(xrandr | grep -i "eDP" | cut -d " " -f1)
-rate=144
+rate=60
 res=1920x1080
 
 if [[ -z "$laptop" ]]; then
