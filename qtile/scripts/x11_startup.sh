@@ -21,8 +21,10 @@ blueman-applet &
 # |      Programs      |
 # |                    |
 # +--------------------+
+/usr/lib/polkit-kde-authentication-agent-1 &
 dunst &             # Notification
 picom &             # Compositor
 udiskie -t &        # Disk mounting
-/usr/lib/polkit-kde-authentication-agent-1 &
 clipse -listen &    # Clipboard manager
+xautolock -detectsleep -time 3 -locker "i3lock -c 000000" &
+

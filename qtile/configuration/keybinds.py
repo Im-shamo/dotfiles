@@ -8,7 +8,7 @@ keys = [
     # Qtile shutdown and reload
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "mod1"], "delete", lazy.shutdown(), desc="Shutdown Qtile"),
-
+    Key([mod, "mod1"], "l", lazy.spawn("i3lock -c 000000")),
 
     ### Windows ###
 
