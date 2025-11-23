@@ -71,6 +71,7 @@ keys = [
     Key([mod], "e", lazy.spawn(file_explorer), desc=f"Spawn the file explorer ({file_explorer})"),
     Key([mod], "c", lazy.spawn(code_editor)),
     Key([mod], "b", lazy.spawn(browser)),
+    Key([mod], "p", run_script("reload_picom.sh")),
 
     # Screenshots
     Key([], "Print", lazy.spawn("spectacle -m -b -c"), desc="Take screenshot"),
@@ -79,8 +80,8 @@ keys = [
     # Wallpaper
     Key([mod], "w", run_script("wallpaper_changer.sh")),
     Key([mod, "shift"], "w", lazy.spawn("waypaper")),
-    Key([mod], "s", lazy.spawn("selector")),
-    Key([mod, "shift"], "s", run_script("safe_wallpaper.sh")),
+    # Key([mod], "s", lazy.spawn("selector")),
+    # Key([mod, "shift"], "s", run_script("safe_wallpaper.sh")),
 
     # Media Control
     # Source 
