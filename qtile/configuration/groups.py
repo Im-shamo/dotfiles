@@ -13,7 +13,7 @@ my_groups = [
     ({"name": " ",     "matches": [], "spawn": []}, "4"),
     ({"name": " ",     "matches": [], "spawn": []}, "5"),
     ({"name": " ",     "matches": [], "spawn": []}, "6"),
-    ({"name": " ",      "matches": [], "spawn": []}, "7"),
+    ({"name": " ",     "matches": [], "spawn": []}, "7"),
     ({"name": "8",      "matches": [], "spawn": []}, "8"),
     ({"name": "9",      "matches": [], "spawn": []}, "9"),
     ({"name": "0",      "matches": [], "spawn": []}, "0"),
