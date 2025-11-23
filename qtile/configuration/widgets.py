@@ -1,10 +1,10 @@
-
 from libqtile.lazy import lazy
 from qtile_extras import widget
 from qtile_extras.widget.decorations import PowerLineDecoration
 import os
 
 from configuration.variables import *
+from configuration.helper_functions import run_script
 
 widget_defaults = {
     "font": mono_font,
@@ -55,7 +55,7 @@ class MyWidgets:
         return widget.TextBox(
             fmt="Switch Wallpaper  ",
             mouse_callbacks={
-                "Button1": lazy.spawn(os.path.expanduser("~/Clone/dotfiles/qtile/scripts/wallpaper_changer.sh")),
+                "Button1": run_script("wallpaper_changer.sh"),
                 "Button3": lazy.spawn("waypaper")
                 },
             background=self.colours["PURPLE"],

@@ -2,7 +2,7 @@ from libqtile.config import Key
 from libqtile.lazy import lazy
 
 from configuration.variables import *
-from configuration.helper_functions import swap_screens
+from configuration.helper_functions import swap_screens, run_script
 
 keys = [
     # Qtile shutdown and reload
@@ -77,10 +77,10 @@ keys = [
     Key([mod], "Print", lazy.spawn("spectacle -g"), desc="Launch spectacle screenshot"),
 
     # Wallpaper
-    Key([mod], "w", lazy.spawn(f"bash {os.path.join(scripts_dir, 'wallpaper_changer.sh')}")),
+    Key([mod], "w", run_script("wallpaper_changer.sh")),
     Key([mod, "shift"], "w", lazy.spawn("waypaper")),
     Key([mod], "s", lazy.spawn("selector")),
-    Key([mod, "shift"], "s", lazy.spawn(f"bash {os.path.join(scripts_dir, 'safe_wallpaper.sh')}")),
+    Key([mod, "shift"], "s", run_script("safe_wallpaper.sh")),
 
     # Media Control
     # Source 

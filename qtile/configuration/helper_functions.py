@@ -1,6 +1,9 @@
 from libqtile.lazy import lazy
 import subprocess
 import json
+import os.path
+
+from configuration.variables import *
 
 @lazy.function
 def swap_screens(qtile):
@@ -37,3 +40,8 @@ def get_display_resolutions(qtile) -> dict[str, tuple[int, int]]:
         pass
     
     return output_dict
+
+@lazy.function
+def run_script(qtile, script: str):
+    result = subprocess.run([os.path.join(scripts_dir,script)], capture_output=True, text=True)
+    return result

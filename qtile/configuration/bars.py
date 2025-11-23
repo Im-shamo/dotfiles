@@ -5,6 +5,7 @@ from qtile_extras.widget.decorations import PowerLineDecoration
 
 from configuration.variables import *
 from configuration.widgets import arrow_right, my_widgets
+from configuration.helper_functions import run_script
 
 class MyBars:
     def main_bar_x11_desktop(self):
