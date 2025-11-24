@@ -37,14 +37,23 @@ set history=1000
 set wildmenu
 set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx"
-" set shell=fish
-set shell=powershell
 set foldmethod=marker
 set mouse=n
 set background=dark
 
 set gfn=Hack_Nerd_Font_Mono:h12:cANSI:qDRAFT
 colorscheme desert
+
+" Set shell
+if filereadable("C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe")
+    set shell=powershell
+elseif filereadable("/usr/bin/fish")
+    set shell=fish
+elseif filereadable("/usr/bin/bash")
+    set shell=bash
+else
+    set shell=sh
+endif
 
 " }}}
 
