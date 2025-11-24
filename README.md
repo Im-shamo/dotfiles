@@ -50,7 +50,7 @@ Below are **ArchLinux Specific** Packages
 	- Cursor Tools: [Win -> Linux repo](https://github.com/khayalhus/win2xcur-batch)
 	- Widgets: `breeze`, `breeze5`, `breeze-gtk`
 	- Icons: `breeze-icons`
-- Audio Video control: `playerctl`, `pavucontrol`, `alsa-utils`
+- Audio Video control: `playerctl`, `pavucontrol`, `alsa-utils`, `pulseaudio`, `pulseaudio-alsa`, `pipewire`, `wireplumber`
 - Screenshot: `spectacle`
 - Screen Brightness: `blight`<sup>AUR</supu>
 - Fonts: `nerd-fonts`, `ttf-hack`, `ttf-dejavu`, `noto-fonts`, `noto-fonts-emoji`, `noto-fonts-cjk`
@@ -70,7 +70,8 @@ pacman -Syu --needed \
     feh swww nwg-look ly                        \
     breeze breeze5 breeze-gtk breeze-icons      \
     playerctl pavucontrol alsa-utils spectacle  \
-    nerd-fonts ttf-hack ttf-dejavu              \
+    pulseaudio pulseaudio-alsa pipewire         \
+    wireplumber nerd-fonts ttf-hack ttf-dejavu  \
     noto-fonts noto-fonts-cjk noto-fonts-emoji
     
     
