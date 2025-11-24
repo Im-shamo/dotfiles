@@ -63,7 +63,7 @@ pacman -Syu --needed \
     picom gnome-keyring seahorse brave          \
     fastfetch git github-cli fish bash          \
     alacritty konsole code kate kwrite nvim     \
-    dolphin dunst udiskie networkmanager        \
+    dolphin ark dunst udiskie networkmanager    \
     blueman xorg-xrandr xorg-xrdb wlr-randr     \
     polkit-kde-agent rofi btop conky            \
     waypaper feh swww nwg-look ly               \
