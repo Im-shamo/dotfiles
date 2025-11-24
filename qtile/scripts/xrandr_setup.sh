@@ -5,7 +5,9 @@ rate=60
 res=1920x1080
 
 if [[ -z "$laptop" ]]; then
-xrandr --output "$external" --mode $res --rate $rate
+    xrandr --output "$external" --mode $res --rate $rate
+elif [[ -z "$external" ]]; then
+    xrandr --output "$laptop" --mode  $res --rate $rate --output "$external" --mode $res --rate $rate --right-of "$laptop"
 else
-xrandr --output "$laptop" --mode  $res --rate $rate --output "$external" --mode $res --rate $rate --right-of "$laptop"
+    xrandr --output Virtual-1 --auto
 fi
