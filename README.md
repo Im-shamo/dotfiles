@@ -53,7 +53,7 @@ Below are **ArchLinux Specific** Packages
 - Audio Video control: `playerctl`, `pavucontrol`, `alsa-utils`
 - Screenshot: `spectacle`
 - Screen Brightness: `blight`<sup>AUR</supu>
-- Fonts: `nerd-fonts`, `ttf`, `noto-fonts`, `noto-fonts-emoji`, `noto-fonts-cjk`
+- Fonts: `nerd-fonts`, `ttf-hack`, `ttf-dejvu`, `noto-fonts`, `noto-fonts-emoji`, `noto-fonts-cjk`
 	
 For you to copy and install
 
@@ -69,7 +69,7 @@ pacman -Syu --needed \
     waypaper feh swww nwg-look ly               \
     breeze breeze5 breeze-gtk breeze-icons      \
     playerctl pavucontrol alsa-utils spectacle  \
-    nerd-fonts ttf-hack                         \
+    nerd-fonts ttf-hack ttf-dejvu               \
     noto-fonts noto-fonts-cjk noto-fonts-emoji
     
     
