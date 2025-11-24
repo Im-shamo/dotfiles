@@ -36,7 +36,7 @@ Below are **ArchLinux Specific** Packages
 - Clipboard Manager: `clipse-bin`<sup>AUR</sup>
 - Network: `networkmanager`
 - Bluetooth: `blueman`
-- X11 Misc: `xorg-xrandr`
+- X11 Misc: `xorg-xrandr`, `xorg-xrdb`
 - Wayland Misc: `wlr-randr`
 - Polikit Agent: `polkit-kde-agent`
 - Menu: `rofi`, [rofi configs repo](https://github.com/Im-shamo/rofi)
@@ -53,7 +53,7 @@ Below are **ArchLinux Specific** Packages
 - Audio Video control: `playerctl`, `pavucontrol`, `alsa-utils`
 - Screenshot: `spectacle`
 - Screen Brightness: `blight`<sup>AUR</supu>
-- Fonts: `nerd-fonts`, `ttf-hack`, `ttf-dejvu`, `noto-fonts`, `noto-fonts-emoji`, `noto-fonts-cjk`
+- Fonts: `nerd-fonts`, `ttf-hack`, `ttf-dejavu`, `noto-fonts`, `noto-fonts-emoji`, `noto-fonts-cjk`
 	
 For you to copy and install
 
@@ -64,12 +64,12 @@ pacman -Syu --needed \
     fastfetch git github-cli fish bash          \
     alacritty konsole code kate kwrite nvim     \
     dolphin dunst udiskie networkmanager        \
-    blueman xrandr wlr-randr polkit-kde-agent   \
-    rofi btop conky                             \
+    blueman xorg-xrandr xorg-xrdb wlr-randr     \
+    polkit-kde-agent rofi btop conky            \
     waypaper feh swww nwg-look ly               \
     breeze breeze5 breeze-gtk breeze-icons      \
     playerctl pavucontrol alsa-utils spectacle  \
-    nerd-fonts ttf-hack ttf-dejvu               \
+    nerd-fonts ttf-hack ttf-dejavu              \
     noto-fonts noto-fonts-cjk noto-fonts-emoji
     
     
