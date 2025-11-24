@@ -20,7 +20,7 @@ I use qtile.
 Below are **ArchLinux Specific** Packages
 
 - Qtile: `qtile`, `qtile-extras`<sup>AUR</sup>, `python-dbus-fast`, `python-psutil`
-- Web Browser: `brave`
+- Web Browser: `brave-bin`<sup>AUR</sup>
 - Shell: `bash`, `fish`, `oh-my-posh`<sup>AUR</sup>
 - Git: `git`, `github-cli`, `github-desktop`<sup>AUR</sup>
 - Compositer: `picom`
@@ -41,7 +41,7 @@ Below are **ArchLinux Specific** Packages
 - Polikit Agent: `polkit-kde-agent`
 - Menu: `rofi`, [rofi configs repo](https://github.com/Im-shamo/rofi)
 - Resource Viewer: `btop`, `conky`, [conky configs repo](https://github.com/Im-shamo/Conky-Sysinfo-conf)
-- Wallpaper: `waypaper`, `feh`, `swww`
+- Wallpaper: `waypaper`<sup>AUR</sup>, `feh`, `swww`
 - Display Manager (Login): `ly`
 - Theming: `nwg-look`, `qt6ct-kde`<sup>AUR</sup>, `qt5ct-kde`<sup>AUR</sup>
 - Themes:
@@ -60,14 +60,14 @@ For you to copy and install
 ```bash
 pacman -Syu --needed \
     qtile python-dbus-fast python-psutil        \
-    picom gnome-keyring seahorse brave          \
+    picom gnome-keyring seahorse                \
     fastfetch git github-cli fish bash          \
     alacritty konsole code kate kwrite nvim     \
     dolphin ark dunst udiskie                   \
     networkmanager network-manager-applet       \
     blueman xorg-xrandr xorg-xrdb wlr-randr     \
     polkit-kde-agent rofi btop conky            \
-    waypaper feh swww nwg-look ly               \
+    feh swww nwg-look ly                        \
     breeze breeze5 breeze-gtk breeze-icons      \
     playerctl pavucontrol alsa-utils spectacle  \
     nerd-fonts ttf-hack ttf-dejavu              \
@@ -77,9 +77,11 @@ pacman -Syu --needed \
 ```
 
 ```bash
-yay -S --needed qtile-extras i3lock-color       \
+yay -S --needed \
+    qtile-extras i3lock-color                   \
+    brave-bin waypaper                          \
     xautolock clipse-bin qt5ct-kde qt6ct-kde    \
-    blight github-desktop oh-my-posh
+    blight github-desktop-bin oh-my-posh
     
 ```
 
