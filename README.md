@@ -34,7 +34,7 @@ Below are **ArchLinux Specific** Packages
 - Lock: `i3lock-color`<sup>AUR</sup>, `xautolock`<sup>AUR</sup>
 - Disk Manager: `udiskie`
 - Clipboard Manager: `clipse-bin`<sup>AUR</sup>
-- Network: `networkmanager`
+- Network: `networkmanager`, `network-manager-applet`
 - Bluetooth: `blueman`
 - X11 Misc: `xorg-xrandr`, `xorg-xrdb`
 - Wayland Misc: `wlr-randr`
@@ -63,7 +63,8 @@ pacman -Syu --needed \
     picom gnome-keyring seahorse brave          \
     fastfetch git github-cli fish bash          \
     alacritty konsole code kate kwrite nvim     \
-    dolphin ark dunst udiskie networkmanager    \
+    dolphin ark dunst udiskie                   \
+    networkmanager network-manager-applet       \
     blueman xorg-xrandr xorg-xrdb wlr-randr     \
     polkit-kde-agent rofi btop conky            \
     waypaper feh swww nwg-look ly               \
