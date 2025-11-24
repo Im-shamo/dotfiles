@@ -37,7 +37,7 @@ Below are **ArchLinux Specific** Packages
 - Network: `networkmanager`, `network-manager-applet`
 - Bluetooth: `blueman`
 - X11: `xorg`, `xorg-apps`
-- Wayland Misc: `wlr-randr`
+- Wayland: `wlr-randr`, `wayland`
 - Polikit Agent: `polkit-kde-agent`
 - Menu: `rofi`, [rofi configs repo](https://github.com/Im-shamo/rofi)
 - Resource Viewer: `btop`, `conky`, [conky configs repo](https://github.com/Im-shamo/Conky-Sysinfo-conf)
@@ -54,6 +54,7 @@ Below are **ArchLinux Specific** Packages
 - Screenshot: `spectacle`
 - Screen Brightness: `blight`<sup>AUR</supu>
 - Fonts: `nerd-fonts`, `ttf-hack`, `ttf-dejavu`, `noto-fonts`, `noto-fonts-emoji`, `noto-fonts-cjk`
+- Misc: `archlinux-xdg-menu`, `xdg-user-dirs`
 	
 For you to copy and install
 
@@ -65,16 +66,15 @@ pacman -Syu --needed \
     alacritty konsole code kate kwrite nvim     \
     dolphin ark dunst udiskie                   \
     networkmanager network-manager-applet       \
-    blueman xorg xorg-apps wlr-randr            \
+    blueman xorg xorg-apps wlr-randr wayland    \
     polkit-kde-agent rofi btop conky            \
     feh swww nwg-look ly                        \
     breeze breeze5 breeze-gtk breeze-icons      \
     playerctl pavucontrol alsa-utils spectacle  \
     pulseaudio pulseaudio-alsa pipewire         \
     wireplumber nerd-fonts ttf-hack ttf-dejavu  \
-    noto-fonts noto-fonts-cjk noto-fonts-emoji
-    
-    
+    noto-fonts noto-fonts-cjk noto-fonts-emoji  \
+    archlinux-xdg-menu xdg-user-dirs
 ```
 
 ```bash
@@ -83,7 +83,6 @@ yay -S --needed \
     brave-bin waypaper                          \
     xautolock clipse-bin qt5ct-kde qt6ct-kde    \
     blight github-desktop-bin oh-my-posh
-    
 ```
 
 
