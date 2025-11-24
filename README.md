@@ -22,7 +22,7 @@ Below are **ArchLinux Specific** Packages
 - Qtile: `qtile`, `qtile-extras`<sup>AUR</sup>, `python-dbus-fast`, `python-psutil`
 - Web Browser: `brave-bin`<sup>AUR</sup>
 - Shell: `bash`, `fish`, `oh-my-posh`<sup>AUR</sup>
-- Git: `git`, `github-cli`, `github-desktop`<sup>AUR</sup>
+- Git: `git`, `github-cli`, `github-desktop-bin`<sup>AUR</sup>
 - Compositer: `picom`
 - Fetch: `fastfetch`
 - Keyring: `gnome-keyring`, `seahorse`
@@ -36,7 +36,7 @@ Below are **ArchLinux Specific** Packages
 - Clipboard Manager: `clipse-bin`<sup>AUR</sup>
 - Network: `networkmanager`, `network-manager-applet`
 - Bluetooth: `blueman`
-- X11 Misc: `xorg-xrandr`, `xorg-xrdb`
+- X11: `xorg`, `xorg-apps`
 - Wayland Misc: `wlr-randr`
 - Polikit Agent: `polkit-kde-agent`
 - Menu: `rofi`, [rofi configs repo](https://github.com/Im-shamo/rofi)
@@ -65,7 +65,7 @@ pacman -Syu --needed \
     alacritty konsole code kate kwrite nvim     \
     dolphin ark dunst udiskie                   \
     networkmanager network-manager-applet       \
-    blueman xorg-xrandr xorg-xrdb wlr-randr     \
+    blueman xorg xorg-apps wlr-randr            \
     polkit-kde-agent rofi btop conky            \
     feh swww nwg-look ly                        \
     breeze breeze5 breeze-gtk breeze-icons      \
