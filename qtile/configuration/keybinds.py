@@ -8,7 +8,7 @@ keys = [
     # Qtile shutdown and reload
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "mod1"], "delete", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod, "mod1"], "l", lazy.spawn("i3lock -c 000000")),
+    Key(["mod1", "control"], "l", lazy.spawn("i3lock -c 000000"), desc="Lock Qtile"),
 
     ### Windows ###
 
@@ -66,20 +66,21 @@ keys = [
 
     # App launchers
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "r", lazy.spawn(menu), desc=f"Launch {menu.split(' ')[0]}"),
-    Key([mod], "m", lazy.spawncmd()),
+    Key([mod], "r", lazy.spawn(menu), desc="Launch rofi"),
+    Key([mod], "m", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key(["mod1", "control"], "Delete", lazy.spawn(powermenu), desc="Launch powermenu"),
     Key([mod], "e", lazy.spawn(file_explorer), desc=f"Spawn the file explorer ({file_explorer})"),
     Key([mod], "c", lazy.spawn(code_editor)),
-    Key([mod], "b", lazy.spawn(browser)),
-    Key([mod], "p", run_script("reload_picom.sh")),
+    Key([mod], "b", lazy.spawn(browser), desc=f"Launch {browser}"),
+    Key([mod], "p", run_script("reload_picom.sh"), desc=f"Reload picom"),
 
     # Screenshots
     Key([], "Print", lazy.spawn("spectacle -m -b -c"), desc="Take screenshot"),
     Key([mod], "Print", lazy.spawn("spectacle -g"), desc="Launch spectacle screenshot"),
 
     # Wallpaper
-    Key([mod], "w", run_script("wallpaper_changer.sh")),
-    Key([mod, "shift"], "w", lazy.spawn("waypaper")),
+    Key([mod], "w", run_script("wallpaper_changer.sh"), desc="Change wallpaper"),
+    Key([mod, "shift"], "w", lazy.spawn("waypaper"), desc="Launch waypaper"),
     # Key([mod], "s", lazy.spawn("selector")),
     # Key([mod, "shift"], "s", run_script("safe_wallpaper.sh")),
 
@@ -99,7 +100,7 @@ keys = [
     Key([], "XF86AudioPrev",  lazy.spawn("playerctl previous"), desc="Skip to previous"),
 
     # Laptop display brightness
-    Key([], "XF86MonBrightnessUp", lazy.spawn("blight set +5%")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("blight set -5%")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("blight set +5%"), desc="Increase backlight by 5%"),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("blight set -5%"), desc="Decrease backlight by 5%"),
     # TODO: Add the rest of the keyboard controls
 ]

@@ -17,3 +17,8 @@ elif qtile.core.name == "wayland":
     def startup_once():
         set_environment_varables()
         subprocess.Popen(os.path.join(scripts_dir, "wayland_startup.sh"))
+
+else:
+    @hook.subscribe.startup_once
+    def startup_once():
+        pass

@@ -8,6 +8,7 @@ file_explorer = "dolphin"
 terminal = "alacritty"
 terminal_name = terminal
 menu = os.path.expanduser("~/.config/rofi/launchers/type-1/launcher.sh")
+powermenu = os.path.expanduser("~/.config/rofi/powermenu/type-1/powermenu.sh")
 browser = "brave"
 code_editor = "code"
 

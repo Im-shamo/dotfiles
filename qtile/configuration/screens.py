@@ -30,3 +30,6 @@ elif qtile.core.name == "wayland":
                  screens = [Screen(top = my_bars.main_bar_wayland_small_desktop())]
              else:
                  screens = [Screen(top = my_bars.main_bar_wayland_small)]
+
+else:
+    screens = []
