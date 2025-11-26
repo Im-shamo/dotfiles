@@ -26,5 +26,5 @@ dunst &             # Notification
 picom &             # Compositor
 udiskie -t &        # Disk mounting
 clipse -listen &    # Clipboard manager
-xautolock -detectsleep -time 3 -locker "i3lock -c 000000" &
+xautolock -detectsleep -time 20 -locker "i3lock -c 000000" &
 
