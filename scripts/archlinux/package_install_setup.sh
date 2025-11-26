@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 # https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
 # Reset
@@ -178,7 +178,7 @@ function install_desktop_all {
 function install_basic {
     downloaded+=("basic")
 
-    echo -e "\n${green}Installing Basic${Color_Off}"
+    echo -e "\n${Green}Installing Basic${Color_Off}"
     
     sudo pacman -S --noconfirm --needed \
         man-db man-pages less nvim networkmanager xdg-user-dirs arch-xdg-menu
@@ -425,7 +425,7 @@ function install_virtualbox {
 
     echo -e "\n${Green}VirtualBox${Color_Off}"
     sudo pacman -S --noconfirm --needed \
-        virtualbox virtualbox-host-modules-dkms virtualbox-guest-iso 
+        virtualbox virtualbox-host-dkms virtualbox-guest-iso 
     yay -S --noconfirm --needed \
         virtualbox-ext-oracle
 }
@@ -474,7 +474,7 @@ function installation {
         update_mirror
         sudo pacman -Syu
     fi
-    for part in ${install_list[@]}; do
+    for part in "${install_list[@]}"; do
         case "$part" in
             desktop )
                 install_desktop_all
