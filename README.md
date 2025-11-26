@@ -1,6 +1,6 @@
 # Dotfiles
 
-I use qtile.
+This is where I keep my dots. 
 
 ## Readme
 
@@ -15,10 +15,13 @@ I use qtile.
 
 ![with apps](qtile/images/qtile-app-wm.png)
 
+## Keybinds
 <details>
-<summary>Keybinds</summary>
+<summary>Expand</summary>
 
-![](qtile/images/no_modifier.png)
+Note >>> `ctrl` + `alt` + `Delete`: Powermenu <<<
+
+![](qtile/images/mod1-control.png)
 
 ![](qtile/images/mod4.png)
 
@@ -28,7 +31,8 @@ I use qtile.
 
 ![](qtile/images/mod4-control.png)
 
-![](qtile/images/mod1-control.png)
+![](qtile/images/no_modifier.png)
+
 </details>
 
 ### Apps
@@ -46,7 +50,7 @@ Below are **ArchLinux Specific** Packages
 - Editor: `code`, `kate`, `kwrite`, `nvim`
 - File Manager: `dolphin`
 - Archiving: `ark`
-- Noification: `dunst`
+- Notification: `dunst`
 - Lock: `i3lock-color`<sup>AUR</sup>, `xautolock`<sup>AUR</sup>
 - Disk Manager: `udiskie`
 - Clipboard Manager: `clipse-bin`<sup>AUR</sup>
