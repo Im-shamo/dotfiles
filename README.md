@@ -61,7 +61,7 @@ Below are **ArchLinux Specific** Packages
 - Display Manager (Login): `ly`
 - Theming: `nwg-look`, `qt6ct-kde`<sup>AUR</sup>, `qt5ct-kde`<sup>AUR</sup>
 - Themes:
-	- Cursor: [Tachibana Twins](https://ko-fi.com/s/c124f987ab)
+	- Cursor: [Tachibana Hikari](https://ko-fi.com/s/c124f987ab)
 	- Cursor Help: [How to get cursor theming working in X11](https://gist.github.com/Im-shamo/64d7efba89db1a816c2c70e5ba01f770)
 	- Cursor Tools: [Win -> Linux repo](https://github.com/khayalhus/win2xcur-batch)
 	- Widgets: `breeze`, `breeze5`, `breeze-gtk`
