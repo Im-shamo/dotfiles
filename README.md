@@ -15,6 +15,22 @@ I use qtile.
 
 ![with apps](qtile/images/qtile-app-wm.png)
 
+<details>
+<summary>Keybinds</summary>
+
+![](qtile/images/no_modifier.png)
+
+![](qtile/images/mod4.png)
+
+![](qtile/images/mod4-shift.png)
+
+![](qtile/images/mod4-mod1.png)
+
+![](qtile/images/mod4-control.png)
+
+![](qtile/images/mod1-control.png)
+</details>
+
 ### Apps
 
 Below are **ArchLinux Specific** Packages
