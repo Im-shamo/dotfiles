@@ -83,14 +83,27 @@ def list_packages(all_packages: dict[str, dict[str, list[list[str]]]], detailed=
 
 parser = argparse.ArgumentParser(prog="Program Installer (Arch)")
 parser.add_argument("--all", action="store_true", help="All packages")
-parser.add_argument("--group", nargs="+", help="Select package groups")
-parser.add_argument("--add", nargs="+", help="Select packages")
-parser.add_argument("--list", action="store_true", help="List out packages")
+parser.add_argument("--group", "-g", nargs="+", help="Select package groups")
+parser.add_argument("--add", "-a", nargs="+", help="Select packages")
+parser.add_argument("--list", "-l", action="store_true", help="List out packages")
 args = parser.parse_args()
 
 with open("package.json", "r") as file:
     all_packages = json.load(file)
 
 if __name__ == "__main__":
+    pac = Pacman()
+    aur = Yay()
+
     if args.list:
         list_packages(all_packages)
+    elif args.all:
+        pass
+    elif args.group:
+        for g in args.group:
+            print(f"Install group: {g}.")
+            for name, packages in all_packages[g].items():
+                pac_result = pac.install(packages[0])
+                aur_result = aur.install(packages[1])
+    elif args.add:
+        pass
