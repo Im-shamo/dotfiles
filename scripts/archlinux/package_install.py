@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import os.path
 import subprocess
 import json
 import argparse
@@ -78,12 +79,14 @@ def list_packages(all_packages: dict[str, dict[str, list[list[str]]]], detailed=
             print(f"  - {name.capitalize()}")
             # TODO: Add Full package info
 
-def remove_groups(all_packages: dict[str, dict[str, list[list[str]]]]) -> dict[str,list[list[str]]]:
+
+def remove_groups(all_packages: dict[str, dict[str, list[list[str]]]]) -> dict[str, list[list[str]]]:
     result = {}
     for package_group_name, package_group in all_packages.items():
         for name, packages in package_group.items():
             result[name] = packages
     return result
+
 
 # TODO: Install interface
 
@@ -100,6 +103,12 @@ with open("package.json", "r") as file:
     all_packages = json.load(file)
 
 if __name__ == "__main__":
+    if not os.path.exists("/usr/bin/yay"):
+        result = install_yay()
+        if args.verbose:
+            print(result.stderr)
+            print(result.stdout)
+
     pac = Pacman()
     aur = Yay()
 
@@ -137,4 +146,3 @@ if __name__ == "__main__":
                 print(pac_result.stdout)
                 print(aur_result.stderr)
                 print(aur_result.stdout)
-        
