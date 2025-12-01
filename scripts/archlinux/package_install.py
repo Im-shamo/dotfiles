@@ -78,6 +78,12 @@ def list_packages(all_packages: dict[str, dict[str, list[list[str]]]], detailed=
             print(f"  - {name.capitalize()}")
             # TODO: Add Full package info
 
+def remove_groups(all_packages: dict[str, dict[str, list[list[str]]]]) -> dict[str,list[list[str]]]:
+    result = {}
+    for package_group_name, package_group in all_packages.items():
+        for name, packages in package_group.items():
+            result[name] = packages
+    return result
 
 # TODO: Install interface
 
@@ -86,6 +92,8 @@ parser.add_argument("--all", action="store_true", help="All packages")
 parser.add_argument("--group", "-g", nargs="+", help="Select package groups")
 parser.add_argument("--add", "-a", nargs="+", help="Select packages")
 parser.add_argument("--list", "-l", action="store_true", help="List out packages")
+parser.add_argument("--check", "-c", action="store_true", help="Check packages")
+parser.add_argument("--verbose", action="store_true", help="Output pacman and yay stdout")
 args = parser.parse_args()
 
 with open("package.json", "r") as file:
@@ -95,15 +103,38 @@ if __name__ == "__main__":
     pac = Pacman()
     aur = Yay()
 
-    if args.list:
+    if args.check:
+        result = check_packages(all_packages)
+        print(result["pacman"])
+        print(result["aur"])
+
+    elif args.list:
         list_packages(all_packages)
+
     elif args.all:
         pass
+
     elif args.group:
         for g in args.group:
             print(f"Install group: {g}.")
             for name, packages in all_packages[g].items():
                 pac_result = pac.install(packages[0])
                 aur_result = aur.install(packages[1])
+                if args.verbose:
+                    print(pac_result.stderr)
+                    print(pac_result.stdout)
+                    print(aur_result.stderr)
+                    print(aur_result.stdout)
+
     elif args.add:
-        pass
+        removed_groups = remove_groups(all_packages)
+        for p in args.add:
+            print(f"Install package: {p}")
+            pac_result = pac.install(removed_groups[p][0])
+            aur_result = aur.install(removed_groups[p][1])
+            if args.verbose:
+                print(pac_result.stderr)
+                print(pac_result.stdout)
+                print(aur_result.stderr)
+                print(aur_result.stdout)
+        
