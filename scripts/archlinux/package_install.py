@@ -69,7 +69,7 @@ def check_packages(all_packages: dict[str, dict[str, list[list[str]]]]) -> dict[
 
 
 def install_yay() -> subprocess.CompletedProcess:
-    return subprocess.run(["install_yay.sh"], capture_output=True, text=True)
+    return subprocess.run(["yay_install.sh"], capture_output=True, text=True)
 
 
 def list_packages(all_packages: dict[str, dict[str, list[list[str]]]], detailed=False) -> None:
