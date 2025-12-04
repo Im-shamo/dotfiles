@@ -3,7 +3,7 @@
 sudo pacman -S --needed --noconfirm base-devel git
 
 if [[ $(pacman -Qq yay) != "yay" ]]; then
-    mkdir -p Clone
+    mkdir -p ~/Clone
     cd Clone
     git clone https://aur.archlinux.org/yay.git
 
