@@ -13,3 +13,5 @@ def set_environment_varables(backend = "x11"):
 
     # Dolphin fix
     os.environ["XDG_MENU_PREFIX"] = "arch-"
+
+    os.environ["XDG_SESSION_DESKTOP"] = "qtile"
