@@ -271,6 +271,18 @@
         "system-config-printer"
       ],
       []
+    ],
+    "font": [
+      [
+        "gnu-free-fonts",
+        "noto-fonts",
+        "noto-fonts-cjk",
+        "noto-fonts-emoji",
+        "ttf-degavu",
+        "ttf-hack",
+        "otf-droid-nerd"
+      ],
+      []
     ]
   },
   "driver": {
