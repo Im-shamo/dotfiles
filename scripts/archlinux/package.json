@@ -50,12 +50,13 @@
         "nwg-look",
         "ly",
         "dunst",
-        "udiskie"
+        "udiskie",
+        "polkit-kde-agent",
+        "xorg-xinit",
+        "powerkit"
       ],
       [
-        "qtile-extras",
-        "i3lock-color",
-        "xautolock"
+        "qtile-extras"
       ]
     ],
     "kde": [
@@ -106,7 +107,9 @@
         "bash",
         "fish"
       ],
-      []
+      [
+        "oh-my-posh"
+      ]
     ],
     "fetch": [
       [
@@ -225,7 +228,8 @@
         "pipewire",
         "pipewire-alsa",
         "pipewire-jack",
-        "playerctl"
+        "playerctl",
+        "wirerplumber"
       ],
       []
     ],
@@ -253,7 +257,11 @@
       [
         "ntfs-3g",
         "exfat-utils",
-        "dosfstools"
+        "dosfstools",
+        "btrfs-progs",
+        "dolphin",
+        "dolphin-plugins",
+        "ark"
       ],
       []
     ],
@@ -278,9 +286,7 @@
         "noto-fonts",
         "noto-fonts-cjk",
         "noto-fonts-emoji",
-        "ttf-degavu",
-        "ttf-hack",
-        "otf-droid-nerd"
+        "nerd-fonts"
       ],
       []
     ]
