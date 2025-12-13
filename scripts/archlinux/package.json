@@ -52,11 +52,11 @@
         "dunst",
         "udiskie",
         "polkit-kde-agent",
-        "xorg-xinit",
-        "powerkit"
+        "xorg-xinit"
       ],
       [
-        "qtile-extras"
+        "qtile-extras",
+        "powerkit"
       ]
     ],
     "kde": [
@@ -365,7 +365,6 @@
   "virtualization": {
     "virtualbox": [
       [
-        "virtualbox",
         "virtualbox",
         "virtualbox-host-dkms",
         "virtualbox-guest-iso"
