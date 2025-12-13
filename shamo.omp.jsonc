@@ -27,7 +27,7 @@
           "style": "diamond"
         },
         {
-          "properties": {
+          "options": {
             "folder_icon": " \uf07b ",
             "home_icon": "\ue617",
             "style": "folder"
@@ -40,7 +40,7 @@
           "style": "powerline"
         },
         {
-          "properties": {
+          "options": {
             "branch_icon": "\ue725 ",
             "fetch_status": true,
             "fetch_upstream_icon": true
@@ -59,7 +59,7 @@
           ]
         },
         {
-          "properties": {
+          "options": {
             "style": "roundrock",
             "threshold": 0
           },
@@ -83,7 +83,7 @@
           "style": "plain"
         },
         {
-          "properties": {
+          "options": {
             "fetch_package_manager": true,
             "npm_icon": " <#cc3a3a>\ue5fa</> ",
             "yarn_icon": " <#348cba>\ue6a7</>"
@@ -223,7 +223,7 @@
           "style": "diamond"
         },
         {
-          "properties": {
+          "options": {
             "linux": "\ue712",
             "macos": "\ue711",
             "windows": "\ue70f"
@@ -237,7 +237,7 @@
           "style": "diamond"
         },
         {
-          "properties": {
+          "options": {
             "charged_icon": "\uf240 ",
             "charging_icon": "\uf1e6 ",
             "discharging_icon": "\ue234 "
@@ -256,7 +256,7 @@
           "invert_powerline": true
         },
         {
-          "properties": {
+          "options": {
             "time_format": "_2,15:04"
           },
           "leading_diamond": "\ue0b2",
@@ -282,7 +282,7 @@
           "style": "plain"
         },
         {
-          "properties": {
+          "options": {
             "always_enabled": true
           },
           "template": "\ue285\ueab6 ",
@@ -297,5 +297,5 @@
       "newline": true
     }
   ],
-  "version": 3
+  "version": 4
 }
