@@ -21,26 +21,6 @@ def is_desktop():
     else:
         return False
 
-def get_display_resolutions(qtile) -> dict[str, tuple[int, int]]:
-    return {}
-    output_dict = {}
-    if qtile.core.name == "wayland":
-        result = subprocess.run(["wlr-randr", "--json"], capture_output=True, text=True)
-        if not result.stdout:
-            return output_dict
-        parsed = json.loads(result.stdout)
-        for display in parsed:
-            if not display["enable"]:
-                continue
-            for mode in display["modes"]:
-                if mode["current"]:
-                    output_dict[display["name"]] = (mode["width"], mode["height"])
-
-    elif qtile.core.name == "x11":
-        pass
-    
-    return output_dict
-
 @lazy.function
 def run_script(qtile, script: str):
     result = subprocess.run([os.path.join(scripts_dir,script)], capture_output=True, text=True)
