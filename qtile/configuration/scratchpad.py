@@ -22,10 +22,10 @@ groups.extend([
                 "btop",
                 f"{terminal} --class btop -e btop",
                 on_focus_host_hide = False,
-                height = 0.5,
-                width = 0.5,
-                x = 0.25,
-                y = 0.25,
+                height = 0.6,
+                width = 0.6,
+                x = 0.2,
+                y = 0.2,
             )
         ]
     )
