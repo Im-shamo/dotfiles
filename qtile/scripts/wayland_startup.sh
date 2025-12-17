@@ -21,7 +21,10 @@ blueman-applet &
 # |      Programs      |
 # |                    |
 # +--------------------+
+/usr/lib/polkit-kde-authentication-agent-1 &
 dunst &             # Notification
 udiskie -t &        # Disk mounting
-/usr/lib/polkit-gnome/polkit-kde-authentication-agent-1 &
 clipse -listen &    # Clipboard manager
+powerkit &
+deskflow &
+
