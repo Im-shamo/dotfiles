@@ -1,7 +1,7 @@
 from libqtile.lazy import lazy
 from qtile_extras import widget
 from qtile_extras.widget.decorations import PowerLineDecoration
-import os
+from libqtile import qtile
 
 from configuration.variables import *
 from configuration.helper_functions import run_script
@@ -52,11 +52,15 @@ class MyWidgets:
         )
 
     def wallpaper_switcher(self, **kwargs):
+        if qtile.core.name == "x11":
+            launch_waypaper = lazy.spawn("waypaper --backend feh")
+        else:
+            launch_waypaper = lazy.spawn("waypaper --backend swww")
         return widget.TextBox(
             fmt="Switch Wallpaper  ",
             mouse_callbacks={
                 "Button1": run_script("wallpaper_changer.sh"),
-                "Button3": lazy.spawn("waypaper")
+                "Button3": launch_waypaper
                 },
             background=self.colours["PURPLE"],
             **kwargs
