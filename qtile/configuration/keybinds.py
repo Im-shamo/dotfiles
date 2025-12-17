@@ -1,5 +1,6 @@
 from libqtile.config import Key
 from libqtile.lazy import lazy
+from libqtile import qtile
 
 from configuration.variables import *
 from configuration.helper_functions import swap_screens, run_script
@@ -8,7 +9,6 @@ keys = [
     # Qtile shutdown and reload
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "mod1"], "delete", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key(["mod1", "control"], "l", lazy.spawn("xscreensaver-command -lock"), desc="Lock Qtile"),
 
     ### Windows ###
 
@@ -72,7 +72,6 @@ keys = [
     Key([mod], "e", lazy.spawn(file_explorer), desc=f"Spawn the file explorer ({file_explorer})"),
     Key([mod], "c", lazy.spawn(code_editor)),
     Key([mod], "b", lazy.spawn(browser), desc=f"Launch {browser}"),
-    Key([mod], "p", run_script("reload_picom.sh"), desc=f"Reload picom"),
 
     # Screenshots
     Key([], "Print", lazy.spawn("spectacle -m -b -c"), desc="Take screenshot"),
@@ -104,3 +103,13 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.spawn("blight set -5%"), desc="Decrease backlight by 5%"),
     # TODO: Add the rest of the keyboard controls
 ]
+
+if qtile.core.name == "x11":
+    keys.extend([
+        Key([mod], "p", run_script("reload_picom.sh"), desc=f"Reload picom"),
+        Key(["mod1", "control"], "l", lazy.spawn("xscreensaver-command -lock"), desc="Lock Qtile"),
+    ])
+elif qtile.core.name == "wayland":
+    keys.extend([
+
+    ])
