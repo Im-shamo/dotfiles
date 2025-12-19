@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
-external=$(xrandr | grep -i  "HDMI" | cut -d " " -f1)
-rate=60
+rate=144
 res=1920x1080
 
-echo $external
-echo $rate@$res
-
-wlr-randr --output "$external" --custom-mode "$res"@"$rate"
+wlr-randr --output HDMI-A-1 --custom-mode "$res"@"$rate"
