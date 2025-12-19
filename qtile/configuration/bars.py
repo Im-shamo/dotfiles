@@ -75,7 +75,6 @@ class MyBars:
                 widget.CurrentLayoutIcon(),
                 my_widgets.group_box(),
                 widget.WindowName(),
-                widget.Prompt(),
                 widget.TextBox(**arrow_right),
                 widget.Clock(format="%d/%m/%Y %a %I:%M %p", background="1d6ac9", **arrow_right),   # Light blue
                 my_widgets.power_button(),
@@ -195,7 +194,6 @@ class MyBars:
                 widget.CurrentLayoutIcon(),
                 my_widgets.group_box(),
                 widget.WindowName(),
-                widget.Prompt(),
                 widget.TextBox(**arrow_right),
                 widget.Clock(format="%d/%m/%Y %a %I:%M %p", background="1d6ac9", **arrow_right),   # Light blue
                 my_widgets.power_button(),
