@@ -15,7 +15,7 @@ This is where I keep my dots.
 
 ![with apps](qtile/images/qtile-app-wm.png)
 
-## Keybinds
+### Keybinds
 <details>
 <summary>Expand</summary>
 
@@ -51,7 +51,7 @@ Below are **ArchLinux Specific** Packages
 - File Manager: `dolphin`
 - Archiving: `ark`
 - Notification: `dunst`
-- Lock: `i3lock-color`<sup>AUR</sup>, `xautolock`<sup>AUR</sup>
+- Lock: `powerkit`<sup>AUR</sup>, `xscreensaver`
 - Disk Manager: `udiskie`
 - Clipboard Manager: `clipse-bin`<sup>AUR</sup>
 - Network: `networkmanager`, `network-manager-applet`
@@ -88,20 +88,20 @@ pacman -Syu --needed \
     networkmanager network-manager-applet       \
     blueman xorg xorg-apps wlr-randr wayland    \
     polkit-kde-agent rofi btop conky            \
-    feh swww nwg-look ly                        \
-    breeze breeze5 breeze-gtk breeze-icons      \
-    playerctl pavucontrol alsa-utils spectacle  \
-    pulseaudio pulseaudio-alsa pipewire         \
-    wireplumber nerd-fonts ttf-hack ttf-dejavu  \
-    noto-fonts noto-fonts-cjk noto-fonts-emoji  \
+    feh swww nwg-look ly                        	\
+    breeze breeze5 breeze-gtk breeze-icons      	\
+    playerctl pavucontrol alsa-utils spectacle  	\
+    pulseaudio pulseaudio-alsa pipewire         	\
+    wireplumber nerd-fonts ttf-hack ttf-dejavu  	\
+    noto-fonts noto-fonts-cjk noto-fonts-emoji  	\
     archlinux-xdg-menu xdg-user-dirs
 ```
 
 ```bash
 yay -S --needed \
-    qtile-extras i3lock-color                   \
-    brave-bin waypaper                          \
-    xautolock clipse-bin qt5ct-kde qt6ct-kde    \
+    qtile-extras powerkit                       	\
+    brave-bin waypaper clipse-bin            	   	\
+    qt5ct-kde qt6ct-kde    						\
     blight github-desktop-bin oh-my-posh
 ```
 
@@ -111,7 +111,7 @@ yay -S --needed \
 - [x] Identify laptop and desktop
 - [ ] Resolution Changing Bars
 - [ ] Scratchpad
-- [ ] Fix Keyring
+- [x] Fix Keyring
 
 ## Hyprland: My main Wayland WM
 
