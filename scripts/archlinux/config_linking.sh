@@ -4,9 +4,9 @@ config="$HOME/.config"
 dots="$HOME/Clone/dotfiles"
 
 folders=(
-    "alacritty" "awesome" "dunst" "fish" "hypr" "hyprlock" "i3" "kitty"
-    "picom" "qtile" "waybar" "wofi" "nvim"
-    )
+    "alacritty" "awesome" "dunst" "fish" "hypr" "hyprlock" "i3" "kitty" "picom"
+    "qtile" "waybar" "wofi" "nvim" "icewm"
+)
 
 files=(".vimrc" ".Xresources")
 
