@@ -229,7 +229,7 @@
         "pipewire-alsa",
         "pipewire-jack",
         "playerctl",
-        "wirerplumber"
+        "wireplumber"
       ],
       []
     ],
