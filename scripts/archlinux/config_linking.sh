@@ -32,7 +32,7 @@ for linkname in "${configLinks[@]}"; do
     fi
 
     if [[ -d "$target" ]] || [[ -f "$target" ]]; then
-        ln -sv "$target"
+        ln -sv "$target" "$link"
     else
         echo "error: $target does not exist!"
     fi
@@ -49,7 +49,7 @@ for linkname in "${homeLinks[@]}"; do
     fi
 
     if [[ -d "$target" ]] || [[ -f "$target" ]]; then
-        ln -sv "$target"
+        ln -sv "$target" "$link"
     else
         echo "error: $target does not exist!"
     fi
