@@ -1,14 +1,21 @@
 #!/usr/bin/bash
 
-config="$HOME/.config"
+userHome="$HOME"
 dots="$HOME/Clone/dotfiles"
+
+if [[ "$1" = "-t" ]]; then
+    mkdir -pv /tmp/configtest/.config/
+    userHome="/tmp/configtest"
+fi
+
+config="$userHome/.config"
 
 configLinks=(
     "alacritty" "awesome" "dunst" "fish" "hypr" "hyprlock" "i3" "kitty" "picom"
     "qtile" "waybar" "wofi" "nvim" "icewm"
 )
 
-homeLinks=(".vimrc" ".Xresources")
+homeLinks=(".vimrc" ".Xresources" ".icewm")
 
 if [[ ! -d $dots ]]; then
     echo "$dots folder does not exist."
@@ -32,16 +39,16 @@ for linkname in "${configLinks[@]}"; do
     fi
 
     if [[ -d "$target" ]] || [[ -f "$target" ]]; then
-        ln -sv "$target" "$link"
+        ln -sv "$target"
     else
         echo "error: $target does not exist!"
     fi
 done
 
-cd $HOME
+cd $userHome
 for linkname in "${homeLinks[@]}"; do
     target="$dots/$linkname"
-    link="$HOME/$linkname"
+    link="$userHome/$linkname"
 
     # If the link location already exists, then rename it
     if ( [[ -d "$link" ]] || [[ -f "$link" ]] ) && [[ ! -h "$link" ]]; then
@@ -49,7 +56,7 @@ for linkname in "${homeLinks[@]}"; do
     fi
 
     if [[ -d "$target" ]] || [[ -f "$target" ]]; then
-        ln -sv "$target" "$link"
+        ln -sv "$target"
     else
         echo "error: $target does not exist!"
     fi
