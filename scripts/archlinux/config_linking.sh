@@ -3,12 +3,12 @@
 config="$HOME/.config"
 dots="$HOME/Clone/dotfiles"
 
-folders=(
+configLinks=(
     "alacritty" "awesome" "dunst" "fish" "hypr" "hyprlock" "i3" "kitty" "picom"
     "qtile" "waybar" "wofi" "nvim" "icewm"
 )
 
-files=(".vimrc" ".Xresources")
+homeLinks=(".vimrc" ".Xresources")
 
 if [[ ! -d $dots ]]; then
     echo "$dots folder does not exist."
@@ -22,13 +22,13 @@ fi
 
 cd $config
 
-for foldername in "${folders[@]}"; do
-    target="$dots/$foldername"
-    config_location="$config/$foldername"
+for linkname in "${configLinks[@]}"; do
+    target="$dots/$linkname"
+    link="$config/$linkname"
 
-    # If the config file already exists, then rename it
-    if ( [[ -d "$config_location" ]] || [[ -f "$config_location" ]] ) && [[ ! -h "$config_location" ]]; then
-        mv -v "$config_location" "${config_location}".bak
+    # If the link location already exists, then rename it
+    if ( [[ -d "$link" ]] || [[ -f "$link" ]] ) && [[ ! -h "$link" ]]; then
+        mv -v "$link" "${link}".bak
     fi
 
     if [[ -d "$target" ]] || [[ -f "$target" ]]; then
@@ -39,13 +39,13 @@ for foldername in "${folders[@]}"; do
 done
 
 cd $HOME
-for filename in "${files[@]}"; do
-    target="$dots/$filename"
-    config_location="$HOME/$filename"
+for linkname in "${homeLinks[@]}"; do
+    target="$dots/$linkname"
+    link="$HOME/$linkname"
 
-    # If the config file already exists, then rename it
-    if ( [[ -d "$config_location" ]] || [[ -f "$config_location" ]] ) && [[ ! -h "$config_location" ]]; then
-        mv -v "$config_location" "${config_location}".bak
+    # If the link location already exists, then rename it
+    if ( [[ -d "$link" ]] || [[ -f "$link" ]] ) && [[ ! -h "$link" ]]; then
+        mv -v "$link" "${link}".bak
     fi
 
     if [[ -d "$target" ]] || [[ -f "$target" ]]; then
