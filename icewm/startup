@@ -6,4 +6,4 @@ picom &             # Compositor
 # udiskie -t &        # Disk mounting
 # clipse -listen &    # Clipboard manager
 powerkit &
-icewmbg -f -p --scaled=1 -i /mnt/nas/share/Pictures/Blue\ Archive/ako-hina.jpg &
+icewmbg -f -p --scaled=1 -i ~/nas/share/Pictures/Blue\ Archive/ako-hina.jpg &
