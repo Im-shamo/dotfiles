@@ -1,8 +1,4 @@
-# This is an example for icewm toolbar definition file.
-# It will be installed as /usr/share/icewm/toolbar.
-# Place your variants in /usr/etc/icewm or in $HOME/.icewm since
-# modifications to this file will be overwritten when you reinstall icewm.
-#
-prog "xterm" utilities-terminal xterm
-prog "Web browser" web-browser falkon
+prog "konsole" utilities-terminal konsole
+prog "Web browser" falkon falkon
+prog "File Manager" org.kde.dolphin dolphin
 
