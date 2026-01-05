@@ -7,3 +7,4 @@ picom &             # Compositor
 # clipse -listen &    # Clipboard manager
 powerkit &
 icewmbg -f -p --scaled=1 -i ~/nas/share/Pictures/Blue\ Archive/ako-hina.jpg &
+deskflow &
