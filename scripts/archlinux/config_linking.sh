@@ -15,7 +15,7 @@ configLinks=(
     "qtile" "waybar" "wofi" "nvim" "icewm"
 )
 
-homeLinks=(".vimrc" ".Xresources" ".icewm")
+homeLinks=(".vimrc" ".Xresources" ".icewm" ".zshrc")
 
 if [[ ! -d $dots ]]; then
     echo "$dots folder does not exist."

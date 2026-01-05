@@ -41,7 +41,7 @@ set foldmethod=marker
 set mouse=n
 set background=dark
 
-set gfn=Hack_Nerd_Font_Mono:h12:cANSI:qDRAFT
+set gfn=Hack\ Nerd\ Font\ Mono\ 12
 colorscheme desert
 
 " Set shell
