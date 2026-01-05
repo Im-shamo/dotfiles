@@ -1,14 +1,21 @@
 #!/usr/bin/bash
 
-config="$HOME/.config"
+userHome="$HOME"
 dots="$HOME/Clone/dotfiles"
+
+if [[ "$1" = "-t" ]]; then
+    mkdir -pv /tmp/configtest/.config/
+    userHome="/tmp/configtest"
+fi
+
+config="$userHome/.config"
 
 configLinks=(
     "alacritty" "awesome" "dunst" "fish" "hypr" "hyprlock" "i3" "kitty" "picom"
     "qtile" "waybar" "wofi" "nvim" "icewm"
 )
 
-homeLinks=(".vimrc" ".Xresources" ".zshrc")
+homeLinks=(".vimrc" ".Xresources" ".icewm" ".zshrc")
 
 if [[ ! -d $dots ]]; then
     echo "$dots folder does not exist."
@@ -38,10 +45,10 @@ for linkname in "${configLinks[@]}"; do
     fi
 done
 
-cd $HOME
+cd $userHome
 for linkname in "${homeLinks[@]}"; do
     target="$dots/$linkname"
-    link="$HOME/$linkname"
+    link="$userHome/$linkname"
 
     # If the link location already exists, then rename it
     if ( [[ -d "$link" ]] || [[ -f "$link" ]] ) && [[ ! -h "$link" ]]; then

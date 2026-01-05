@@ -1,0 +1,6 @@
+prog "konsole" utilities-terminal konsole
+prog "Web browser" falkon falkon
+prog "File Manager" org.kde.dolphin dolphin
+prog "Steam" steam steam
+
+includeprog icewm-menu-fdo --seps -d1400 -D1650 -S --limit-max-len=42
