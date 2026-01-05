@@ -1,4 +1,5 @@
 prog "konsole" utilities-terminal konsole
 prog "Web browser" falkon falkon
 prog "File Manager" org.kde.dolphin dolphin
+prog "Steam" steam steam
 
