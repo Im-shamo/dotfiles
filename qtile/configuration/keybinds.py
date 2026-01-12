@@ -78,10 +78,8 @@ keys = [
     Key([mod], "Print", lazy.spawn("spectacle -g"), desc="Launch spectacle screenshot"),
 
     # Wallpaper
-    Key([mod], "w", run_script("wallpaper_changer.sh"), desc="Change wallpaper"),
+    Key([mod], "w", lazy.spawn("waypaper --random"), desc="Change wallpaper"),
     Key([mod, "shift"], "w", lazy.spawn("waypaper"), desc="Launch waypaper"),
-    # Key([mod], "s", lazy.spawn("selector")),
-    # Key([mod, "shift"], "s", run_script("safe_wallpaper.sh")),
 
     # Media Control
     # Source 

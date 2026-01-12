@@ -59,7 +59,7 @@ class MyWidgets:
         return widget.TextBox(
             fmt="Switch Wallpaper  ",
             mouse_callbacks={
-                "Button1": run_script("wallpaper_changer.sh"),
+                "Button1": lazy.spawn("waypaper --random"),
                 "Button3": launch_waypaper
                 },
             background=self.colours["PURPLE"],

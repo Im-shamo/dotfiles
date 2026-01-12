@@ -26,5 +26,5 @@ dunst &             # Notification
 udiskie -t &        # Disk mounting
 clipse -listen &    # Clipboard manager
 powerkit &
-deskflow &
+# deskflow &
 

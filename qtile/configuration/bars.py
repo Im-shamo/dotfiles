@@ -135,6 +135,7 @@ class MyBars:
                 widget.Prompt(),
                 widget.StatusNotifier(), # As systray is no available in wayland
                 widget.TextBox(**arrow_right),
+                my_widgets.wallpaper_switcher(**arrow_right),
                 widget.Net(font=mono_font, format= " {down:^5.1f}{down_suffix:<2}", background=colours["BLUE"],**arrow_right),  # blue
                 widget.Net(font=mono_font, format= " {up:^5.1f}{up_suffix:<2}", background=colours["DARK_GREEN"],**arrow_right),  # green
                 widget.NetGraph(
