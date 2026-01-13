@@ -109,5 +109,5 @@ if qtile.core.name == "x11":
     ])
 elif qtile.core.name == "wayland":
     keys.extend([
-
+        Key(["mod1", "control"], "l", lazy.spawn("swaylock"), desc="Lock Qtile"),
     ])

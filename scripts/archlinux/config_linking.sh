@@ -12,7 +12,7 @@ config="$userHome/.config"
 
 configLinks=(
     "alacritty" "awesome" "dunst" "fish" "hypr" "hyprlock" "i3" "kitty" "picom"
-    "qtile" "waybar" "wofi" "nvim" "icewm"
+    "qtile" "waybar" "wofi" "nvim" "icewm" "swaylock" "swayidle"
 )
 
 homeLinks=(".vimrc" ".Xresources" ".icewm" ".zshrc" ".p10k.zsh")
