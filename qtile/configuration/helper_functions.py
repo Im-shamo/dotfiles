@@ -26,5 +26,4 @@ def is_desktop():
 
 @lazy.function
 def run_script(qtile, script: str):
-    result = subprocess.run([os.path.join(scripts_dir,script)], capture_output=True, text=True)
-    return result
+    subprocess.run([os.path.join(scripts_dir,script)])
