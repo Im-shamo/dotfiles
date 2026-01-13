@@ -26,7 +26,7 @@ dunst &             # Notification
 udiskie -t &        # Disk mounting
 clipse -listen &    # Clipboard manager
 swayidle -w \
-    timeout 300 'swaylock -f -c 000000' \
-    before-sleep 'swaylock -f -c 000000' &
+    timeout 300 'swaylock -f -i ~/Pictures/current-wallpaper' \
+    before-sleep 'swaylock -f -i ~/Pictures/current-wallpaper' &
 # deskflow &
 
