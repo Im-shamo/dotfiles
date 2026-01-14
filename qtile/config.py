@@ -5,7 +5,7 @@ from configuration import *
 dgroups_key_binder = None
 dgroups_app_rules = []
 follow_mouse_focus = True
-bring_front_click = False
+bring_front_click = True
 floats_kept_above = True
 cursor_warp = False
 auto_minimize = False
