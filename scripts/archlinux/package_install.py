@@ -16,13 +16,13 @@ class Pacman:
         command.append("-S")
         command.insert(0, "sudo")
         command.extend(packages)
-        return subprocess.run(command, capture_output=True, text=True)
+        return subprocess.run(command)
 
     def full_system_sync(self) -> subprocess.CompletedProcess:
         command = self.args.copy()
         command.append("-Syu")
         command.insert(0, "sudo")
-        return subprocess.run(command, capture_output=True, text=True)
+        return subprocess.run(command)
 
     @staticmethod
     def check(packages: list[str]) -> list[str]:
@@ -43,7 +43,7 @@ class Yay:
         command = self.args.copy()
         command.append("-S")
         command.extend(packages)
-        return subprocess.run(command, capture_output=True, text=True)
+        return subprocess.run(command)
 
     @staticmethod
     def check(packages: list[str]) -> list[str]:
@@ -99,7 +99,6 @@ parser.add_argument("--group", "-g", nargs="+", help="Select package groups")
 parser.add_argument("--add", "-a", nargs="+", help="Select packages")
 parser.add_argument("--list", "-l", action="store_true", help="List out packages")
 parser.add_argument("--check", "-c", action="store_true", help="Check packages")
-parser.add_argument("--verbose", action="store_true", help="Output pacman and yay stdout")
 args = parser.parse_args()
 
 with open("package.json", "r") as file:
@@ -108,9 +107,6 @@ with open("package.json", "r") as file:
 if __name__ == "__main__":
     if not os.path.exists("/usr/bin/yay"):
         result = install_yay()
-        if args.verbose:
-            print(result.stderr)
-            print(result.stdout)
 
     pac = Pacman()
     aur = Yay()
@@ -132,11 +128,6 @@ if __name__ == "__main__":
             for name, packages in all_packages[g].items():
                 pac_result = pac.install(packages[0])
                 aur_result = aur.install(packages[1])
-                if args.verbose:
-                    print(pac_result.stderr)
-                    print(pac_result.stdout)
-                    print(aur_result.stderr)
-                    print(aur_result.stdout)
 
     elif args.add:
         removed_groups = remove_groups(all_packages)
@@ -144,8 +135,3 @@ if __name__ == "__main__":
             print(f"Install package: {p}")
             pac_result = pac.install(removed_groups[p][0])
             aur_result = aur.install(removed_groups[p][1])
-            if args.verbose:
-                print(pac_result.stderr)
-                print(pac_result.stdout)
-                print(aur_result.stderr)
-                print(aur_result.stdout)
