@@ -94,6 +94,7 @@ def remove_groups(all_packages: dict[str, dict[str, list[list[str]]]]) -> dict[s
 # TODO: Install interface
 
 parser = argparse.ArgumentParser(prog="Program Installer (Arch)")
+parser.add_argument("--package-json", "-p", help="Location of package.json")
 parser.add_argument("--all", action="store_true", help="All packages")
 parser.add_argument("--group", "-g", nargs="+", help="Select package groups")
 parser.add_argument("--add", "-a", nargs="+", help="Select packages")
@@ -101,7 +102,13 @@ parser.add_argument("--list", "-l", action="store_true", help="List out packages
 parser.add_argument("--check", "-c", action="store_true", help="Check packages")
 args = parser.parse_args()
 
-with open("package.json", "r") as file:
+
+if args.package_json:
+    package_json = args.package_json
+else:
+    package_json = os.path.expanduser("~/Clone/dotfiles/scripts/archlinux/package.json")
+
+with open(package_json, "r") as file:
     all_packages = json.load(file)
 
 if __name__ == "__main__":
