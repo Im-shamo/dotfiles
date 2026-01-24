@@ -5,8 +5,8 @@
 # |      Applets      |
 # |                   |
 # +-------------------+
-nm-applet &
-blueman-applet &
+command -v nm-applet && nm-applet &
+command -v blueman-applet && blueman-applet &
 
 # +-------------------+
 # |                   |
@@ -21,11 +21,11 @@ blueman-applet &
 # |      Programs      |
 # |                    |
 # +--------------------+
-/usr/lib/polkit-kde-authentication-agent-1 &
-dunst &             # Notification
-udiskie -t &        # Disk mounting
-clipse -listen &    # Clipboard manager
-swayidle -w \
+test -e /usr/lib/polkit-kde-authentication-agent-1 && /usr/lib/polkit-kde-authentication-agent-1 &
+command -v dunst & dunst &             # Notification
+command -v udiskie & udiskie -t &        # Disk mounting
+command -v clipse & clipse -listen &    # Clipboard manager
+command -v swayidle & swayidle -w \
     timeout 300 'swaylock -f -i ~/Pictures/current-wallpaper' \
     before-sleep 'swaylock -f -i ~/Pictures/current-wallpaper' &
 # deskflow &

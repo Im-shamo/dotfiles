@@ -5,8 +5,8 @@
 # |      Applets      |
 # |                   |
 # +-------------------+
-nm-applet &
-blueman-applet &
+command -v nm-applet && nm-applet &
+command -v blueman-applet && blueman-applet &
 
 # +-------------------+
 # |                   |
@@ -22,10 +22,10 @@ blueman-applet &
 # |                    |
 # +--------------------+
 /usr/lib/polkit-kde-authentication-agent-1 &
-dunst &             # Notification
-picom &             # Compositor
-udiskie -t &        # Disk mounting
-clipse -listen &    # Clipboard manager
-powerkit &
-deskflow &
+command -v dunst && dunst &             # Notification
+command -v picom && picom &             # Compositor
+command -v udiskie && udiskie -t &        # Disk mounting
+command -v clipse && clipse -listen &    # Clipboard manager
+command -v powerkit && powerkit &
+command -v deskflow && deskflow &
 
