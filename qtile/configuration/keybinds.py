@@ -97,14 +97,14 @@ keys = [
     Key([], "XF86AudioPrev",  lazy.spawn("playerctl previous"), desc="Skip to previous"),
 
     # Laptop display brightness
-    Key([], "XF86MonBrightnessUp", lazy.spawn("blight set +5%"), desc="Increase backlight by 5%"),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("blight set -5%"), desc="Decrease backlight by 5%"),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%"), desc="Increase backlight by 5%"),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-"), desc="Decrease backlight by 5%"),
     # TODO: Add the rest of the keyboard controls
 ]
 
 if qtile.core.name == "x11":
     keys.extend([
-        Key([mod], "p", run_script("reload_picom.sh"), desc=f"Reload picom"),
+        Key([mod, "control"], "p", run_script("reload_picom.sh"), desc=f"Reload picom"),
         Key(["mod1", "control"], "l", lazy.spawn("xscreensaver-command -lock"), desc="Lock Qtile"),
     ])
 elif qtile.core.name == "wayland":
