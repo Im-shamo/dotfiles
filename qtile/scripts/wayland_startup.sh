@@ -22,10 +22,10 @@ command -v blueman-applet && blueman-applet &
 # |                    |
 # +--------------------+
 test -e /usr/lib/polkit-kde-authentication-agent-1 && /usr/lib/polkit-kde-authentication-agent-1 &
-command -v dunst && dunst &             # Notification
-command -v udiskie && udiskie -t &        # Disk mounting
-command -v clipse && clipse -listen &    # Clipboard manager
-command -v swayidle && swayidle -w \
+command -v dunst & dunst &             # Notification
+command -v udiskie & udiskie -t &        # Disk mounting
+command -v clipse & clipse -listen &    # Clipboard manager
+command -v swayidle & swayidle -w \
     timeout 300 'swaylock -f -i ~/Pictures/current-wallpaper' \
     before-sleep 'swaylock -f -i ~/Pictures/current-wallpaper' &
 # deskflow &
