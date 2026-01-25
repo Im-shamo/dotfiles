@@ -26,7 +26,17 @@ groups.extend([
                 width = 0.6,
                 x = 0.2,
                 y = 0.2,
+            ),
+            DropDown(
+                "term",
+                terminal,
+                on_focus_host_hide = False,
+                height = 0.5,
+                width = 0.5,
+                x = 0.25,
+                y = 0.25,
             )
+ 
         ]
     )
 ])
@@ -34,4 +44,5 @@ groups.extend([
 keys.extend([
     Key([mod], 'v', lazy.group["terminals"].dropdown_toggle("clipse")),
     Key([mod], 's', lazy.group["terminals"].dropdown_toggle("btop")),
+    Key([mod], 'p', lazy.group["terminals"].dropdown_toggle("term")),
 ])
