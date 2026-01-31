@@ -8,7 +8,7 @@ Terminal: `alacritty`, `kitty`, `foot`, `xterm`
 
 Window managers: `qtile`, `sway`, `hyprland`, `icewm`,`i3`
 
-Apps: `waybar`, [rofi](gitHub.com/Im-shamo/rofi)
+Apps: `waybar`, [rofi](https://github.com/Im-shamo/rofi)
 
 Shell: `fish`, `oh-my-posh`
 
