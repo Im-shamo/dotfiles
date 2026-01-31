@@ -13,28 +13,31 @@ groups.extend([
                 "clipse",
                 f"{terminal} --class clipse -e clipse",
                 on_focus_lost_hide = False,
+                opacity = 1,
                 height = 0.4,
                 width = 0.4,
                 x = 0.3,
-                y = 0.3,
+                y = 0.3
             ),
             DropDown(
                 "btop",
                 f"{terminal} --class btop -e btop",
                 on_focus_host_hide = False,
+                opacity = 1,
                 height = 0.6,
                 width = 0.6,
                 x = 0.2,
-                y = 0.2,
+                y = 0.2
             ),
             DropDown(
                 "term",
                 terminal,
                 on_focus_host_hide = False,
+                opacity = 1,
                 height = 0.5,
                 width = 0.5,
                 x = 0.25,
-                y = 0.25,
+                y = 0.25
             )
  
         ]
