@@ -5,7 +5,6 @@ from configuration.screens import screens
 from configuration.layouts import layouts
 from configuration.floating_layout import floating_layout
 from configuration.mouse import mouse
-from configuration.startup import startup_once
 from configuration import scratchpad
 
 __all__ = [
@@ -17,6 +16,5 @@ __all__ = [
     "layouts",
     "floating_layout",
     "mouse",
-    "startup_once",
     "scratchpad"
 ]
