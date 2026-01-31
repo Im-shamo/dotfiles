@@ -1,0 +1,154 @@
+@define-color backgroundColor #344454;	/* Blue */
+@define-color moduleColor #161c22;		/* Black */
+
+* {
+	font-family: DroidSansM Nerd Font;
+	font-size: 14px;
+}
+
+window#waybar {
+	background: @backgroundColor;
+	color: #fdf6e3;
+}
+
+/* Powerline arrows */
+
+#custom-right-arrow-dark {
+	color: @moduleColor;
+	font-size: 23px;
+}
+
+#custom-left-arrow-dark {
+	color: @moduleColor;
+	font-size: 23px;
+}
+
+#custom-right-arrow-light {
+	color: @backgroundColor;
+	background: @moduleColor;
+	font-size: 23px;
+}
+
+#custom-left-arrow-light {
+	color: @backgroundColor;
+	background: @moduleColor;
+	font-size: 23px;
+}
+
+/* Left */
+
+#custom-arch-icon {
+	color: #38afc4;
+	background: @moduleColor;
+	font-size:  20px;
+	padding-left: 10px;
+	padding-right: 5px;
+}
+
+#custom-fedora-icon {
+	color: #38afc4;
+	background: @moduleColor;
+	font-size:  20px;
+	padding-left: 10px;
+	padding-right: 8px;
+}
+
+/* Workspaces */
+
+#workspaces {
+	background: @moduleColor;
+}
+
+#workspaces button {
+	padding: 0 8px;
+	color: #fdf6e3;
+}
+
+#workspaces button.focused {
+	color: #1bce74;
+}
+
+#window {
+	background: @backgroundColor;
+	padding-left: 15px;
+}
+
+/* Right */
+
+#tray {
+	background: @moduleColor;
+	border-radius: 20px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin: 5px 4px;
+}
+
+#privacy {
+	background: @moduleColor;
+	border-radius: 20px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin: 5px 4px;
+}
+
+#mpris {
+	background: @moduleColor;
+	border-radius: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 5px 4px;
+}
+
+#custom-wallpaper-changer {
+	color: #9678b6;
+	background: @moduleColor;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#custom-network_traffic {
+	color: #9678b6;
+	background-color: @moduleColor;
+}
+
+#network {
+	color: #38afc4;
+	background: @moduleColor;
+	padding-left: 5px;
+	padding-right: 15px;
+}
+
+#pulseaudio {
+	color: #E9B57D;
+	background: @moduleColor;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#clock {
+	color: #38afc4;
+	background: @moduleColor;
+	padding-left: 5px;
+	padding-right: 10px;
+}
+
+#battery {
+	color: #859900;
+	background: @moduleColor;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#custom-swaync {
+	background: @moduleColor;
+	padding-left: 5px;
+	padding-right: 15px;
+	font-size: 17px;
+}
+
+#custom-powerbutton {
+	background: @moduleColor;
+	padding-left: 5px;
+	padding-right: 10px;
+	font-size: 20px;
+}
