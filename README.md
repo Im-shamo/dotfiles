@@ -6,13 +6,13 @@ There are configuratione for all the software I use.
 
 Terminal: `alacritty`, `kitty`, `foot`, `xterm`
 
-Window managers: `qtile`, `sway`, `hyprland`, `icewm`,`i3`
+Window managers: `qtile`, `sway`, `hyprland`, `icewm`, `i3`
 
 Apps: `waybar`, [rofi](https://github.com/Im-shamo/rofi)
 
 Shell: `fish`, `oh-my-posh`
 
-There are also insulation scripts.
+There are also installation scripts.
 
 ## Readme
 
