@@ -198,7 +198,6 @@ wl_input_rules = None
 wl_xcursor_theme = None
 wl_xcursor_size = 24
 
-idle_timers = []  # type: list
 idle_inhibitors = []  # type: list
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
