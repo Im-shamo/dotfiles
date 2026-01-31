@@ -2,6 +2,18 @@
 
 This is where I keep my dots. 
 
+There are configuratione for all the software I use.
+
+Terminal: `alacritty`, `kitty`, `foot`, `xterm`
+
+Window managers: `qtile`, `sway`, `hyprland`, `icewm`,`i3`
+
+Apps: `waybar`, [rofi](gitHub.com/Im-shamo/rofi)
+
+Shell: `fish`, `oh-my-posh`
+
+There are also insulation scripts.
+
 ## Readme
 
 ### Todo
