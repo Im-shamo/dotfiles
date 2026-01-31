@@ -27,6 +27,6 @@ clipse -listen &    # Clipboard manager
 swayidle -w \
     timeout 300 'swaylock -f -i ~/Pictures/current-wallpaper' \
     before-sleep 'swaylock -f -i ~/Pictures/current-wallpaper' &
-waybar -c .config/waybar/config-sway.jsonc -s .config/waybar/style-sway.css
+waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
 # deskflow &
 

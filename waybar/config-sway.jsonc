@@ -62,7 +62,7 @@
 		"on-click": "brave https://docs.fedoraproject.org/en-US/docs/"
 	},
 
-    "hyprland/workspaces": {
+    "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "warp-on-scroll": false,
@@ -77,12 +77,11 @@
             "7": " ",
 			"8": "󱔗",
             "urgent": " ",
-            "focused": " ",
             "default": " "
         }
     },
 
-	"hyprland/window": {
+	"sway/window": {
 		"format": "{title}",
 		"separate-outputs": true,
 		"icon": true,
