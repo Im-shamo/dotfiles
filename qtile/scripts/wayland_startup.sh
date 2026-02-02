@@ -22,11 +22,10 @@ blueman-applet &
 # |                    |
 # +--------------------+
 /usr/lib/polkit-kde-authentication-agent-1 &
-dunst &             # Notification
-udiskie -t &        # Disk mounting
-clipse -listen &    # Clipboard manager
+dunst &                                         # Notification
+udiskie -t --no-appindicator &                  # Disk mounting
+clipse -listen &                                # Clipboard manager
 swayidle -w \
     timeout 300 'swaylock -f -i ~/Pictures/current-wallpaper' \
     before-sleep 'swaylock -f -i ~/Pictures/current-wallpaper' &
-# deskflow &
 

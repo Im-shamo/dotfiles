@@ -133,7 +133,7 @@ class MyBars:
                 my_widgets.group_box(),
                 widget.WindowName(),
                 widget.Prompt(),
-                widget.StatusNotifier(), # As systray is no available in wayland
+                widget.StatusNotifier(icon_theme="Adwaita"), # As systray is no available in wayland
                 widget.TextBox(**arrow_right),
                 my_widgets.wallpaper_switcher(**arrow_right),
                 widget.Net(font=mono_font, format= " {down:^5.1f}{down_suffix:<2}", background=colours["BLUE"],**arrow_right),  # blue
@@ -165,7 +165,7 @@ class MyBars:
                 my_widgets.group_box(),
                 widget.WindowName(),
                 widget.Prompt(),
-                widget.StatusNotifier(), # As systray is not available in wayland
+                widget.StatusNotifier(icon_theme="Adwaita"), # As systray is not available in wayland
                 widget.TextBox(**arrow_right),
                 my_widgets.wallpaper_switcher(**arrow_right),
                 widget.Net(font=mono_font, format= " {down:^5.1f}{down_suffix:<2}", background=colours["BLUE"],**arrow_right),  # blue
@@ -212,7 +212,7 @@ class MyBars:
                 my_widgets.group_box(),
                 widget.WindowName(),
                 widget.Prompt(),
-                widget.StatusNotifier(),
+                widget.StatusNotifier(icon_theme="Adwaita"),
                 widget.TextBox(**arrow_right),
                 my_widgets.wallpaper_switcher(**arrow_right),
                 my_widgets.volume(**arrow_right),
@@ -233,7 +233,7 @@ class MyBars:
                 my_widgets.group_box(),
                 widget.WindowName(),
                 widget.Prompt(),
-                widget.StatusNotifier(),
+                widget.StatusNotifier(icon_theme="Adwaita"),
                 widget.TextBox(**arrow_right),
                 my_widgets.wallpaper_switcher(**arrow_right),
                 my_widgets.volume(**arrow_right),
