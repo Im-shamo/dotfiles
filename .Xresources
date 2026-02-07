@@ -1,10 +1,7 @@
-Xcursor.size: 24
-Xcursor.theme: Hikari
-
 xterm*Background: black
 xterm*Foreground: white
 xterm*faceName: DroidSansM Nerd Font
-xterm*faceSize: 9
+xterm*faceSize: 12
 XTerm.termName: xterm-256color
 XTerm.vt100.scrollBar: true
 XTerm.vt100.scrollbar.width: 8
