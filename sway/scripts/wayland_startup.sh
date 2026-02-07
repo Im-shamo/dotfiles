@@ -13,7 +13,7 @@ blueman-applet &
 # |      Scripts      |
 # |                   |
 # +-------------------+
-~/.config/qtile/scripts/wallpaper_changer.sh &
+# ~/.config/qtile/scripts/wallpaper_changer.sh &
 
 # +--------------------+
 # |                    |
@@ -27,6 +27,6 @@ clipse -listen &    # Clipboard manager
 swayidle -w \
     timeout 300 'swaylock -f -i ~/Pictures/current-wallpaper' \
     before-sleep 'swaylock -f -i ~/Pictures/current-wallpaper' &
-waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
+~/.config/sway/scripts/waybar_restarter.sh &
 # deskflow &
 

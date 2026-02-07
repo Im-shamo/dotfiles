@@ -13,8 +13,8 @@ blueman-applet &
 # |      Scripts      |
 # |                   |
 # +-------------------+
-~/.config/qtile/scripts/wallpaper_changer.sh &
-~/.config/qtile/scripts/xrandr_setup.sh &
+# ~/.config/qtile/scripts/wallpaper_changer.sh &
+# ~/.config/qtile/scripts/xrandr_setup.sh &
 
 # +--------------------+
 # |                    |
