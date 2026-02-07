@@ -23,9 +23,9 @@ There are also installation scripts.
 
 ## Qtile: My main x11 WM
 
-![without apps](qtile/images/qtile-no-app-wm.png)
+![without apps](https://github.com/Im-shamo/qtile-config/blob/main/images/qtile-no-app-wm.png)
 
-![with apps](qtile/images/qtile-app-wm.png)
+![with apps](https://github.com/Im-shamo/qtile-config/blob/main/images/qtile-app-wm.png)
 
 ### Keybinds
 <details>
@@ -33,17 +33,17 @@ There are also installation scripts.
 
 Note >>> `ctrl` + `alt` + `Delete`: Powermenu <<<
 
-![](qtile/images/mod1-control.png)
+![](https://github.com/Im-shamo/qtile-config/blob/main/images/mod1-control.png)
 
-![](qtile/images/mod4.png)
+![](https://github.com/Im-shamo/qtile-config/blob/main/images/mod4.png)
 
-![](qtile/images/mod4-shift.png)
+![](https://github.com/Im-shamo/qtile-config/blob/main/images/mod4-shift.png)
 
-![](qtile/images/mod4-mod1.png)
+![](https://github.com/Im-shamo/qtile-config/blob/main/images/mod4-mod1.png)
 
-![](qtile/images/mod4-control.png)
+![](https://github.com/Im-shamo/qtile-config/blob/main/images/mod4-control.png)
 
-![](qtile/images/no_modifier.png)
+![](https://github.com/Im-shamo/qtile-config/blob/main/images/no_modifier.png)
 
 </details>
 
