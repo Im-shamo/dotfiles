@@ -12,6 +12,9 @@ with open(filepath) as f:
     conf = configparser.ConfigParser()
     conf.read_file(f)
 
+themename = filepath.stem
+print(f"!Theme: {themename}")
+
 s = {
     "Background": "background",
     "Foreground": "foreground"
@@ -37,7 +40,7 @@ i = 0
 for key,value in s.items():
     tmp = conf.get(key, "Color")
     tmp = tmp.split(",")
-    tmp = [hex(int(tmp[0]))[2:], hex(int(tmp[1]))[2:], hex(int(tmp[2]))[2:]]
+    tmp = [f"{int(v):x}" for v in tmp]
     output.append(f"*{value}: rgb: {'/'.join(tmp)}")
 
 print("\n".join(output))
