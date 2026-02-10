@@ -5,13 +5,17 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term kitty
+set $term foot
 set $menu launcher_t1
 
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+### Display Config
 output HDMI-A-1 {
     mode 1920x1080@143.999Hz
 }
+
+### Settings
+gaps inner 10
+
 ### Key bindings
 #
 # Basics:
@@ -38,8 +42,8 @@ output HDMI-A-1 {
     # Reload the configuration file
     bindsym $mod+Ctrl+r reload
 
-    #Reload waybar
-    bindsym $mod+Shift+p exec pkill waybar && waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
+    # Reload waybar
+    bindsym $mod+Shift+p exec ~/.config/sway/scripts/waybar_restarter.sh
 #
 # Moving around:
 #
@@ -153,6 +157,19 @@ mode "resize" {
 }
 bindsym $mod+Shift+r mode "resize"
 #
+# Launching Apps:
+#
+mode "apps" {
+    bindsym b exec $browser
+    bindsym c exec code
+    bindsym g exec gvim
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+d mode "apps"
+#
 # Utilities:
 #
     # Special keys to adjust volume via PulseAudio
@@ -166,9 +183,7 @@ bindsym $mod+Shift+r mode "resize"
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
-gaps inner 10
-
-# Autostart
+### Autostart
 exec ~/.config/sway/scripts/wayland_startup.sh
 
 include /etc/sway/config.d/*
