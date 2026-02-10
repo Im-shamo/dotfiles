@@ -31,16 +31,21 @@ color_list = [
     "White"
 ]
 
-for i in range(0,8):
+for i in range(0, 8):
     s["Color" + str(i)] = "color" + str(i)
-    s["Color" + str(i) + "Intense"] = "color" + str(i+8)
+    s["Color" + str(i) + "Intense"] = "color" + str(i + 8)
 
 output = []
 i = 0
-for key,value in s.items():
+for key, value in s.items():
     tmp = conf.get(key, "Color")
     tmp = tmp.split(",")
     tmp = [f"{int(v):x}" for v in tmp]
-    output.append(f"*{value}: rgb: {'/'.join(tmp)}")
+    output.append(f"*{value}: rgb:{'/'.join(tmp)}")
 
-print("\n".join(output))
+j = 0
+for i, element in enumerate(output):
+    if i != 0 and i % 2 == 0:
+        print("!", color_list[j], sep="")
+        j += 1
+    print(element)
