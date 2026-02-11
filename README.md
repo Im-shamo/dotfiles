@@ -14,6 +14,15 @@ Shell: `fish`, `oh-my-posh`
 
 There are also installation scripts.
 
+## Installation
+
+```bash
+git clone --recursive https://github.com/Im-shamo/dotfiles.git
+cd dotfiles
+
+scripts/archlinux/config_linking.sh
+```
+
 ## Readme
 
 ### Todo
@@ -33,23 +42,23 @@ There are also installation scripts.
 
 Note >>> `ctrl` + `alt` + `Delete`: Powermenu <<<
 
-![](https://github.com/Im-shamo/qtile-config/blob/main/images/mod1-control.png)
+![mod1-control.png](https://github.com/Im-shamo/qtile-config/blob/main/images/mod1-control.png)
 
-![](https://github.com/Im-shamo/qtile-config/blob/main/images/mod4.png)
+![mod4.png](https://github.com/Im-shamo/qtile-config/blob/main/images/mod4.png)
 
-![](https://github.com/Im-shamo/qtile-config/blob/main/images/mod4-shift.png)
+![mod4-shift.png](https://github.com/Im-shamo/qtile-config/blob/main/images/mod4-shift.png)
 
-![](https://github.com/Im-shamo/qtile-config/blob/main/images/mod4-mod1.png)
+![mod4-mod1.png](https://github.com/Im-shamo/qtile-config/blob/main/images/mod4-mod1.png)
 
-![](https://github.com/Im-shamo/qtile-config/blob/main/images/mod4-control.png)
+![mod4-control.png](https://github.com/Im-shamo/qtile-config/blob/main/images/mod4-control.png)
 
-![](https://github.com/Im-shamo/qtile-config/blob/main/images/no_modifier.png)
+![no_modifier.png](https://github.com/Im-shamo/qtile-config/blob/main/images/no_modifier.png)
 
 </details>
 
 ### Apps
 
-Please go to here for packages [qtile-config](https://github.com/Im-shamo/qtile-config)
+Please go to here for packages [qtile-config](https://github.com/Im-shamo/qtile-config/blob/main/README.md)
 
 ### Todo
 
