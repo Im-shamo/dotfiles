@@ -49,74 +49,7 @@ Note >>> `ctrl` + `alt` + `Delete`: Powermenu <<<
 
 ### Apps
 
-Below are **ArchLinux Specific** Packages
-
-- Qtile: `qtile`, `qtile-extras`<sup>AUR</sup>, `python-dbus-fast`, `python-psutil`
-- Web Browser: `brave-bin`<sup>AUR</sup>
-- Shell: `bash`, `fish`, `oh-my-posh`<sup>AUR</sup>
-- Git: `git`, `github-cli`, `github-desktop-bin`<sup>AUR</sup>
-- Compositer: `picom`
-- Fetch: `fastfetch`
-- Keyring: `gnome-keyring`, `seahorse`
-- Terminal: `alacritty`, `konsole`
-- Editor: `code`, `kate`, `kwrite`, `nvim`
-- File Manager: `dolphin`
-- Archiving: `ark`
-- Notification: `dunst`
-- Lock: `powerkit`<sup>AUR</sup>, `xscreensaver`
-- Disk Manager: `udiskie`
-- Clipboard Manager: `clipse-bin`<sup>AUR</sup>
-- Network: `networkmanager`, `network-manager-applet`
-- Bluetooth: `blueman`
-- X11: `xorg`, `xorg-apps`
-- Wayland: `wlr-randr`, `wayland`
-- Polikit Agent: `polkit-kde-agent`
-- Menu: `rofi`, [rofi configs repo](https://github.com/Im-shamo/rofi)
-- Resource Viewer: `btop`, `conky`, [conky configs repo](https://github.com/Im-shamo/Conky-Sysinfo-conf)
-- Wallpaper: `waypaper`<sup>AUR</sup>, `feh`, `swww`
-- Display Manager (Login): `ly`
-- Theming: `nwg-look`, `qt6ct-kde`<sup>AUR</sup>, `qt5ct-kde`<sup>AUR</sup>
-- Themes:
-	- Cursor: [Tachibana Hikari](https://ko-fi.com/s/c124f987ab)
-	- Cursor Help: [How to get cursor theming working in X11](https://gist.github.com/Im-shamo/64d7efba89db1a816c2c70e5ba01f770)
-	- Cursor Tools: [Win -> Linux repo](https://github.com/khayalhus/win2xcur-batch)
-	- Widgets: `breeze`, `breeze5`, `breeze-gtk`
-	- Icons: `breeze-icons`
-- Audio Video control: `playerctl`, `pavucontrol`, `alsa-utils`, `pulseaudio`, `pulseaudio-alsa`, `pipewire`, `wireplumber`
-- Screenshot: `spectacle`
-- Screen Brightness: `blight`<sup>AUR</supu>
-- Fonts: `nerd-fonts`, `ttf-hack`, `ttf-dejavu`, `noto-fonts`, `noto-fonts-emoji`, `noto-fonts-cjk`
-- Misc: `archlinux-xdg-menu`, `xdg-user-dirs`
-	
-For you to copy and install
-
-```bash
-pacman -Syu --needed \
-    qtile python-dbus-fast python-psutil        \
-    picom gnome-keyring seahorse                \
-    fastfetch git github-cli fish bash          \
-    alacritty konsole code kate kwrite nvim     \
-    dolphin ark dunst udiskie                   \
-    networkmanager network-manager-applet       \
-    blueman xorg xorg-apps wlr-randr wayland    \
-    polkit-kde-agent rofi btop conky            \
-    feh swww nwg-look ly                        \
-    breeze breeze5 breeze-gtk breeze-icons      \
-    playerctl pavucontrol alsa-utils spectacle  \
-    pulseaudio pulseaudio-alsa pipewire         \
-    wireplumber nerd-fonts ttf-hack ttf-dejavu  \
-    noto-fonts noto-fonts-cjk noto-fonts-emoji  \
-    archlinux-xdg-menu xdg-user-dirs
-```
-
-```bash
-yay -S --needed \
-    qtile-extras powerkit                       \
-    brave-bin waypaper clipse-bin               \
-    qt5ct-kde qt6ct-kde                         \
-    blight github-desktop-bin oh-my-posh
-```
-
+Please go to here for packages [qtile-config](https://github.com/Im-shamo/qtile-config)
 
 ### Todo
 
