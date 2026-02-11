@@ -16,6 +16,10 @@ There are also installation scripts.
 
 ## Installation
 
+Remember to **review** **[config_linking.sh](scripts/archlinux/config_linking.sh)** before running it!
+
+For the apps I use go to this section → [Apps](#apps)
+
 ```bash
 git clone --recursive https://github.com/Im-shamo/dotfiles.git
 cd dotfiles
@@ -58,7 +62,7 @@ Note >>> `ctrl` + `alt` + `Delete`: Powermenu <<<
 
 ### Apps
 
-Please go to here for packages [qtile-config](https://github.com/Im-shamo/qtile-config/blob/main/README.md)
+Please go to **[qtile-config](https://github.com/Im-shamo/qtile-config/blob/main/README.md)** repo for packages.
 
 ### Todo
 
