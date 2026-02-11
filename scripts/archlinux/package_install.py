@@ -1,10 +1,13 @@
 #!/usr/bin/python3
-import os.path
+"""
+Do not use. The scripts itself has no problems but the package.json have many problems.
+"""
+from pathlib import Path
 import subprocess
 import json
 import argparse
 
-scripts = os.path.expanduser("~/Clone/dotfiles/scripts/archlinux")
+scripts = Path("~/Clone/dotfiles/scripts/archlinux").expanduser()
 
 
 class Pacman:
@@ -71,8 +74,8 @@ def check_packages(all_packages: dict[str, dict[str, list[list[str]]]]) -> dict[
 
 
 def install_yay() -> subprocess.CompletedProcess:
-    script = os.path.join(scripts, "yay_install.sh")
-    return subprocess.run([script], capture_output=True, text=True)
+    script = scripts / "yay_install.sh"
+    return subprocess.run(script)
 
 
 def list_packages(all_packages: dict[str, dict[str, list[list[str]]]], detailed=False) -> None:
@@ -106,13 +109,13 @@ args = parser.parse_args()
 if args.package_json:
     package_json = args.package_json
 else:
-    package_json = os.path.expanduser("~/Clone/dotfiles/scripts/archlinux/package.json")
+    package_json = Path("~/Clone/dotfiles/scripts/archlinux/package.json").expanduser()
 
 with open(package_json, "r") as file:
     all_packages = json.load(file)
 
 if __name__ == "__main__":
-    if not os.path.exists("/usr/bin/yay"):
+    if not Path("/usr/bin/yay").exists():
         result = install_yay()
 
     pac = Pacman()

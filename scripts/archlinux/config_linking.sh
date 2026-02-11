@@ -11,8 +11,8 @@ fi
 config="$userHome/.config"
 
 configLinks=(
-    "alacritty" "awesome" "dunst" "fish" "hypr" "hyprlock" "i3" "kitty" "picom"
-    "qtile" "waybar" "wofi" "nvim" "icewm" "swaylock" "swayidle" "sway" "foot"
+    "alacritty" "awesome" "dunst" "fish" "foot" "hypr" "hyprlock"
+    "i3" "kitty" "nvim" "picom" "qtile" "sway" "waybar" "wofi" "icewm"
 )
 
 homeLinks=(".vimrc" ".Xresources" ".icewm" ".zshrc" ".p10k.zsh")
@@ -28,7 +28,6 @@ if [[ ! -d $config ]]; then
 fi
 
 cd $config
-
 for linkname in "${configLinks[@]}"; do
     target="$dots/$linkname"
     link="$config/$linkname"

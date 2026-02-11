@@ -9,6 +9,8 @@ if [[ $(pacman -Qq yay) != "yay" ]]; then
 
     cd yay-bin
     makepkg -si --noconfirm
+    exit 0
 else
     echo yay is already installed.
+    exit 1
 fi
