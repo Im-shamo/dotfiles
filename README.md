@@ -46,17 +46,17 @@ scripts/archlinux/config_linking.sh
 
 Note >>> `ctrl` + `alt` + `Delete`: Powermenu <<<
 
-![mod1-control.png](https://github.com/Im-shamo/qtile-config/blob/main/images/mod1-control.png)
+![mod1-control.png](https://github.com/Im-shamo/qtile-config/blob/main/images/keybinds/mod1-control.png)
 
-![mod4.png](https://github.com/Im-shamo/qtile-config/blob/main/images/mod4.png)
+![mod4.png](https://github.com/Im-shamo/qtile-config/blob/main/images/keybinds/mod4.png)
 
-![mod4-shift.png](https://github.com/Im-shamo/qtile-config/blob/main/images/mod4-shift.png)
+![mod4-shift.png](https://github.com/Im-shamo/qtile-config/blob/main/images/keybinds/mod4-shift.png)
 
-![mod4-mod1.png](https://github.com/Im-shamo/qtile-config/blob/main/images/mod4-mod1.png)
+![mod4-mod1.png](https://github.com/Im-shamo/qtile-config/blob/main/images/keybinds/mod4-mod1.png)
 
-![mod4-control.png](https://github.com/Im-shamo/qtile-config/blob/main/images/mod4-control.png)
+![mod4-control.png](https://github.com/Im-shamo/qtile-config/blob/main/images/keybinds/mod4-control.png)
 
-![no_modifier.png](https://github.com/Im-shamo/qtile-config/blob/main/images/no_modifier.png)
+![no_modifier.png](https://github.com/Im-shamo/qtile-config/blob/main/images/keybinds/no_modifier.png)
 
 </details>
 
