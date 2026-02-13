@@ -8,18 +8,18 @@
 	"modules-left": [
 		"custom/arch-icon",
 		"sway/workspaces",
-		"custom/right-arrow-dark",
-		"sway/window"
+		"custom/right-arrow-dark-t"
 	],
 
 	"modules-center": [
+		"sway/window"
 	],
 
 	"modules-right": [
 		"privacy",
-		"tray",
 		"mpris",
-		"custom/left-arrow-dark",
+		"tray",
+		"custom/left-arrow-dark-t",
 		"pulseaudio",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
@@ -34,11 +34,19 @@
 		"format": "",
 		"tooltip": false
 	},
+	"custom/left-arrow-dark-t": {
+		"format": "",
+		"tooltip": false
+	},
 	"custom/left-arrow-light": {
 		"format": "",
 		"tooltip": false
 	},
 	"custom/right-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-dark-t": {
 		"format": "",
 		"tooltip": false
 	},
@@ -58,7 +66,7 @@
 	},
 
 	"custom/fedora-icon":{
-		"format": "",
+		"format": " ",
 		"on-click": "brave https://docs.fedoraproject.org/en-US/docs/"
 	},
 
@@ -184,7 +192,7 @@
 	},
 
     "clock": {
-        "format": "{:%d/%m/%y %a %R} ",
+        "format": "{:%d/%m/%y %a %R}  ",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
 			"mode"          : "year",
@@ -225,7 +233,7 @@
 	},
 
 	"custom/powerbutton": {
-		"format": "󰐥",
+		"format": "󰐥 ",
 		"on-click": "~/.config/rofi/powermenu/type-1/powermenu.sh",
 		"tooltip": false
 	},
