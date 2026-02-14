@@ -188,3 +188,4 @@ bindsym $mod+d mode "apps"
 exec ~/.config/sway/scripts/startup.sh
 
 include /etc/sway/config.d/*
+
