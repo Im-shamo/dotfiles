@@ -11,3 +11,8 @@ set -gx LESS " -R"
 set -gx VISUAL "$EDITOR"
 set -gx BROWSER "brave"
 set -gx XDG_MENU_PREFIX "arch-"
+
+if test "$XDG_SESSION_DESKTOP" = "sway"
+    set -gx QT_QPA_PLATFORMTHEME "qt6ct"
+end
+
