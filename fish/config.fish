@@ -1,6 +1,9 @@
 test -e /usr/share/cachyos-fish-config/cachyos-config.fish && source /usr/share/cachyos-fish-config/cachyos-config.fish
 set fish_greeting
-test -e /usr/bin/oh-my-posh && oh-my-posh init fish --config ~/Clone/dotfiles/shamo.omp.jsonc | source
+
+if test -e /usr/bin/oh-my-posh && test ! -n "$VIMRUNTIME" 
+    oh-my-posh init fish --config ~/Clone/dotfiles/shamo.omp.jsonc | source
+end
 
 fish_add_path --path ~/.config/rofi/applets/bin ~/.config/rofi/scripts
 set -gx SSH_SSH_SOCK "$XDG_RUNTIME_DIR/gcr/ssh"
