@@ -41,8 +41,12 @@ set foldmethod=marker
 set mouse=n
 set background=dark
 
-set gfn=Hack\ Nerd\ Font\ Mono\ 12
-colorscheme desert
+if has("gui_running")
+    set gfn=Hack\ Nerd\ Font\ Mono\ 12
+    colorscheme desert
+else
+    colorscheme default
+endif
 
 " Set shell
 if filereadable("C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe")
@@ -69,3 +73,4 @@ nnoremap <leader>n : NERDTreeToggle<CR>
 " Sources {{{
 " From https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
 " }}}
+
