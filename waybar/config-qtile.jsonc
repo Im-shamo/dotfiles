@@ -7,12 +7,10 @@
 
     "modules-left": [
         "custom/arch-icon",
-        "sway/workspaces",
         "custom/right-arrow-dark-t"
     ],
 
     "modules-center": [
-        "sway/window"
     ],
 
     "modules-right": [
@@ -70,7 +68,8 @@
         "format": " ",
         "on-click": "brave https://docs.fedoraproject.org/en-US/docs/"
     },
-
+    
+    /*
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -98,6 +97,7 @@
             "(.*) - Chromium": "Chromium"   // xwayland title does not update and it looks really ugly
         }
     },
+    */
 
     /* Right */
 

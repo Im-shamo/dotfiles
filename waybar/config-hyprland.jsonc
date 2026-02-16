@@ -142,11 +142,6 @@
         // "ignored-players": ["brave"]
     },
 
-    "custom/wallpaper-changer": {
-        "format": "Change Wallpaper",
-        "on-click": "~/.config/hypr/scripts/wallpaper_changer"
-    },
-
     "pulseaudio": {
         "format": "{icon} {volume:2}%",
         "format-bluetooth": "{icon}  {volume}%",
@@ -208,11 +203,6 @@
         "format": "󰐥 ",
         "on-click": "~/.config/rofi/powermenu/type-1/powermenu.sh",
         "tooltip": false
-    },
-
-    "custom/network_traffic": {
-        "exec": "~/.config/waybar/scripts/network_traffic.sh",
-        "return-type": "json"
     }
 }
 

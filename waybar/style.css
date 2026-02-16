@@ -5,12 +5,13 @@
 * {
     font-family: DroidSansM Nerd Font;
     font-size: 14px;
+    border: None;
 }
 
 window#waybar {
     color: rgb(253, 254, 227); /* Text color */
     background: rgba(0, 0, 0, 0);
-    border-radius: 0.5em
+    border-radius: 0.5em;
 }
 
 /* Powerline arrows */
@@ -76,11 +77,7 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    padding-left: 0.6em;
-    padding-right: 0.6em;
-
     background: rgba(50, 50, 50, 0.5);
-    border: None;
 }
 
 /* Centre */
@@ -93,11 +90,6 @@ window#waybar {
     padding-right: 1em;
 
     margin: 0.2em 1em;
-}
-
-/* make window module transparent when no windows present */
-window#waybar.empty #window {
-    background-color: transparent;
 }
 
 /* Right */
@@ -122,18 +114,6 @@ window#waybar.empty #window {
     padding-right: 0.75em;
 }
 
-#custom-wallpaper-changer {
-    color: #9678b6;
-    background: @moduleColor;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-}
-
-#custom-network_traffic {
-    color: #9678b6;
-    background-color: @moduleColor;
-}
-
 #pulseaudio,
 #clock,
 #battery {
@@ -152,13 +132,6 @@ window#waybar.empty #window {
 
 #battery {
     color: #859900;
-}
-
-#custom-swaync {
-    background: @moduleColor;
-    padding-left: 5px;
-    padding-right: 15px;
-    font-size: 17px;
 }
 
 #custom-powerbutton {
