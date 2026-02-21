@@ -67,7 +67,7 @@
     },
 
     "custom/fedora-icon":{
-        "format": " ",
+        "format": "",
         "on-click": "brave https://docs.fedoraproject.org/en-US/docs/"
     },
 

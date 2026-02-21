@@ -1,5 +1,6 @@
 @define-color backgroundColor rgb(52, 68, 84);  /* Blue */
 @define-color moduleColor rgb(22, 28, 34);      /* Black */
+@define-color textColor rgb(253, 254, 227);     /* White */
 
 
 * {
@@ -9,9 +10,8 @@
 }
 
 window#waybar {
-    color: rgb(253, 254, 227); /* Text color */
+    color: @textColor;
     background: rgba(0, 0, 0, 0);
-    border-radius: 0.5em;
 }
 
 /* Powerline arrows */
@@ -20,20 +20,20 @@ window#waybar {
 #custom-right-arrow-dark {
     color: @moduleColor;
     background: @backgroundColor;
-    font-size: 1.8em;
+    font-size: 1.7em;
 }
 
 #custom-left-arrow-dark-t,
 #custom-right-arrow-dark-t {
     color: @moduleColor;
-    font-size: 1.8em;
+    font-size: 1.7em;
 }
 
 #custom-left-arrow-light,
 #custom-right-arrow-light {
     color: @backgroundColor;
     background: @moduleColor;
-    font-size: 1.8em;
+    font-size: 1.7em;
 }
 
 /* Left */
@@ -52,7 +52,7 @@ window#waybar {
     background: @moduleColor;
     font-size: 1.5em;
     padding-left: 0.5em;
-    padding-right: 0.25em;
+    padding-right: 0.5em;
     border-radius: 0.5em 0em 0em 0.5em;
 }
 
@@ -65,7 +65,7 @@ window#waybar {
 #workspaces button {
     padding-left: 0.5em;
     padding-right: 0.5em;
-    color: rgb(253, 254, 227);
+    color: @textColor;
 }
 
 #workspaces button.active {
@@ -90,6 +90,10 @@ window#waybar {
     padding-right: 1em;
 
     margin: 0.2em 1em;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
 }
 
 /* Right */
